@@ -23,13 +23,25 @@ const initialFriends = [
 
 export default function App() {
   const [friends, setFriends] = useState(initialFriends);
+  const [showFormAddFriend, setShowFormAddFriend] = useState(false);
+
+  function handleShowFormAddFriend() {
+    setShowFormAddFriend((show) => !show);
+  }
+
+  function handleAddFriend(friend) {
+    setFriends((friends) => [...friends, friend]);
+    setShowFormAddFriend(false);
+  }
 
   return (
     <div className="app">
       <div className="sidebar">
         <FriendsList friends={friends} />
-        <FormAddFriend />
-        <Button>Add friend</Button>
+        {showFormAddFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
+        <Button onClick={handleShowFormAddFriend}>
+          {showFormAddFriend ? "Close" : "Add friend"}
+        </Button>
       </div>
       <FormSplitBill />
     </div>
@@ -67,13 +79,38 @@ function Friend({ friend }) {
   );
 }
 
-function FormAddFriend() {
+function FormAddFriend({ onAddFriend }) {
+  const [name, setName] = useState("");
+  const [image, setImage] = useState("https://i.pravatar.cc/48");
+
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const id = crypto.randomUUID();
+    const friend = {
+      name,
+      image: `${image}?=${id}`,
+      id,
+      balance: 0,
+    };
+    onAddFriend(friend);
+    setName("");
+    setImage("https://i.pravatar.cc/48");
+  }
+
   return (
-    <form className="form-add-friend">
+    <form className="form-add-friend" onSubmit={handleFormSubmit}>
       <label>🧑‍🤝‍🧑 Friend name</label>
-      <input type="text"></input>
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
       <label>🖼️ Image URL</label>
-      <input type="text"></input>
+      <input
+        type="text"
+        value={image}
+        onChange={(e) => setImage(e.target.value)}
+      />
       <Button>Add</Button>
     </form>
   );
@@ -100,6 +137,10 @@ function FormSplitBill() {
   );
 }
 
-function Button({ children }) {
-  return <button className="button">{children}</button>;
+function Button({ children, onClick }) {
+  return (
+    <button className="button" onClick={onClick}>
+      {children}
+    </button>
+  );
 }
