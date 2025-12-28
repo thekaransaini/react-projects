@@ -52,26 +52,38 @@ export default function App() {
     setSelectedFriend(null);
   }
 
+  function calTotalOwed() {
+    const totalOwed = friends
+      .map((friend) => friend.balance)
+      .filter((balance) => balance < 0)
+      .reduce((acc, balance) => acc + balance);
+    window.alert(Math.abs(totalOwed));
+  }
+
   return (
-    <div className="app">
-      <div className="sidebar">
-        <FriendsList
-          friends={friends}
-          selectedFriend={selectedFriend}
-          onSplitBill={handleShowFormSplitBill}
-        />
-        {showFormAddFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
-        <Button onClick={handleShowFormAddFriend}>
-          {showFormAddFriend ? "Close" : "Add friend"}
-        </Button>
+    <>
+      <h1>💸 Split-the-bill</h1>
+      <div className="app">
+        <div className="sidebar">
+          <FriendsList
+            friends={friends}
+            selectedFriend={selectedFriend}
+            onSplitBill={handleShowFormSplitBill}
+          />
+          {showFormAddFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
+          <Button onClick={handleShowFormAddFriend}>
+            {showFormAddFriend ? "Close" : "Add friend"}
+          </Button>
+          <Button onClick={calTotalOwed}>View total owed</Button>
+        </div>
+        {selectedFriend && (
+          <FormSplitBill
+            selectedFriend={selectedFriend}
+            onSplitBill={handleSplitBill}
+          />
+        )}
       </div>
-      {selectedFriend && (
-        <FormSplitBill
-          selectedFriend={selectedFriend}
-          onSplitBill={handleSplitBill}
-        />
-      )}
-    </div>
+    </>
   );
 }
 
