@@ -82,6 +82,14 @@ function Loader() {
   );
 }
 
+function ErrorMessage() {
+  return (
+    <p className="error">
+      <span>⚠️</span>
+    </p>
+  );
+}
+
 function NavBar({ children }) {
   return (
     <nav className="nav-bar">
