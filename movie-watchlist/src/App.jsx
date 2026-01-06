@@ -55,8 +55,13 @@ export default function App() {
   const [query, setQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [selectedId, setSelectedId] = useState("");
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState(tempWatchedData);
+
+  function handleSelectedId(id) {
+    setSelectedId(id);
+  }
 
   useEffect(
     function () {
@@ -103,11 +108,19 @@ export default function App() {
         <Box>
           {isLoading && <Loader />}
           {error && <ErrorMessage message={error} />}
-          {!isLoading && !error && <MovieList movies={movies} />}
+          {!isLoading && !error && (
+            <MovieList movies={movies} onSelectId={handleSelectedId} />
+          )}
         </Box>
         <Box>
-          <WatchedMovieSummary watched={watched} />
-          <WatchedMovieList watched={watched} />
+          {selectedId ? (
+            <MovieDetails selectedId={selectedId} />
+          ) : (
+            <>
+              <WatchedMovieSummary watched={watched} />
+              <WatchedMovieList watched={watched} />
+            </>
+          )}
         </Box>
       </Main>
     </>
@@ -188,46 +201,74 @@ function Box({ children }) {
   );
 }
 
-function MovieList({ movies }) {
+function MovieList({ movies, onSelectId }) {
   return (
     <ul className="list">
       {movies?.map((movie) => (
-        <Movie movie={movie} />
+        <Movie movie={movie} onSelectId={onSelectId} />
       ))}
     </ul>
   );
 }
 
-function Movie({ movie }) {
+function Movie({ movie, onSelectId }) {
+  const { imdbID, Poster: poster, Title: title, Year: year } = movie;
+
   return (
-    <li key={movie.imdbID}>
-      <img src={movie.Poster} alt={`${movie.Title} poster`} />
-      <h3>{movie.Title}</h3>
+    <li key={imdbID} onClick={() => onSelectId(imdbID)}>
+      <img src={poster} alt={`${title} poster`} />
+      <h3>{title}</h3>
       <div>
         <p>
           <span>🗓</span>
-          <span>{movie.Year}</span>
+          <span>{year}</span>
         </p>
       </div>
     </li>
   );
 }
 
-function MovieDetails() {
+function MovieDetails({ selectedId }) {
+  const [movie, setMovie] = useState({});
+
+  const {
+    Title: title,
+    Runtime: runtime,
+    Released: released,
+    Genre: genre,
+    imdbRating,
+    Actors: actors,
+    Director: director,
+    Poster: poster,
+    Plot: plot,
+  } = movie;
+
+  useEffect(
+    function () {
+      async function fetchMovieDetails() {
+        const res = await fetch(
+          `http://www.omdbapi.com/?apikey=83540352&i=${selectedId}`
+        );
+        const data = await res.json();
+        setMovie(data);
+      }
+      fetchMovieDetails();
+    },
+    [selectedId]
+  );
   return (
     <div className="details">
       <header>
-        <img
-          src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg"
-          alt=""
-        />
+        <img src={poster} alt={`Poster of ${title} movie`} />
         <div className="details-overview">
-          <h2>Inception</h2>
-          <p>16 Jul 2010 &bull; 148 min</p>
-          <p>Action, Adventure, Sci-Fi</p>
+          <h2>{title}</h2>
+          <p>
+            {released} &bull; {runtime}
+          </p>
+          <p>{genre}</p>
           <p>
             <span>⭐</span>
-            8.8 IMDb rating
+            {imdbRating} IMDb rating
           </p>
         </div>
       </header>
@@ -237,15 +278,10 @@ function MovieDetails() {
           <button className="btn-add">+ Add to list</button>
         </div>
         <p>
-          <em>
-            A thief who steals corporate secrets through the use of
-            dream-sharing technology is given the inverse task of planting an
-            idea into the mind of a CEO, but his tragic past may doom the
-            project and his team to disaster.
-          </em>
+          <em>{plot}</em>
         </p>
-        <p>Starring Leonardo DiCaprio, Joseph Gordon-Levitt, Elliot Page</p>
-        <p>Directed by Christopher Nolan</p>
+        <p>Starring {actors}</p>
+        <p>Directed by {director}</p>
       </section>
     </div>
   );
