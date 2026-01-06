@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import StarRating from "./StarRating";
 
 const tempMovieData = [
   {
@@ -209,6 +210,44 @@ function Movie({ movie }) {
         </p>
       </div>
     </li>
+  );
+}
+
+function MovieDetails() {
+  return (
+    <div className="details">
+      <header>
+        <img
+          src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg"
+          alt=""
+        />
+        <div className="details-overview">
+          <h2>Inception</h2>
+          <p>16 Jul 2010 &bull; 148 min</p>
+          <p>Action, Adventure, Sci-Fi</p>
+          <p>
+            <span>⭐</span>
+            8.8 IMDb rating
+          </p>
+        </div>
+      </header>
+      <section>
+        <div className="rating">
+          <StarRating maxRating={10} size={24} />
+          <button className="btn-add">+ Add to list</button>
+        </div>
+        <p>
+          <em>
+            A thief who steals corporate secrets through the use of
+            dream-sharing technology is given the inverse task of planting an
+            idea into the mind of a CEO, but his tragic past may doom the
+            project and his team to disaster.
+          </em>
+        </p>
+        <p>Starring Leonardo DiCaprio, Joseph Gordon-Levitt, Elliot Page</p>
+        <p>Directed by Christopher Nolan</p>
+      </section>
+    </div>
   );
 }
 
