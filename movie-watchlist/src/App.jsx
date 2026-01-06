@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const tempMovieData = [
   {
@@ -52,18 +52,57 @@ const average = (arr) =>
 
 export default function App() {
   const [query, setQuery] = useState("");
-  const [movies, setMovies] = useState(tempMovieData);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState(tempWatchedData);
+
+  useEffect(
+    function () {
+      async function fetchMovies() {
+        try {
+          if (query.length <= 3) {
+            setError("");
+            setIsLoading(false);
+            setMovies([]);
+            return;
+          }
+          setIsLoading(true);
+          const res = await fetch(
+            `http://www.omdbapi.com/?apikey=83540352&s=${query}`
+          );
+
+          if (!res.ok)
+            throw new Error("Something went wrong with fetching movies!");
+
+          const data = await res.json();
+
+          if (data.Response === "False") throw new Error("Movie not found!");
+
+          setMovies(data.Search);
+          setError("");
+        } catch (err) {
+          setError(err.message);
+        } finally {
+          setIsLoading(false);
+        }
+      }
+      fetchMovies();
+    },
+    [query]
+  );
 
   return (
     <>
       <NavBar>
         <Search query={query} setQuery={setQuery} />
-        <NumResult movies={movies} />
+        <NumResult movies={movies} query={query} />
       </NavBar>
       <Main>
         <Box>
-          <MovieList movies={movies} />
+          {isLoading && <Loader />}
+          {error && <ErrorMessage message={error} />}
+          {!isLoading && !error && <MovieList movies={movies} />}
         </Box>
         <Box>
           <WatchedMovieSummary watched={watched} />
@@ -82,10 +121,11 @@ function Loader() {
   );
 }
 
-function ErrorMessage() {
+function ErrorMessage({ message }) {
   return (
     <p className="error">
       <span>⚠️</span>
+      {message}
     </p>
   );
 }
@@ -120,11 +160,13 @@ function Search({ query, setQuery }) {
   );
 }
 
-function NumResult({ movies }) {
+function NumResult({ movies, query }) {
   return (
-    <p className="num-results">
-      Found <strong>{movies.length}</strong> results
-    </p>
+    query && (
+      <p className="num-results">
+        Found <strong>{movies.length}</strong> results
+      </p>
+    )
   );
 }
 
