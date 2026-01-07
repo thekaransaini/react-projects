@@ -60,7 +60,11 @@ export default function App() {
   const [watched, setWatched] = useState(tempWatchedData);
 
   function handleSelectedId(id) {
-    setSelectedId(id);
+    setSelectedId((currId) => (currId === id ? null : id));
+  }
+
+  function handleCloseMovie() {
+    setSelectedId(null);
   }
 
   useEffect(
@@ -113,7 +117,10 @@ export default function App() {
         </Box>
         <Box>
           {selectedId ? (
-            <MovieDetails selectedId={selectedId} />
+            <MovieDetails
+              selectedId={selectedId}
+              onCloseMovie={handleCloseMovie}
+            />
           ) : (
             <>
               <WatchedMovieSummary watched={watched} />
@@ -227,7 +234,7 @@ function Movie({ movie, onSelectId }) {
   );
 }
 
-function MovieDetails({ selectedId }) {
+function MovieDetails({ selectedId, onCloseMovie }) {
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -279,6 +286,9 @@ function MovieDetails({ selectedId }) {
   return (
     <div className="details">
       <header>
+        <button className="btn-back" onClick={onCloseMovie}>
+          &larr;
+        </button>
         <img src={poster} alt={`Poster of ${title} movie`} />
         <div className="details-overview">
           <h2>{title}</h2>
