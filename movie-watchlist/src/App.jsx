@@ -78,8 +78,7 @@ export default function App() {
             `http://www.omdbapi.com/?apikey=83540352&s=${query}`
           );
 
-          if (!res.ok)
-            throw new Error("Something went wrong with fetching movies!");
+          if (!res.ok) throw new Error("Failed to load movies!");
 
           const data = await res.json();
 
@@ -231,6 +230,7 @@ function Movie({ movie, onSelectId }) {
 function MovieDetails({ selectedId }) {
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const {
     Title: title,
@@ -247,13 +247,26 @@ function MovieDetails({ selectedId }) {
   useEffect(
     function () {
       async function fetchMovieDetails() {
-        setIsLoading(true);
-        const res = await fetch(
-          `http://www.omdbapi.com/?apikey=83540352&i=${selectedId}`
-        );
-        const data = await res.json();
-        setMovie(data);
-        setIsLoading(false);
+        try {
+          setIsLoading(true);
+          const res = await fetch(
+            `http://www.omdbapi.com/?apikey=83540352&i=${selectedId}`
+          );
+
+          if (!res.ok) throw new Error("Failed to fetch movie details!");
+
+          const data = await res.json();
+
+          if (data.Response === "False")
+            throw new Error("Movie details not found!");
+
+          setMovie(data);
+          setError("");
+        } catch (err) {
+          setError(err.message);
+        } finally {
+          setIsLoading(false);
+        }
       }
       fetchMovieDetails();
     },
@@ -261,6 +274,7 @@ function MovieDetails({ selectedId }) {
   );
 
   if (isLoading) return <Loader />;
+  if (error) return <ErrorMessage message={error} />;
 
   return (
     <div className="details">
