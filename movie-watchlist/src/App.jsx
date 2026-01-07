@@ -230,6 +230,7 @@ function Movie({ movie, onSelectId }) {
 
 function MovieDetails({ selectedId }) {
   const [movie, setMovie] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     Title: title,
@@ -246,16 +247,21 @@ function MovieDetails({ selectedId }) {
   useEffect(
     function () {
       async function fetchMovieDetails() {
+        setIsLoading(true);
         const res = await fetch(
           `http://www.omdbapi.com/?apikey=83540352&i=${selectedId}`
         );
         const data = await res.json();
         setMovie(data);
+        setIsLoading(false);
       }
       fetchMovieDetails();
     },
     [selectedId]
   );
+
+  if (isLoading) return <Loader />;
+
   return (
     <div className="details">
       <header>
