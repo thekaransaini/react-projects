@@ -216,7 +216,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatchedMovie }) {
       poster,
       imdbID: selectedId,
       imdbRating: Number(imdbRating),
-      runtime: Number(runtime.split(" ").at(0)),
+      runtime: runtime === "N/A" ? 0 : Number(runtime.split(" ").at(0)),
       userRating,
     };
     onAddWatchedMovie(newWatchedMovie);
@@ -349,7 +349,7 @@ function WatchedMovie({ movie }) {
         </p>
         <p>
           <span>⏳</span>
-          <span>{runtime} min</span>
+          <span>{runtime === 0 ? "N/A" : `${runtime} min`}</span>
         </p>
       </div>
     </li>
