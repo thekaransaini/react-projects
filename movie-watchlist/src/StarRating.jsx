@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const containerStyle = {
   display: "flex",
@@ -32,6 +32,10 @@ export default function StarRating({
     setRating(rating);
     onSetRating(rating);
   }
+
+  useEffect(() => {
+    onSetRating(rating);
+  }, [rating, onSetRating]);
 
   return (
     <div style={containerStyle} className={className}>

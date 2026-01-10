@@ -276,7 +276,12 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatchedMovie }) {
       </header>
       <section>
         <div className="rating">
-          <StarRating maxRating={10} size={24} onSetRating={setUserRating} />
+          <StarRating
+            maxRating={10}
+            size={24}
+            defaultRating={3}
+            onSetRating={setUserRating}
+          />
           <button className="btn-add" onClick={handleAdd}>
             + Add to list
           </button>
@@ -314,7 +319,7 @@ function WatchedMovieSummary({ watched }) {
         </p>
         <p>
           <span>⏳</span>
-          <span>{avgRuntime} min</span>
+          <span>{avgRuntime.toFixed(2)} min</span>
         </p>
       </div>
     </div>
