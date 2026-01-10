@@ -26,6 +26,7 @@ export default function App() {
 
   useEffect(
     function () {
+      const controller = new AbortController();
       async function fetchMovies() {
         try {
           if (query.length <= 3) {
@@ -36,7 +37,8 @@ export default function App() {
           }
           setIsLoading(true);
           const res = await fetch(
-            `http://www.omdbapi.com/?apikey=83540352&s=${query}`
+            `http://www.omdbapi.com/?apikey=83540352&s=${query}`,
+            { signal: controller.signal }
           );
 
           if (!res.ok) throw new Error("Failed to load movies!");
@@ -48,12 +50,18 @@ export default function App() {
           setMovies(data.Search);
           setError("");
         } catch (err) {
-          setError(err.message);
+          if (err.name !== "AbortError") {
+            setError(err.message);
+          }
         } finally {
           setIsLoading(false);
         }
       }
       fetchMovies();
+
+      return () => {
+        controller.abort();
+      };
     },
     [query]
   );
@@ -237,28 +245,39 @@ function MovieDetails({
   useEffect(
     function () {
       document.title = `Movie | ${title}`;
+
+      return () => {
+        document.title = "movie-watchlist";
+      };
     },
     [title]
   );
 
   useEffect(
     function () {
-      document.addEventListener("keydown", (event) => {
+      function callBackFunc(event) {
         if (event.code === "Escape") {
           onCloseMovie();
         }
-      });
+      }
+      document.addEventListener("keydown", callBackFunc);
+
+      return () => {
+        document.removeEventListener("keydown", callBackFunc);
+      };
     },
     [onCloseMovie]
   );
 
   useEffect(
     function () {
+      const controller = new AbortController();
       async function fetchMovieDetails() {
         try {
           setIsLoading(true);
           const res = await fetch(
-            `http://www.omdbapi.com/?apikey=83540352&i=${selectedId}`
+            `http://www.omdbapi.com/?apikey=83540352&i=${selectedId}`,
+            { signal: controller.signal }
           );
 
           if (!res.ok) throw new Error("Failed to fetch movie details!");
@@ -271,12 +290,18 @@ function MovieDetails({
           setMovie(data);
           setError("");
         } catch (err) {
-          setError(err.message);
+          if (err.name !== "AbortError") {
+            setError(err.message);
+          }
         } finally {
           setIsLoading(false);
         }
       }
       fetchMovieDetails();
+
+      return () => {
+        controller.abort();
+      };
     },
     [selectedId]
   );
