@@ -75,6 +75,7 @@ export default function App() {
         <Box>
           {selectedId ? (
             <MovieDetails
+              watched={watched}
               selectedId={selectedId}
               onCloseMovie={handleCloseMovie}
               onAddWatchedMovie={handleAddWatchedMovie}
@@ -192,11 +193,21 @@ function Movie({ movie, onSelectId }) {
   );
 }
 
-function MovieDetails({ selectedId, onCloseMovie, onAddWatchedMovie }) {
+function MovieDetails({
+  watched,
+  selectedId,
+  onCloseMovie,
+  onAddWatchedMovie,
+}) {
   const [movie, setMovie] = useState({});
   const [userRating, setUserRating] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const isWatchedMovie = watched.some((movie) => movie.imdbID === selectedId);
+  const watchedMovieUserRating = watched.find(
+    (movie) => movie.imdbID === selectedId
+  )?.userRating;
 
   const {
     Title: title,
@@ -276,15 +287,21 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatchedMovie }) {
       </header>
       <section>
         <div className="rating">
-          <StarRating
-            maxRating={10}
-            size={24}
-            defaultRating={3}
-            onSetRating={setUserRating}
-          />
-          <button className="btn-add" onClick={handleAdd}>
-            + Add to list
-          </button>
+          {isWatchedMovie ? (
+            `You rated this movie with ${watchedMovieUserRating} ⭐`
+          ) : (
+            <>
+              <StarRating
+                maxRating={10}
+                size={24}
+                defaultRating={3}
+                onSetRating={setUserRating}
+              />
+              <button className="btn-add" onClick={handleAdd}>
+                + Add to list
+              </button>
+            </>
+          )}
         </div>
         <p>
           <em>{plot}</em>
