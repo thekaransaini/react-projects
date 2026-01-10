@@ -243,6 +243,17 @@ function MovieDetails({
 
   useEffect(
     function () {
+      document.addEventListener("keydown", (event) => {
+        if (event.code === "Escape") {
+          onCloseMovie();
+        }
+      });
+    },
+    [onCloseMovie]
+  );
+
+  useEffect(
+    function () {
       async function fetchMovieDetails() {
         try {
           setIsLoading(true);
