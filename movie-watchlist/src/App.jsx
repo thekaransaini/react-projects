@@ -236,6 +236,13 @@ function MovieDetails({
 
   useEffect(
     function () {
+      document.title = `Movie | ${title}`;
+    },
+    [title]
+  );
+
+  useEffect(
+    function () {
       async function fetchMovieDetails() {
         try {
           setIsLoading(true);
