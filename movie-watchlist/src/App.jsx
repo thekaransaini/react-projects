@@ -24,6 +24,10 @@ export default function App() {
     setWatched([...watched, watchedMovie]);
   }
 
+  function handleDeleteWatchedMovie(id) {
+    setWatched((movies) => movies.filter((movie) => movie.imdbID !== id));
+  }
+
   useEffect(
     function () {
       const controller = new AbortController();
@@ -91,7 +95,10 @@ export default function App() {
           ) : (
             <>
               <WatchedMovieSummary watched={watched} />
-              <WatchedMovieList watched={watched} />
+              <WatchedMovieList
+                watched={watched}
+                onDeleteWatchedMovie={handleDeleteWatchedMovie}
+              />
             </>
           )}
         </Box>
@@ -386,17 +393,20 @@ function WatchedMovieSummary({ watched }) {
   );
 }
 
-function WatchedMovieList({ watched }) {
+function WatchedMovieList({ watched, onDeleteWatchedMovie }) {
   return (
     <ul className="list">
       {watched.map((movie) => (
-        <WatchedMovie movie={movie} />
+        <WatchedMovie
+          movie={movie}
+          onDeleteWatchedMovie={onDeleteWatchedMovie}
+        />
       ))}
     </ul>
   );
 }
 
-function WatchedMovie({ movie }) {
+function WatchedMovie({ movie, onDeleteWatchedMovie }) {
   const { imdbID, poster, title, imdbRating, userRating, runtime } = movie;
 
   return (
@@ -416,6 +426,12 @@ function WatchedMovie({ movie }) {
           <span>⏳</span>
           <span>{runtime === 0 ? "N/A" : `${runtime} min`}</span>
         </p>
+        <button
+          className="btn-delete"
+          onClick={() => onDeleteWatchedMovie(imdbID)}
+        >
+          X
+        </button>
       </div>
     </li>
   );
