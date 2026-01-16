@@ -247,6 +247,7 @@ function MovieDetails({
 }) {
   const [movie, setMovie] = useState({});
   const [userRating, setUserRating] = useState("");
+  const [ratingChangeCount, setRatingChangeCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -275,6 +276,7 @@ function MovieDetails({
       imdbRating: Number(imdbRating),
       runtime: runtime === "N/A" ? 0 : Number(runtime.split(" ").at(0)),
       userRating,
+      ratingChangeCount,
     };
     onAddWatchedMovie(newWatchedMovie);
     onCloseMovie();
@@ -377,6 +379,7 @@ function MovieDetails({
                 size={24}
                 defaultRating={3}
                 onSetRating={setUserRating}
+                onRatingChangeCount={setRatingChangeCount}
               />
               <button className="btn-add" onClick={handleAdd}>
                 + Add to list

@@ -18,6 +18,7 @@ export default function StarRating({
   maxRating = 5,
   className = "",
   onSetRating,
+  onRatingChangeCount,
 }) {
   const [rating, setRating] = useState(defaultRating);
   const [tempRating, setTempRating] = useState(0);
@@ -31,6 +32,7 @@ export default function StarRating({
   function handleRating(rating) {
     setRating(rating);
     onSetRating(rating);
+    onRatingChangeCount((curr) => curr + 1);
   }
 
   useEffect(() => {
