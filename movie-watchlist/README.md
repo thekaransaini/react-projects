@@ -1,16 +1,47 @@
-# React + Vite
+# 🎬 Movie Watchlist
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application that allows users to search movies, view detailed information, rate movies, and manage a personal watchlist using the OMDb API.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+- Search movies by title
+- View detailed movie information
+- Rate movies using a reusable star rating component
+- Add and remove movies from a watched list
+- Persist watched movies using localStorage
+- Keyboard shortcuts (Enter to focus search, Escape to close details)
+- Loading and error handling for API requests
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+---
 
-## Expanding the ESLint configuration
+## 🛠 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- JavaScript
+- OMDb API
+- Vite
+- CSS
+
+---
+
+## 🧠 What I Learned
+
+- Managing side effects with `useEffect`
+- Importance of cleanup functions in React
+- Preventing unnecessary API requests
+- Building reusable components and custom hooks
+- Persisting state using localStorage
+- Handling async behavior and edge cases correctly
+
+---
+
+## ▶️ Run Locally
+
+```bash
+git clone https://github.com/thekaransaini/react-projects.git
+cd movie-watchlist
+npm install
+npm run dev
+```
