@@ -6,6 +6,7 @@ import Error from "./Error";
 import StartScreen from "./StartScreen";
 import Question from "./Question";
 import Footer from "./Footer";
+import NextButton from "./NextButton";
 
 const initialState = {
   status: "loading",
@@ -15,6 +16,7 @@ const initialState = {
 };
 
 function reducer(state, action) {
+  const { index } = state;
   const { type, payload } = action;
 
   switch (type) {
@@ -26,6 +28,8 @@ function reducer(state, action) {
       return { ...state, status: "active" };
     case "answer":
       return { ...state, answer: payload };
+    case "nextQuestion":
+      return { ...state, index: index + 1, answer: null };
     default:
       throw new Error("Action unknown!");
   }
@@ -71,7 +75,7 @@ export default function App() {
           />
         )}
       </Main>
-      <Footer></Footer>
+      <Footer>{answer !== null && <NextButton dispatch={dispatch} />}</Footer>
     </div>
   );
 }
