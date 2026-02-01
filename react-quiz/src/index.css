@@ -140,3 +140,34 @@ h4 {
   background-color: #495057;
   border-radius: 100px;
 }
+
+.question {
+  width: 55rem;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 90%;
+  margin-bottom: 3.2rem;
+}
+
+.btn-option {
+  text-align: left;
+}
+
+.btn-option.correct {
+  background-color: var(--color-theme);
+  border: 2px solid var(--color-theme);
+  color: var(--color-light);
+}
+.btn-option.wrong {
+  background-color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+  color: var(--color-darkest);
+}
+
+.answer {
+  transform: translateX(2rem);
+}

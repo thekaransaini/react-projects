@@ -4,11 +4,14 @@ import Main from "./Main";
 import Loader from "./Loader";
 import Error from "./Error";
 import StartScreen from "./StartScreen";
+import Question from "./Question";
 import Footer from "./Footer";
 
 const initialState = {
   status: "loading",
   questions: [],
+  index: 0,
+  answer: null,
 };
 
 function reducer(state, action) {
@@ -19,6 +22,10 @@ function reducer(state, action) {
       return { ...state, status: "ready", questions: payload };
     case "dataFailed":
       return { ...state, status: "error" };
+    case "start":
+      return { ...state, status: "active" };
+    case "answer":
+      return { ...state, answer: payload };
     default:
       throw new Error("Action unknown!");
   }
@@ -26,7 +33,8 @@ function reducer(state, action) {
 
 export default function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { status } = state;
+  const { status, questions, index, answer } = state;
+  const numQuestions = questions.length;
 
   useEffect(() => {
     async function fetchQuestions() {
@@ -51,7 +59,17 @@ export default function App() {
       <Main>
         {status === "loading" && <Loader />}
         {status === "error" && <Error />}
-        {status === "ready" && <StartScreen />}
+        {status === "ready" && (
+          <StartScreen dispatch={dispatch} numQuestions={numQuestions} />
+        )}
+        {status === "active" && (
+          <Question
+            questions={questions}
+            index={index}
+            answer={answer}
+            dispatch={dispatch}
+          />
+        )}
       </Main>
       <Footer></Footer>
     </div>
