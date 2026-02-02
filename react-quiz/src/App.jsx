@@ -4,6 +4,7 @@ import Main from "./Main";
 import Loader from "./Loader";
 import Error from "./Error";
 import StartScreen from "./StartScreen";
+import Progress from "./Progress";
 import Question from "./Question";
 import Footer from "./Footer";
 import NextButton from "./NextButton";
@@ -67,12 +68,19 @@ export default function App() {
           <StartScreen dispatch={dispatch} numQuestions={numQuestions} />
         )}
         {status === "active" && (
-          <Question
-            questions={questions}
-            index={index}
-            answer={answer}
-            dispatch={dispatch}
-          />
+          <>
+            <Progress
+              index={index}
+              numQuestions={numQuestions}
+              answer={answer}
+            />
+            <Question
+              questions={questions}
+              index={index}
+              answer={answer}
+              dispatch={dispatch}
+            />
+          </>
         )}
       </Main>
       <Footer>{answer !== null && <NextButton dispatch={dispatch} />}</Footer>
