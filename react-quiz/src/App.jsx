@@ -14,11 +14,13 @@ const initialState = {
   questions: [],
   index: 0,
   answer: null,
+  points: 0,
 };
 
 function reducer(state, action) {
-  const { index } = state;
+  const { index, questions, points } = state;
   const { type, payload } = action;
+  const question = questions[index];
 
   switch (type) {
     case "dataReceived":
@@ -28,7 +30,12 @@ function reducer(state, action) {
     case "start":
       return { ...state, status: "active" };
     case "answer":
-      return { ...state, answer: payload };
+      return {
+        ...state,
+        answer: payload,
+        points:
+          points + (question.correctOption === payload ? question.points : 0),
+      };
     case "nextQuestion":
       return { ...state, index: index + 1, answer: null };
     default:
@@ -38,8 +45,12 @@ function reducer(state, action) {
 
 export default function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { status, questions, index, answer } = state;
+  const { status, questions, index, answer, points } = state;
   const numQuestions = questions.length;
+  const maxPoints = questions.reduce(
+    (acc, question) => acc + question.points,
+    0,
+  );
 
   useEffect(() => {
     async function fetchQuestions() {
@@ -48,8 +59,8 @@ export default function App() {
         const data = await res.json();
 
         dispatch({ type: "dataReceived", payload: data });
-        console.log(res);
-        console.log(data);
+        // console.log(res);
+        // console.log(data);
       } catch (err) {
         dispatch({ type: "dataFailed" });
         console.log(err);
@@ -73,6 +84,8 @@ export default function App() {
               index={index}
               numQuestions={numQuestions}
               answer={answer}
+              points={points}
+              maxPoints={maxPoints}
             />
             <Question
               questions={questions}
