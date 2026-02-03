@@ -6,6 +6,7 @@ import Error from "./Error";
 import StartScreen from "./StartScreen";
 import Progress from "./Progress";
 import Question from "./Question";
+import FinishScreen from "./FinishScreen";
 import Footer from "./Footer";
 import NextButton from "./NextButton";
 
@@ -38,6 +39,8 @@ function reducer(state, action) {
       };
     case "nextQuestion":
       return { ...state, index: index + 1, answer: null };
+    case "finish":
+      return { ...state, status: "finished", answer: null };
     default:
       throw new Error("Action unknown!");
   }
@@ -95,8 +98,19 @@ export default function App() {
             />
           </>
         )}
+        {status === "finished" && (
+          <FinishScreen points={points} maxPoints={maxPoints} />
+        )}
       </Main>
-      <Footer>{answer !== null && <NextButton dispatch={dispatch} />}</Footer>
+      <Footer>
+        {answer !== null && (
+          <NextButton
+            dispatch={dispatch}
+            index={index}
+            numQuestions={numQuestions}
+          />
+        )}
+      </Footer>
     </div>
   );
 }
