@@ -19,10 +19,14 @@ const initialState = {
   highscore: 0,
 };
 
+const negativeMarkingRatio = 0.3;
+
 function reducer(state, action) {
   const { index, questions, points, highscore } = state;
   const { type, payload } = action;
   const question = questions[index];
+  const isAnswerCorrect = question?.correctOption === payload;
+  const penalty = Math.trunc(negativeMarkingRatio * question?.points);
 
   switch (type) {
     case "dataReceived":
@@ -35,8 +39,7 @@ function reducer(state, action) {
       return {
         ...state,
         answer: payload,
-        points:
-          points + (question.correctOption === payload ? question.points : 0),
+        points: points + (isAnswerCorrect ? question.points : -penalty),
       };
     case "nextQuestion":
       return { ...state, index: index + 1, answer: null };
