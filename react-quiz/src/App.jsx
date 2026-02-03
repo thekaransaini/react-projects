@@ -8,6 +8,7 @@ import Progress from "./Progress";
 import Question from "./Question";
 import FinishScreen from "./FinishScreen";
 import Footer from "./Footer";
+import PrevButton from "./PrevButton";
 import NextButton from "./NextButton";
 
 const initialState = {
@@ -43,6 +44,8 @@ function reducer(state, action) {
       };
     case "nextQuestion":
       return { ...state, index: index + 1, answer: null };
+    case "prevQuestion":
+      return { ...state, index: index - 1 };
     case "finish":
       return {
         ...state,
@@ -117,12 +120,15 @@ export default function App() {
         )}
       </Main>
       <Footer>
-        {answer !== null && (
-          <NextButton
-            dispatch={dispatch}
-            index={index}
-            numQuestions={numQuestions}
-          />
+        {status === "active" && (
+          <>
+            <PrevButton dispatch={dispatch} />
+            <NextButton
+              dispatch={dispatch}
+              index={index}
+              numQuestions={numQuestions}
+            />
+          </>
         )}
       </Footer>
     </div>
