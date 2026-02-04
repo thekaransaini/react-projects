@@ -15,7 +15,7 @@ const initialState = {
   status: "loading",
   questions: [],
   index: 0,
-  answer: null,
+  answers: [],
   points: 0,
   highscore: 0,
 };
@@ -23,7 +23,7 @@ const initialState = {
 const negativeMarkingRatio = 0.3;
 
 function reducer(state, action) {
-  const { index, questions, points, highscore } = state;
+  const { index, questions, points, highscore, answers } = state;
   const { type, payload } = action;
   const question = questions[index];
   const isAnswerCorrect = question?.correctOption === payload;
@@ -35,22 +35,21 @@ function reducer(state, action) {
     case "dataFailed":
       return { ...state, status: "error" };
     case "start":
-      return { ...state, status: "active", index: 0, points: 0 };
+      return { ...state, status: "active", index: 0, points: 0, answers: [] };
     case "answer":
+      answers[index] = payload;
       return {
         ...state,
-        answer: payload,
         points: points + (isAnswerCorrect ? question.points : -penalty),
       };
     case "nextQuestion":
-      return { ...state, index: index + 1, answer: null };
+      return { ...state, index: index + 1 };
     case "prevQuestion":
       return { ...state, index: index - 1 };
     case "finish":
       return {
         ...state,
         status: "finished",
-        answer: null,
         highscore: highscore > points ? highscore : points,
       };
     default:
@@ -60,7 +59,7 @@ function reducer(state, action) {
 
 export default function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { status, questions, index, answer, points, highscore } = state;
+  const { status, questions, index, answers, points, highscore } = state;
   const numQuestions = questions.length;
   const maxPoints = questions.reduce(
     (acc, question) => acc + question.points,
@@ -98,14 +97,13 @@ export default function App() {
             <Progress
               index={index}
               numQuestions={numQuestions}
-              answer={answer}
               points={points}
               maxPoints={maxPoints}
             />
             <Question
               questions={questions}
               index={index}
-              answer={answer}
+              answers={answers}
               dispatch={dispatch}
             />
           </>
@@ -122,7 +120,7 @@ export default function App() {
       <Footer>
         {status === "active" && (
           <>
-            <PrevButton dispatch={dispatch} />
+            <PrevButton dispatch={dispatch} index={index} />
             <NextButton
               dispatch={dispatch}
               index={index}

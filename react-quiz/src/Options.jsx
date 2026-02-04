@@ -1,15 +1,15 @@
-export default function Options({ que, answer, dispatch }) {
+export default function Options({ que, answers, dispatch, index }) {
   const { correctOption } = que;
-  const hasAnswered = answer !== null;
+  const hasAnswered = answers[index] !== undefined;
 
   return (
     <div className="options">
-      {que.options.map((option, index) => (
+      {que.options.map((option, optionIndex) => (
         <button
-          className={`btn btn-ui btn-option ${answer === index && "answer"} ${hasAnswered && (correctOption === index ? "correct" : "wrong")}`}
+          className={`btn btn-ui btn-option ${answers[index] === optionIndex && "answer"} ${hasAnswered && (correctOption === optionIndex ? "correct" : "wrong")}`}
           key={option}
           disabled={hasAnswered}
-          onClick={() => dispatch({ type: "answer", payload: index })}
+          onClick={() => dispatch({ type: "answer", payload: optionIndex })}
         >
           {option}
         </button>
