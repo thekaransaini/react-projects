@@ -6,6 +6,9 @@ import Error from "./Error";
 import StartScreen from "./StartScreen";
 import Progress from "./Progress";
 import Question from "./Question";
+import QuestionNavigator from "./QuestionNavigator";
+import StatusLegend from "./StatusLegend";
+import QuestionPalette from "./QuestionPalette";
 import FinishScreen from "./FinishScreen";
 import Footer from "./Footer";
 import PrevButton from "./PrevButton";
@@ -85,50 +88,60 @@ export default function App() {
 
   return (
     <div className="app">
-      <Header />
-      <Main>
-        {status === "loading" && <Loader />}
-        {status === "error" && <Error />}
-        {status === "ready" && (
-          <StartScreen dispatch={dispatch} numQuestions={numQuestions} />
-        )}
-        {status === "active" && (
-          <>
-            <Progress
-              index={index}
-              numQuestions={numQuestions}
+      <div className="app-main">
+        <Header />
+        <Main>
+          {status === "loading" && <Loader />}
+          {status === "error" && <Error />}
+          {status === "ready" && (
+            <StartScreen dispatch={dispatch} numQuestions={numQuestions} />
+          )}
+          {status === "active" && (
+            <>
+              <Progress
+                index={index}
+                numQuestions={numQuestions}
+                points={points}
+                maxPoints={maxPoints}
+              />
+              <Question
+                questions={questions}
+                index={index}
+                answers={answers}
+                dispatch={dispatch}
+              />
+            </>
+          )}
+          {status === "finished" && (
+            <FinishScreen
               points={points}
               maxPoints={maxPoints}
-            />
-            <Question
-              questions={questions}
-              index={index}
-              answers={answers}
               dispatch={dispatch}
+              highscore={highscore}
             />
-          </>
-        )}
-        {status === "finished" && (
-          <FinishScreen
-            points={points}
-            maxPoints={maxPoints}
-            dispatch={dispatch}
-            highscore={highscore}
-          />
-        )}
-      </Main>
-      <Footer>
+          )}
+        </Main>
+        <Footer>
+          {status === "active" && (
+            <>
+              <PrevButton dispatch={dispatch} index={index} />
+              <NextButton
+                dispatch={dispatch}
+                index={index}
+                numQuestions={numQuestions}
+              />
+            </>
+          )}
+        </Footer>
+      </div>
+      <aside className="app-sidebar">
         {status === "active" && (
-          <>
-            <PrevButton dispatch={dispatch} index={index} />
-            <NextButton
-              dispatch={dispatch}
-              index={index}
-              numQuestions={numQuestions}
-            />
-          </>
+          <QuestionNavigator>
+            <StatusLegend />
+            <QuestionPalette numQuestions={numQuestions} />
+          </QuestionNavigator>
         )}
-      </Footer>
+      </aside>
     </div>
   );
 }

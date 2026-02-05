@@ -23,18 +23,24 @@ body {
   min-height: 100vh;
   color: var(--color-light);
   background-color: var(--color-darkest);
-  padding: 3.2rem;
 }
 
 .app {
   display: flex;
+  height: 100vh;
+}
+
+.app-main {
+  flex: 1;
+  padding: 2.3rem 0;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  overflow-y: auto;
 }
 
 .main {
-  width: 50rem;
+  width: 80%;
 }
 
 .app-header {
@@ -71,6 +77,12 @@ h4 {
 }
 
 .start {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.finish {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -142,14 +154,15 @@ h4 {
 }
 
 .question {
-  width: 55rem;
+  width: 100%;
+  padding: 0 auto;
 }
 
 .options {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  width: 90%;
+  width: 60%;
   margin-bottom: 3.2rem;
 }
 
@@ -204,7 +217,7 @@ progress {
   color: var(--color-light);
   border-radius: 100px;
   text-align: center;
-  padding: 2rem 0;
+  padding: 2rem;
   font-size: 2rem;
   font-weight: 500;
   margin-bottom: 1.6rem;
@@ -222,11 +235,70 @@ progress {
 }
 
 .footer {
-  width: 55rem;
+  width: 80%;
   display: flex;
   justify-content: space-between;
 }
 
 .hide {
   visibility: hidden;
+}
+
+.question-navigator {
+  background-color: #fff;
+  color: #000;
+  width: 41rem;
+  height: 100vh;
+  padding: 2.3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.status-legend {
+  border: 2px dashed black;
+  padding: 1.8rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.nav-btn {
+  height: 3.6rem;
+  width: 3.6rem;
+  border: 0.5px solid black;
+  border-radius: 0.4rem;
+  background-color: #eee;
+  margin-right: 8px;
+  cursor: text;
+}
+
+.nav-btn-label {
+  font-size: 1.6rem;
+  display: inline;
+}
+
+.green {
+  background-color: #1db954;
+  color: #fff;
+}
+
+.red {
+  background-color: #ff0000;
+  color: #fff;
+}
+
+.question-palette {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 8px;
+  padding: 1.8rem;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+}
+
+.clickable {
+  cursor: pointer;
 }

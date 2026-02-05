@@ -13,7 +13,7 @@ export default function FinishScreen({
   if (percentage >= 0 && percentage < 50) emoji = "😐";
 
   return (
-    <div>
+    <div className="finish">
       <p className="result">
         <span>{emoji}</span>You scored{" "}
         <strong>{isScoreNonNegative ? points : 0}</strong> out of {maxPoints}{" "}
