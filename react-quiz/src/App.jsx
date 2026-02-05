@@ -21,12 +21,13 @@ const initialState = {
   answers: [],
   points: 0,
   highscore: 0,
+  queVisited: [],
 };
 
 const negativeMarkingRatio = 0.3;
 
 function reducer(state, action) {
-  const { index, questions, points, highscore, answers } = state;
+  const { index, questions, points, highscore, answers, queVisited } = state;
   const { type, payload } = action;
   const question = questions[index];
   const isAnswerCorrect = question?.correctOption === payload;
@@ -38,7 +39,15 @@ function reducer(state, action) {
     case "dataFailed":
       return { ...state, status: "error" };
     case "start":
-      return { ...state, status: "active", index: 0, points: 0, answers: [] };
+      queVisited[index] = index;
+      return {
+        ...state,
+        status: "active",
+        index: 0,
+        points: 0,
+        answers: [],
+        queVisited: [0],
+      };
     case "answer":
       answers[index] = payload;
       return {
@@ -46,10 +55,13 @@ function reducer(state, action) {
         points: points + (isAnswerCorrect ? question.points : -penalty),
       };
     case "nextQuestion":
+      queVisited[index + 1] = index + 1;
       return { ...state, index: index + 1 };
     case "prevQuestion":
+      queVisited[index - 1] = index - 1;
       return { ...state, index: index - 1 };
     case "goToQuestion":
+      queVisited[payload] = payload;
       return { ...state, index: payload };
     case "finish":
       return {
@@ -64,7 +76,8 @@ function reducer(state, action) {
 
 export default function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { status, questions, index, answers, points, highscore } = state;
+  const { status, questions, index, answers, points, highscore, queVisited } =
+    state;
   const numQuestions = questions.length;
   const maxPoints = questions.reduce(
     (acc, question) => acc + question.points,
@@ -140,7 +153,12 @@ export default function App() {
         {status === "active" && (
           <QuestionNavigator>
             <StatusLegend />
-            <QuestionPalette numQuestions={numQuestions} dispatch={dispatch} />
+            <QuestionPalette
+              numQuestions={numQuestions}
+              dispatch={dispatch}
+              answers={answers}
+              queVisited={queVisited}
+            />
           </QuestionNavigator>
         )}
       </aside>
