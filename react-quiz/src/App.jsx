@@ -49,6 +49,8 @@ function reducer(state, action) {
       return { ...state, index: index + 1 };
     case "prevQuestion":
       return { ...state, index: index - 1 };
+    case "goToQuestion":
+      return { ...state, index: payload };
     case "finish":
       return {
         ...state,
@@ -138,7 +140,7 @@ export default function App() {
         {status === "active" && (
           <QuestionNavigator>
             <StatusLegend />
-            <QuestionPalette numQuestions={numQuestions} />
+            <QuestionPalette numQuestions={numQuestions} dispatch={dispatch} />
           </QuestionNavigator>
         )}
       </aside>

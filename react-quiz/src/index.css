@@ -267,7 +267,6 @@ progress {
   width: 3.6rem;
   border: 0.5px solid black;
   border-radius: 0.4rem;
-  background-color: #eee;
   margin-right: 8px;
   cursor: text;
 }
@@ -277,14 +276,18 @@ progress {
   display: inline;
 }
 
-.green {
+.answered {
   background-color: #1db954;
   color: #fff;
 }
 
-.red {
+.not-answered {
   background-color: #ff0000;
   color: #fff;
+}
+
+.not-visited {
+  background-color: #eee;
 }
 
 .question-palette {
