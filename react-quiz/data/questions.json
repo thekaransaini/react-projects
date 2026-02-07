@@ -1,5 +1,5 @@
 {
-  "questions": [
+  "easyQuestions": [
     {
       "question": "Which is the most popular JavaScript framework?",
       "options": ["Angular", "React", "Svelte", "Vue"],
@@ -134,6 +134,492 @@
       ],
       "correctOption": 3,
       "points": 20
+    }
+  ],
+  "mediumQuestions": [
+    {
+      "question": "What is the main difference between state and props in React?",
+      "options": [
+        "State is mutable, props are immutable",
+        "Props can change but state cannot",
+        "State is passed from parent to child",
+        "Props are private to the component"
+      ],
+      "correctOption": 0,
+      "points": 20
+    },
+    {
+      "question": "Why is the key prop important when rendering lists?",
+      "options": [
+        "It improves CSS performance",
+        "It helps React identify changed elements",
+        "It prevents re-renders",
+        "It passes data to children"
+      ],
+      "correctOption": 1,
+      "points": 20
+    },
+    {
+      "question": "What happens if you update state directly instead of using setState/useState?",
+      "options": [
+        "React updates the UI normally",
+        "React throws an error",
+        "The component may not re-render",
+        "State resets automatically"
+      ],
+      "correctOption": 2,
+      "points": 20
+    },
+    {
+      "question": "Which hook is best suited for handling form input values?",
+      "options": ["useEffect", "useRef", "useState", "useMemo"],
+      "correctOption": 2,
+      "points": 20
+    },
+    {
+      "question": "What does lifting state up mean?",
+      "options": [
+        "Moving state into Redux",
+        "Sharing state by moving it to a common parent",
+        "Duplicating state in child components",
+        "Using derived state"
+      ],
+      "correctOption": 1,
+      "points": 20
+    },
+    {
+      "question": "When does useEffect run if the dependency array is empty?",
+      "options": [
+        "On every render",
+        "Only on initial render",
+        "On state update",
+        "On component unmount"
+      ],
+      "correctOption": 1,
+      "points": 20
+    },
+    {
+      "question": "What problem does the Context API mainly solve?",
+      "options": [
+        "Complex state updates",
+        "Performance optimization",
+        "Prop drilling",
+        "Side effects"
+      ],
+      "correctOption": 2,
+      "points": 20
+    },
+    {
+      "question": "Which hook allows you to persist values across renders without causing re-renders?",
+      "options": ["useMemo", "useRef", "useState", "useEffect"],
+      "correctOption": 1,
+      "points": 20
+    },
+    {
+      "question": "Why should you avoid using array index as a key?",
+      "options": [
+        "It causes syntax errors",
+        "It increases bundle size",
+        "It can cause incorrect UI updates",
+        "It prevents mapping"
+      ],
+      "correctOption": 2,
+      "points": 20
+    },
+    {
+      "question": "What is a controlled component?",
+      "options": [
+        "A component that controls other components",
+        "A form element controlled by React state",
+        "A component without props",
+        "A component using refs"
+      ],
+      "correctOption": 1,
+      "points": 20
+    },
+    {
+      "question": "What does React.memo do?",
+      "options": [
+        "Memoizes state values",
+        "Prevents re-render if props haven't changed",
+        "Caches API responses",
+        "Optimizes hooks execution"
+      ],
+      "correctOption": 1,
+      "points": 20
+    },
+    {
+      "question": "Which hook should be used for derived values based on props or state?",
+      "options": ["useEffect", "useMemo", "useRef", "useCallback"],
+      "correctOption": 1,
+      "points": 20
+    },
+    {
+      "question": "What does useCallback return?",
+      "options": [
+        "A memoized value",
+        "A memoized function",
+        "A side effect",
+        "A reducer"
+      ],
+      "correctOption": 1,
+      "points": 20
+    },
+    {
+      "question": "Which of the following best describes JSX?",
+      "options": [
+        "A template engine",
+        "A syntax extension for JavaScript",
+        "A new programming language",
+        "A browser feature"
+      ],
+      "correctOption": 1,
+      "points": 20
+    },
+    {
+      "question": "Why does React batch state updates?",
+      "options": [
+        "To reduce memory usage",
+        "To prevent race conditions",
+        "To improve performance",
+        "To ensure immutability"
+      ],
+      "correctOption": 2,
+      "points": 20
+    }
+  ],
+  "hardQuestions": [
+    {
+      "question": "Why does mutating state directly in React often fail to trigger a re-render?",
+      "options": [
+        "React does deep comparisons",
+        "React relies on reference equality to detect changes",
+        "State mutations are asynchronous",
+        "JSX blocks re-rendering"
+      ],
+      "correctOption": 1,
+      "points": 30
+    },
+    {
+      "question": "What is the primary reason to use useCallback?",
+      "options": [
+        "To make functions run faster",
+        "To prevent function recreation on every render",
+        "To avoid unnecessary child re-renders",
+        "To replace useMemo"
+      ],
+      "correctOption": 2,
+      "points": 30
+    },
+    {
+      "question": "What problem does React Fiber solve?",
+      "options": [
+        "State management",
+        "Blocking synchronous rendering",
+        "Virtual DOM creation",
+        "Event delegation"
+      ],
+      "correctOption": 1,
+      "points": 30
+    },
+    {
+      "question": "How does React decide which components to re-render?",
+      "options": [
+        "By checking if props or state changed",
+        "By re-rendering the entire tree",
+        "By comparing DOM nodes",
+        "By running effects first"
+      ],
+      "correctOption": 0,
+      "points": 30
+    },
+    {
+      "question": "Why can using anonymous functions in JSX be problematic?",
+      "options": [
+        "They cause syntax errors",
+        "They break event handling",
+        "They create new references on each render",
+        "They block reconciliation"
+      ],
+      "correctOption": 2,
+      "points": 30
+    },
+    {
+      "question": "What is the key difference between useMemo and useCallback?",
+      "options": [
+        "useMemo caches values, useCallback caches functions",
+        "useCallback is faster",
+        "useMemo prevents re-renders",
+        "They behave identically"
+      ],
+      "correctOption": 0,
+      "points": 30
+    },
+    {
+      "question": "Why are side effects not allowed during rendering?",
+      "options": [
+        "They cause memory leaks",
+        "Rendering must remain pure and predictable",
+        "They slow down JSX",
+        "React forbids async logic"
+      ],
+      "correctOption": 1,
+      "points": 30
+    },
+    {
+      "question": "How do Error Boundaries work in React?",
+      "options": [
+        "They catch errors in event handlers",
+        "They catch errors during rendering and lifecycle methods",
+        "They handle network errors",
+        "They replace try/catch blocks everywhere"
+      ],
+      "correctOption": 1,
+      "points": 30
+    },
+    {
+      "question": "What is the purpose of React portals?",
+      "options": [
+        "To manage global state",
+        "To render components outside the parent DOM hierarchy",
+        "To lazy load components",
+        "To optimize performance"
+      ],
+      "correctOption": 1,
+      "points": 30
+    },
+    {
+      "question": "Why is using array index as a key especially dangerous in dynamic lists?",
+      "options": [
+        "It causes runtime errors",
+        "It breaks JSX compilation",
+        "It can lead to incorrect component state mapping",
+        "It increases memory usage"
+      ],
+      "correctOption": 2,
+      "points": 30
+    },
+    {
+      "question": "What happens when a Context value changes?",
+      "options": [
+        "Only the Provider re-renders",
+        "All consumers re-render by default",
+        "Only deeply nested components re-render",
+        "Nothing happens unless memoized"
+      ],
+      "correctOption": 1,
+      "points": 30
+    },
+    {
+      "question": "Why can derived state become an anti-pattern?",
+      "options": [
+        "It slows down rendering",
+        "It causes duplicated and out-of-sync state",
+        "It prevents memoization",
+        "It breaks hooks rules"
+      ],
+      "correctOption": 1,
+      "points": 30
+    },
+    {
+      "question": "What is hydration in React?",
+      "options": [
+        "Rendering React on the server",
+        "Attaching event listeners to server-rendered markup",
+        "Synchronizing state across tabs",
+        "Preloading data"
+      ],
+      "correctOption": 1,
+      "points": 30
+    },
+    {
+      "question": "Why does React recommend immutability for state updates?",
+      "options": [
+        "It reduces memory usage",
+        "It allows easier change detection and debugging",
+        "It improves CSS rendering",
+        "It avoids async issues"
+      ],
+      "correctOption": 1,
+      "points": 30
+    },
+    {
+      "question": "Which scenario most benefits from useReducer over useState?",
+      "options": [
+        "Simple boolean toggles",
+        "Single input forms",
+        "Complex state transitions with multiple actions",
+        "Static configuration values"
+      ],
+      "correctOption": 2,
+      "points": 30
+    }
+  ],
+  "veryHardQuestions": [
+    {
+      "question": "Why does React require keys to be stable across renders?",
+      "options": [
+        "For faster JSX parsing",
+        "To correctly preserve component identity during reconciliation",
+        "To prevent memory leaks",
+        "To enable memoization"
+      ],
+      "correctOption": 1,
+      "points": 50
+    },
+    {
+      "question": "What is the biggest risk of storing derived data in state?",
+      "options": [
+        "Performance degradation",
+        "Duplicated sources of truth",
+        "Infinite re-renders",
+        "Broken memoization"
+      ],
+      "correctOption": 1,
+      "points": 50
+    },
+    {
+      "question": "How does React Fiber improve perceived performance?",
+      "options": [
+        "By batching API calls",
+        "By interruptible and prioritized rendering",
+        "By caching DOM nodes",
+        "By skipping reconciliation"
+      ],
+      "correctOption": 1,
+      "points": 50
+    },
+    {
+      "question": "Why does useLayoutEffect block browser painting?",
+      "options": [
+        "Because it runs synchronously before paint",
+        "Because it updates state immediately",
+        "Because it bypasses the virtual DOM",
+        "Because it runs on the server"
+      ],
+      "correctOption": 0,
+      "points": 50
+    },
+    {
+      "question": "What causes an infinite render loop inside useEffect?",
+      "options": [
+        "Missing cleanup function",
+        "Updating state that is listed as a dependency",
+        "Using async/await",
+        "Using refs incorrectly"
+      ],
+      "correctOption": 1,
+      "points": 50
+    },
+    {
+      "question": "Why is calling hooks conditionally a bug?",
+      "options": [
+        "Hooks become asynchronous",
+        "React relies on call order to map hook state",
+        "Hooks cannot be memoized",
+        "Effects run twice"
+      ],
+      "correctOption": 1,
+      "points": 50
+    },
+    {
+      "question": "What problem does useImperativeHandle solve?",
+      "options": [
+        "Avoiding prop drilling",
+        "Exposing a controlled API from a child component",
+        "Replacing refs",
+        "Managing side effects"
+      ],
+      "correctOption": 1,
+      "points": 50
+    },
+    {
+      "question": "Why can Context API cause performance issues at scale?",
+      "options": [
+        "Context updates re-render all consumers",
+        "Context cannot be memoized",
+        "Context breaks reconciliation",
+        "Context skips batching"
+      ],
+      "correctOption": 0,
+      "points": 50
+    },
+    {
+      "question": "What does React StrictMode intentionally do in development?",
+      "options": [
+        "Optimizes performance",
+        "Runs effects twice to detect unsafe side effects",
+        "Disables memoization",
+        "Enables concurrent rendering"
+      ],
+      "correctOption": 1,
+      "points": 50
+    },
+    {
+      "question": "Why is memoization sometimes harmful?",
+      "options": [
+        "It breaks hooks rules",
+        "It increases memory usage and complexity",
+        "It disables reconciliation",
+        "It blocks re-renders entirely"
+      ],
+      "correctOption": 1,
+      "points": 50
+    },
+    {
+      "question": "What is hydration in server-side rendered React apps?",
+      "options": [
+        "Re-rendering HTML on the client",
+        "Attaching event listeners to existing server-rendered markup",
+        "Syncing server and client state",
+        "Streaming HTML to the browser"
+      ],
+      "correctOption": 1,
+      "points": 50
+    },
+    {
+      "question": "Why does React batch state updates?",
+      "options": [
+        "To guarantee consistency across components",
+        "To minimize re-renders and improve performance",
+        "To ensure immutability",
+        "To delay effects"
+      ],
+      "correctOption": 1,
+      "points": 50
+    },
+    {
+      "question": "How does React decide whether to reuse or discard a component instance?",
+      "options": [
+        "By component name",
+        "By position in the tree and key",
+        "By props equality",
+        "By memoization"
+      ],
+      "correctOption": 1,
+      "points": 50
+    },
+    {
+      "question": "What is the main benefit of the render props pattern?",
+      "options": [
+        "Sharing stateful logic without inheritance",
+        "Improving performance",
+        "Avoiding hooks",
+        "Simplifying JSX"
+      ],
+      "correctOption": 0,
+      "points": 50
+    },
+    {
+      "question": "How does Suspense improve user experience in concurrent rendering?",
+      "options": [
+        "By delaying all rendering",
+        "By allowing React to pause rendering until data is ready",
+        "By caching network requests",
+        "By blocking effects"
+      ],
+      "correctOption": 1,
+      "points": 50
     }
   ]
 }
