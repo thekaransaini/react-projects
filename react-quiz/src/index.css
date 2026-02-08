@@ -374,3 +374,27 @@ progress {
   margin-bottom: 0.6rem;
   font-weight: 500;
 }
+
+.quiz-terms {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.4rem;
+}
+
+.quiz-terms input {
+  transform: scale(1.8);
+  margin-top: 0.2rem;
+  cursor: pointer;
+}
+
+.quiz-terms label {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: #e9ecef;
+  cursor: pointer;
+}
+
+.quiz-terms:hover label {
+  color: #fff;
+}
