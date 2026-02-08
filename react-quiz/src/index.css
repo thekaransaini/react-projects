@@ -375,29 +375,35 @@ progress {
   font-weight: 500;
 }
 
-.quiz-terms,
-.quiz-level {
+.quiz-terms {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quiz-level,
+.terms {
   display: flex;
   align-items: center;
   gap: 1rem;
   margin-bottom: 2.4rem;
 }
 
-.quiz-terms input {
+.terms input {
   transform: scale(1.8);
   margin-top: 0.2rem;
   cursor: pointer;
 }
 
-.quiz-terms label,
+.terms label,
 .quiz-level label {
-  font-size: 1.5rem;
+  font-size: 1.55rem;
   line-height: 1.6;
   color: #e9ecef;
   cursor: pointer;
 }
 
-.quiz-terms:hover label {
+.terms:hover label {
   color: #fff;
 }
 

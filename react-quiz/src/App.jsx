@@ -4,6 +4,9 @@ import Main from "./Main";
 import Loader from "./Loader";
 import Error from "./Error";
 import StartScreen from "./StartScreen";
+import GeneralInstructions from "./GeneralInstructions";
+import QuizLevel from "./QuizLevel";
+import QuizTerms from "./QuizTerms";
 import Progress from "./Progress";
 import Question from "./Question";
 import QuestionNavigator from "./QuestionNavigator";
@@ -109,7 +112,11 @@ export default function App() {
           {status === "loading" && <Loader />}
           {status === "error" && <Error />}
           {status === "ready" && (
-            <StartScreen dispatch={dispatch} numQuestions={numQuestions} />
+            <StartScreen dispatch={dispatch} numQuestions={numQuestions}>
+              <GeneralInstructions />
+              <QuizLevel />
+              <QuizTerms dispatch={dispatch} />
+            </StartScreen>
           )}
           {status === "active" && (
             <>
