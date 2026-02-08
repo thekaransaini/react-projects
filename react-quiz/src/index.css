@@ -375,7 +375,8 @@ progress {
   font-weight: 500;
 }
 
-.quiz-terms {
+.quiz-terms,
+.quiz-level {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -388,7 +389,8 @@ progress {
   cursor: pointer;
 }
 
-.quiz-terms label {
+.quiz-terms label,
+.quiz-level label {
   font-size: 1.5rem;
   line-height: 1.6;
   color: #e9ecef;
@@ -397,4 +399,14 @@ progress {
 
 .quiz-terms:hover label {
   color: #fff;
+}
+
+.quiz-level label {
+  cursor: auto;
+}
+
+.quiz-level select {
+  width: 12rem;
+  font-size: 1.3rem;
+  cursor: pointer;
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
-import QuizTerms from "./QuizTerms";
 import GeneralInstructions from "./GeneralInstructions";
+import QuizLevel from "./QuizLevel";
+import QuizTerms from "./QuizTerms";
 
 export default function StartScreen({ dispatch, numQuestions }) {
   const [check, setCheck] = useState(false);
@@ -14,6 +15,7 @@ export default function StartScreen({ dispatch, numQuestions }) {
       <h2>Welcome to The React Quiz!</h2>
       <h3>{numQuestions} questions to test your React mastery</h3>
       <GeneralInstructions />
+      <QuizLevel />
       <QuizTerms check={check} onChange={handleChange} />
       <button
         className="btn btn-ui"
