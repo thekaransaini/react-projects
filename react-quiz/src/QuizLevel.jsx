@@ -1,12 +1,17 @@
-export default function QuizLevel() {
+export default function QuizLevel({ dispatch }) {
   return (
     <div className="quiz-level">
       <label htmlFor="quiz-level">Choose difficulty level:</label>
-      <select id="quiz-level">
-        <option value="easyQuestions">Easy</option>
-        <option value="mediumQuestions">Medium</option>
-        <option value="hardQuestions">Hard</option>
-        <option value="veryHardQuestions">Very Hard</option>
+      <select
+        id="quiz-level"
+        onChange={(e) =>
+          dispatch({ type: "setLevel", payload: e.target.value })
+        }
+      >
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+        <option value="veryHard">Very Hard</option>
       </select>
     </div>
   );

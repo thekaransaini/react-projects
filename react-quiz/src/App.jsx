@@ -1,7 +1,6 @@
 import { useEffect, useReducer } from "react";
 import Header from "./Header";
 import Main from "./Main";
-import Loader from "./Loader";
 import Error from "./Error";
 import StartScreen from "./StartScreen";
 import GeneralInstructions from "./GeneralInstructions";
@@ -18,13 +17,14 @@ import PrevButton from "./PrevButton";
 import NextButton from "./NextButton";
 
 const initialState = {
-  status: "loading",
+  status: "ready",
   questions: [],
   index: 0,
   answers: [],
   points: 0,
   highscore: 0,
   queVisited: [],
+  quizLevel: "easy",
 };
 
 const negativeMarkingRatio = 0.3;
@@ -37,8 +37,10 @@ function reducer(state, action) {
   const penalty = Math.trunc(negativeMarkingRatio * question?.points);
 
   switch (type) {
+    case "setLevel":
+      return { ...state, quizLevel: payload, status: "ready" };
     case "dataReceived":
-      return { ...state, status: "ready", questions: payload };
+      return { ...state, questions: payload };
     case "dataFailed":
       return { ...state, status: "error" };
     case "start":
@@ -79,8 +81,16 @@ function reducer(state, action) {
 
 export default function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { status, questions, index, answers, points, highscore, queVisited } =
-    state;
+  const {
+    status,
+    questions,
+    index,
+    answers,
+    points,
+    highscore,
+    queVisited,
+    quizLevel,
+  } = state;
   const numQuestions = questions.length;
   const maxPoints = questions.reduce(
     (acc, question) => acc + question.points,
@@ -90,7 +100,7 @@ export default function App() {
   useEffect(() => {
     async function fetchQuestions() {
       try {
-        const res = await fetch("http://localhost:8000/questions");
+        const res = await fetch(`http://localhost:8000/${quizLevel}Questions`);
         const data = await res.json();
 
         dispatch({ type: "dataReceived", payload: data });
@@ -102,19 +112,18 @@ export default function App() {
       }
     }
     fetchQuestions();
-  }, []);
+  }, [quizLevel]);
 
   return (
     <div className="app">
       <div className="app-main">
         <Header />
         <Main>
-          {status === "loading" && <Loader />}
           {status === "error" && <Error />}
           {status === "ready" && (
-            <StartScreen dispatch={dispatch} numQuestions={numQuestions}>
+            <StartScreen numQuestions={numQuestions}>
               <GeneralInstructions />
-              <QuizLevel />
+              <QuizLevel dispatch={dispatch} />
               <QuizTerms dispatch={dispatch} />
             </StartScreen>
           )}
@@ -140,6 +149,7 @@ export default function App() {
               maxPoints={maxPoints}
               dispatch={dispatch}
               highscore={highscore}
+              quizLevel={quizLevel}
             />
           )}
         </Main>

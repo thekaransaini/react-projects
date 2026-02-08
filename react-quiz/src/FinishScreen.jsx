@@ -3,7 +3,14 @@ export default function FinishScreen({
   maxPoints,
   dispatch,
   highscore,
+  quizLevel,
 }) {
+  const levelLabels = {
+    easy: "Easy",
+    medium: "Medium",
+    hard: "Hard",
+    veryHard: "Very Hard",
+  };
   const isScoreNonNegative = points >= 0;
   const percentage = (points / maxPoints) * 100;
   let emoji = "😔";
@@ -17,7 +24,8 @@ export default function FinishScreen({
       <p className="result">
         <span>{emoji}</span>You scored{" "}
         <strong>{isScoreNonNegative ? points : 0}</strong> out of {maxPoints}{" "}
-        {isScoreNonNegative && `(${percentage.toFixed(2)}%)`}
+        {isScoreNonNegative && `(${percentage.toFixed(2)}%)`} in the{" "}
+        {levelLabels[quizLevel]} level.
       </p>
       <p className="highscore">(Highscore: {highscore} points)</p>
       <button
