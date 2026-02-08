@@ -288,6 +288,7 @@ progress {
 
 .not-visited {
   background-color: #eee;
+  color: #000;
 }
 
 .question-palette {
@@ -304,4 +305,72 @@ progress {
 
 .clickable {
   cursor: pointer;
+}
+
+.general-instructions {
+  padding: 2rem;
+  max-width: 900px;
+}
+
+.instruction-section {
+  margin-bottom: 2.4rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+}
+
+.instruction-section p,
+.instruction-section li {
+  font-size: 1.55rem;
+  line-height: 1.6;
+  margin-bottom: 0.8rem;
+  color: #e9ecef;
+}
+
+.instruction-section:last-child {
+  border-bottom: none;
+}
+
+.instruction-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.instruction-section h3 {
+  font-size: 1.75rem;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+  color: #f1f3f5;
+}
+
+.instruction-section ul {
+  padding-left: 1.6rem;
+  margin-top: 0.5rem;
+}
+
+.instruction-section li {
+  margin-bottom: 0.6rem;
+}
+
+.status-legend-info {
+  list-style: none;
+  padding-left: 0;
+}
+
+.status-legend-info li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.6rem;
+}
+
+.final-note {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.final-note p {
+  margin-bottom: 0.6rem;
+  font-weight: 500;
 }
