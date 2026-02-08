@@ -230,11 +230,11 @@
       "question": "What is a controlled component?",
       "options": [
         "A component that controls other components",
-        "A form element controlled by React state",
         "A component without props",
-        "A component using refs"
+        "A component using refs",
+        "A form element controlled by React state"
       ],
-      "correctOption": 1,
+      "correctOption": 3,
       "points": 20
     },
     {
@@ -258,22 +258,22 @@
       "question": "What does useCallback return?",
       "options": [
         "A memoized value",
-        "A memoized function",
         "A side effect",
+        "A memoized function",
         "A reducer"
       ],
-      "correctOption": 1,
+      "correctOption": 2,
       "points": 20
     },
     {
       "question": "Which of the following best describes JSX?",
       "options": [
         "A template engine",
-        "A syntax extension for JavaScript",
         "A new programming language",
-        "A browser feature"
+        "A browser feature",
+        "A syntax extension for JavaScript"
       ],
-      "correctOption": 1,
+      "correctOption": 3,
       "points": 20
     },
     {
@@ -370,11 +370,11 @@
       "question": "How do Error Boundaries work in React?",
       "options": [
         "They catch errors in event handlers",
-        "They catch errors during rendering and lifecycle methods",
         "They handle network errors",
-        "They replace try/catch blocks everywhere"
+        "They replace try/catch blocks everywhere",
+        "They catch errors during rendering and lifecycle methods"
       ],
-      "correctOption": 1,
+      "correctOption": 3,
       "points": 30
     },
     {
@@ -414,11 +414,11 @@
       "question": "Why can derived state become an anti-pattern?",
       "options": [
         "It slows down rendering",
-        "It causes duplicated and out-of-sync state",
         "It prevents memoization",
+        "It causes duplicated and out-of-sync state",
         "It breaks hooks rules"
       ],
-      "correctOption": 1,
+      "correctOption": 2,
       "points": 30
     },
     {
@@ -436,11 +436,11 @@
       "question": "Why does React recommend immutability for state updates?",
       "options": [
         "It reduces memory usage",
-        "It allows easier change detection and debugging",
         "It improves CSS rendering",
-        "It avoids async issues"
+        "It avoids async issues",
+        "It allows easier change detection and debugging"
       ],
-      "correctOption": 1,
+      "correctOption": 3,
       "points": 30
     },
     {
@@ -471,11 +471,11 @@
       "question": "What is the biggest risk of storing derived data in state?",
       "options": [
         "Performance degradation",
-        "Duplicated sources of truth",
         "Infinite re-renders",
-        "Broken memoization"
+        "Broken memoization",
+        "Duplicated sources of truth"
       ],
-      "correctOption": 1,
+      "correctOption": 3,
       "points": 50
     },
     {
@@ -504,11 +504,11 @@
       "question": "What causes an infinite render loop inside useEffect?",
       "options": [
         "Missing cleanup function",
-        "Updating state that is listed as a dependency",
         "Using async/await",
+        "Updating state that is listed as a dependency",
         "Using refs incorrectly"
       ],
-      "correctOption": 1,
+      "correctOption": 2,
       "points": 50
     },
     {
@@ -525,12 +525,12 @@
     {
       "question": "What problem does useImperativeHandle solve?",
       "options": [
-        "Avoiding prop drilling",
         "Exposing a controlled API from a child component",
+        "Avoiding prop drilling",
         "Replacing refs",
         "Managing side effects"
       ],
-      "correctOption": 1,
+      "correctOption": 0,
       "points": 50
     },
     {
@@ -559,33 +559,33 @@
       "question": "Why is memoization sometimes harmful?",
       "options": [
         "It breaks hooks rules",
-        "It increases memory usage and complexity",
         "It disables reconciliation",
-        "It blocks re-renders entirely"
+        "It blocks re-renders entirely",
+        "It increases memory usage and complexity"
       ],
-      "correctOption": 1,
+      "correctOption": 3,
       "points": 50
     },
     {
       "question": "What is hydration in server-side rendered React apps?",
       "options": [
-        "Re-rendering HTML on the client",
         "Attaching event listeners to existing server-rendered markup",
+        "Re-rendering HTML on the client",
         "Syncing server and client state",
         "Streaming HTML to the browser"
       ],
-      "correctOption": 1,
+      "correctOption": 0,
       "points": 50
     },
     {
       "question": "Why does React batch state updates?",
       "options": [
         "To guarantee consistency across components",
-        "To minimize re-renders and improve performance",
         "To ensure immutability",
+        "To minimize re-renders and improve performance",
         "To delay effects"
       ],
-      "correctOption": 1,
+      "correctOption": 2,
       "points": 50
     },
     {
