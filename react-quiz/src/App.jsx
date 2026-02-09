@@ -15,6 +15,9 @@ import FinishScreen from "./FinishScreen";
 import Footer from "./Footer";
 import PrevButton from "./PrevButton";
 import NextButton from "./NextButton";
+import Timer from "./Timer";
+
+const secsPerQue = 30;
 
 const initialState = {
   status: "ready",
@@ -25,12 +28,22 @@ const initialState = {
   highscore: 0,
   queVisited: [],
   quizLevel: "easy",
+  secondsRemaining: null,
 };
 
 const negativeMarkingRatio = 0.3;
 
 function reducer(state, action) {
-  const { index, questions, points, highscore, answers, queVisited } = state;
+  const {
+    status,
+    index,
+    questions,
+    points,
+    highscore,
+    answers,
+    queVisited,
+    secondsRemaining,
+  } = state;
   const { type, payload } = action;
   const question = questions[index];
   const isAnswerCorrect = question?.correctOption === payload;
@@ -52,6 +65,7 @@ function reducer(state, action) {
         points: 0,
         answers: [],
         queVisited: [0],
+        secondsRemaining: questions.length * secsPerQue,
       };
     case "answer":
       answers[index] = payload;
@@ -68,6 +82,12 @@ function reducer(state, action) {
     case "goToQuestion":
       queVisited[payload] = payload;
       return { ...state, index: payload };
+    case "timerTick":
+      return {
+        ...state,
+        secondsRemaining: secondsRemaining - 1,
+        status: secondsRemaining === 0 ? "finished" : status,
+      };
     case "finish":
       return {
         ...state,
@@ -90,6 +110,7 @@ export default function App() {
     highscore,
     queVisited,
     quizLevel,
+    secondsRemaining,
   } = state;
   const numQuestions = questions.length;
   const maxPoints = questions.reduce(
@@ -157,6 +178,7 @@ export default function App() {
           {status === "active" && (
             <>
               <PrevButton dispatch={dispatch} index={index} />
+              <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
               <NextButton
                 dispatch={dispatch}
                 index={index}

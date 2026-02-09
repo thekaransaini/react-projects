@@ -398,3 +398,11 @@ progress {
   font-size: 1.3rem;
   cursor: pointer;
 }
+
+.timer {
+  font-size: 1.8rem;
+  color: var(--color-medium);
+  border: 2px solid var(--color-dark);
+  padding: 1.35rem 2.8rem;
+  border-radius: 100px;
+}
