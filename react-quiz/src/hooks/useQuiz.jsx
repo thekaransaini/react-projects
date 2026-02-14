@@ -1,5 +1,6 @@
 import { useEffect, useReducer } from "react";
 
+const BASE_URL = "https://react-quiz-json-4sao.onrender.com";
 const initialState = {
   status: "ready",
   questions: [],
@@ -87,7 +88,7 @@ export default function useQuiz() {
   useEffect(() => {
     async function fetchQuestions() {
       try {
-        const res = await fetch(`http://localhost:8000/${quizLevel}Questions`);
+        const res = await fetch(`${BASE_URL}/${quizLevel}Questions`);
         const data = await res.json();
 
         dispatch({ type: "dataReceived", payload: data });
