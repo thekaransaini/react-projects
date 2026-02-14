@@ -14,7 +14,7 @@ This project demonstrates complex state management, dynamic question fetching, n
 
 ## 🎥 Project Demo
 
-<video src="./demo/react-quiz-demo.mp4" controls width="700"></video>
+![React Quiz Demo](./demo/react-quiz-demo.gif)
 
 ---
 
