@@ -16,6 +16,7 @@ import Footer from "./components/Footer";
 import PrevButton from "./components/PrevButton";
 import NextButton from "./components/NextButton";
 import Timer from "./components/Timer";
+import Loader from "./components/Loader";
 
 export default function App() {
   const { state, dispatch } = useQuiz();
@@ -49,22 +50,25 @@ export default function App() {
               <QuizTerms dispatch={dispatch} />
             </StartScreen>
           )}
-          {status === "active" && (
-            <>
-              <Progress
-                index={index}
-                numQuestions={numQuestions}
-                points={points}
-                maxPoints={maxPoints}
-              />
-              <Question
-                questions={questions}
-                index={index}
-                answers={answers}
-                dispatch={dispatch}
-              />
-            </>
-          )}
+          {status === "active" &&
+            (questions.length ? (
+              <>
+                <Progress
+                  index={index}
+                  numQuestions={numQuestions}
+                  points={points}
+                  maxPoints={maxPoints}
+                />
+                <Question
+                  questions={questions}
+                  index={index}
+                  answers={answers}
+                  dispatch={dispatch}
+                />
+              </>
+            ) : (
+              <Loader />
+            ))}
           {status === "finished" && (
             <FinishScreen
               points={points}
