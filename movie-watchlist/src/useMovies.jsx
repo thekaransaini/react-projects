@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+const KEY = import.meta.env.VITE_OMDB_API_KEY;
+
 export function useMovies(query) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -18,8 +20,8 @@ export function useMovies(query) {
           }
           setIsLoading(true);
           const res = await fetch(
-            `http://www.omdbapi.com/?apikey=83540352&s=${query}`,
-            { signal: controller.signal }
+            `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
+            { signal: controller.signal },
           );
 
           if (!res.ok) throw new Error("Failed to load movies!");
@@ -44,7 +46,7 @@ export function useMovies(query) {
         controller.abort();
       };
     },
-    [query]
+    [query],
   );
   return { isLoading, error, movies };
 }
