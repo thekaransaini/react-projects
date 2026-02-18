@@ -12,8 +12,8 @@ export function useMovieDetails(selectedId) {
         try {
           setIsLoading(true);
           const res = await fetch(
-            `http://www.omdbapi.com/?apikey=83540352&i=${selectedId}`,
-            { signal: controller.signal }
+            `https://www.omdbapi.com/?apikey=83540352&i=${selectedId}`,
+            { signal: controller.signal },
           );
 
           if (!res.ok) throw new Error("Failed to fetch movie details!");
@@ -39,7 +39,7 @@ export function useMovieDetails(selectedId) {
         controller.abort();
       };
     },
-    [selectedId]
+    [selectedId],
   );
   return { isLoading, error, movie };
 }
