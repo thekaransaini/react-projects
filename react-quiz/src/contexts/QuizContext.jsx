@@ -1,0 +1,14 @@
+import { createContext } from "react";
+import useQuiz from "../hooks/useQuiz";
+
+const QuizContext = createContext();
+
+export default function QuizProvider({ children }) {
+  const { state, dispatch } = useQuiz();
+
+  return (
+    <QuizContext.Provider value={{ state, dispatch }}>
+      {children}
+    </QuizContext.Provider>
+  );
+}
