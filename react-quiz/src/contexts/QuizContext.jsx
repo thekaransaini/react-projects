@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import useQuiz from "../hooks/useQuiz";
+import useQuiz from "../hooks/useQuizLogic";
 
 const QuizContext = createContext();
 

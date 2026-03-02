@@ -1,4 +1,4 @@
-import useQuiz from "./hooks/useQuiz";
+import useQuizLogic from "./hooks/useQuizLogic";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Error from "./components/Error";
@@ -20,7 +20,7 @@ import Loader from "./components/Loader";
 import QuizProvider from "./contexts/QuizContext";
 
 export default function App() {
-  const { state, dispatch } = useQuiz();
+  const { state, dispatch } = useQuizLogic();
   const {
     status,
     questions,

@@ -81,7 +81,7 @@ function reducer(state, action) {
   }
 }
 
-export default function useQuiz() {
+export default function useQuizLogic() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { quizLevel } = state;
 
