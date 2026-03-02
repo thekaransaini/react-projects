@@ -83,7 +83,12 @@ function reducer(state, action) {
 
 export default function useQuizLogic() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { quizLevel } = state;
+  const { quizLevel, questions } = state;
+  const numQuestions = questions.length;
+  const maxPoints = questions.reduce(
+    (acc, question) => acc + question.points,
+    0,
+  );
 
   useEffect(() => {
     async function fetchQuestions() {
@@ -100,5 +105,5 @@ export default function useQuizLogic() {
     fetchQuestions();
   }, [quizLevel]);
 
-  return { state, dispatch };
+  return { state, dispatch, numQuestions, maxPoints };
 }

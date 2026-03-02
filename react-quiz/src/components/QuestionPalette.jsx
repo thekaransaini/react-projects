@@ -1,9 +1,8 @@
-export default function QuestionPalette({
-  numQuestions,
-  dispatch,
-  answers,
-  queVisited,
-}) {
+import useQuiz from "../hooks/useQuiz";
+
+export default function QuestionPalette() {
+  const { state, dispatch, numQuestions } = useQuiz();
+  const { answers, queVisited } = state;
   return (
     <div className="question-palette">
       {Array.from({ length: numQuestions }, (_, i) => (

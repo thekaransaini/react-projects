@@ -1,4 +1,9 @@
-export default function NextButton({ dispatch, index, numQuestions }) {
+import useQuiz from "../hooks/useQuiz";
+
+export default function NextButton() {
+  const { state, dispatch, numQuestions } = useQuiz();
+  const { index } = state;
+
   if (index < numQuestions - 1)
     return (
       <button

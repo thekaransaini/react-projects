@@ -1,4 +1,8 @@
-export default function QuizLevel({ dispatch }) {
+import useQuiz from "../hooks/useQuiz";
+
+export default function QuizLevel() {
+  const { dispatch } = useQuiz();
+
   return (
     <div className="quiz-level">
       <label htmlFor="quiz-level">Choose difficulty level:</label>

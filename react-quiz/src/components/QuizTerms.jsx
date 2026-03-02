@@ -1,7 +1,9 @@
 import { useState } from "react";
+import useQuiz from "../hooks/useQuiz";
 
-export default function QuizTerms({ dispatch }) {
+export default function QuizTerms() {
   const [check, setCheck] = useState(false);
+  const { dispatch } = useQuiz();
 
   return (
     <div className="quiz-terms">

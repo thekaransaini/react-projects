@@ -1,10 +1,8 @@
-export default function FinishScreen({
-  points,
-  maxPoints,
-  dispatch,
-  highscore,
-  quizLevel,
-}) {
+import useQuiz from "../hooks/useQuiz";
+
+export default function FinishScreen() {
+  const { state, dispatch, maxPoints } = useQuiz();
+  const { points, highscore, quizLevel } = state;
   const levelLabels = {
     easy: "Easy",
     medium: "Medium",

@@ -1,4 +1,3 @@
-import useQuizLogic from "./hooks/useQuizLogic";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Error from "./components/Error";
@@ -17,101 +16,54 @@ import PrevButton from "./components/PrevButton";
 import NextButton from "./components/NextButton";
 import Timer from "./components/Timer";
 import Loader from "./components/Loader";
-import QuizProvider from "./contexts/QuizContext";
+import useQuiz from "./hooks/useQuiz";
 
 export default function App() {
-  const { state, dispatch } = useQuizLogic();
-  const {
-    status,
-    questions,
-    index,
-    points,
-    highscore,
-    quizLevel,
-    answers,
-    queVisited,
-    secondsRemaining,
-  } = state;
-  const numQuestions = questions.length;
-  const maxPoints = questions.reduce(
-    (acc, question) => acc + question.points,
-    0,
-  );
+  const { state } = useQuiz();
+  const { questions, status } = state;
 
   return (
-    <QuizProvider>
-      <div className="app">
-        <div className="app-main">
-          <Header />
-          <Main>
-            {status === "error" && <Error />}
-            {status === "ready" && (
-              <StartScreen numQuestions={numQuestions}>
-                <GeneralInstructions />
-                <QuizLevel dispatch={dispatch} />
-                <QuizTerms dispatch={dispatch} />
-              </StartScreen>
-            )}
-            {status === "active" &&
-              (questions.length ? (
-                <>
-                  <Progress
-                    index={index}
-                    numQuestions={numQuestions}
-                    points={points}
-                    maxPoints={maxPoints}
-                  />
-                  <Question
-                    questions={questions}
-                    index={index}
-                    answers={answers}
-                    dispatch={dispatch}
-                  />
-                </>
-              ) : (
-                <Loader />
-              ))}
-            {status === "finished" && (
-              <FinishScreen
-                points={points}
-                maxPoints={maxPoints}
-                dispatch={dispatch}
-                highscore={highscore}
-                quizLevel={quizLevel}
-              />
-            )}
-          </Main>
-          <Footer>
-            {status === "active" && (
-              <>
-                <PrevButton dispatch={dispatch} index={index} />
-                <Timer
-                  dispatch={dispatch}
-                  secondsRemaining={secondsRemaining}
-                />
-                <NextButton
-                  dispatch={dispatch}
-                  index={index}
-                  numQuestions={numQuestions}
-                />
-              </>
-            )}
-          </Footer>
-        </div>
-        <aside className="app-sidebar">
-          {status === "active" && (
-            <QuestionNavigator>
-              <StatusLegend />
-              <QuestionPalette
-                numQuestions={numQuestions}
-                dispatch={dispatch}
-                answers={answers}
-                queVisited={queVisited}
-              />
-            </QuestionNavigator>
+    <div className="app">
+      <div className="app-main">
+        <Header />
+        <Main>
+          {status === "error" && <Error />}
+          {status === "ready" && (
+            <StartScreen>
+              <GeneralInstructions />
+              <QuizLevel />
+              <QuizTerms />
+            </StartScreen>
           )}
-        </aside>
+          {status === "active" &&
+            (questions.length ? (
+              <>
+                <Progress />
+                <Question />
+              </>
+            ) : (
+              <Loader />
+            ))}
+          {status === "finished" && <FinishScreen />}
+        </Main>
+        <Footer>
+          {status === "active" && (
+            <>
+              <PrevButton />
+              <Timer />
+              <NextButton />
+            </>
+          )}
+        </Footer>
       </div>
-    </QuizProvider>
+      <aside className="app-sidebar">
+        {status === "active" && (
+          <QuestionNavigator>
+            <StatusLegend />
+            <QuestionPalette />
+          </QuestionNavigator>
+        )}
+      </aside>
+    </div>
   );
 }
