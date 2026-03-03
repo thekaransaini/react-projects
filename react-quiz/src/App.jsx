@@ -20,13 +20,14 @@ import useQuiz from "./hooks/useQuiz";
 
 export default function App() {
   const { state } = useQuiz();
-  const { questions, status } = state;
+  const { status } = state;
 
   return (
     <div className="app">
       <div className="app-main">
         <Header />
         <Main>
+          {status === "loading" && <Loader />}
           {status === "error" && <Error />}
           {status === "ready" && (
             <StartScreen>
@@ -35,15 +36,12 @@ export default function App() {
               <QuizTerms />
             </StartScreen>
           )}
-          {status === "active" &&
-            (questions.length ? (
-              <>
-                <Progress />
-                <Question />
-              </>
-            ) : (
-              <Loader />
-            ))}
+          {status === "active" && (
+            <>
+              <Progress />
+              <Question />
+            </>
+          )}
           {status === "finished" && <FinishScreen />}
         </Main>
         <Footer>

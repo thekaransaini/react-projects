@@ -2,7 +2,7 @@ import { useEffect, useReducer } from "react";
 
 const BASE_URL = "https://react-quiz-json-4sao.onrender.com";
 const initialState = {
-  status: "ready",
+  status: "loading",
   questions: [],
   index: 0,
   answers: [],
@@ -33,9 +33,9 @@ function reducer(state, action) {
 
   switch (type) {
     case "setLevel":
-      return { ...state, quizLevel: payload, status: "ready" };
+      return { ...state, quizLevel: payload };
     case "dataReceived":
-      return { ...state, questions: payload };
+      return { ...state, questions: payload, status: "ready" };
     case "dataFailed":
       return { ...state, status: "error" };
     case "start":
