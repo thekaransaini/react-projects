@@ -1,0 +1,19 @@
+.notfound {
+  margin: 2.5rem;
+  padding: 2.5rem 5rem;
+  background-color: var(--color-dark--1);
+  min-height: calc(100vh - 5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.notfound h1 {
+  font-size: 4rem;
+}
+
+.notfound p {
+  font-size: 1.7rem;
+}
