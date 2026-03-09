@@ -1,4 +1,5 @@
 @import "https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap";
+@import "leaflet/dist/leaflet.css";
 
 :root {
   --color-brand--1: #ffb545;
@@ -49,4 +50,17 @@ input {
 input:focus {
   outline: none;
   background-color: #fff;
+}
+
+.cta:link,
+.cta:visited {
+  display: inline-block;
+  background-color: var(--color-brand--2);
+  color: var(--color-dark--1);
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: 600;
+  padding: 1rem 3rem;
+  border-radius: 5px;
 }

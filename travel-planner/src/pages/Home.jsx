@@ -1,13 +1,16 @@
 import styles from "./Home.module.css";
+import Navbar from "../components/Navbar";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
     <main className={styles.home}>
+      <Navbar />
       <section>
         <h1>
           You travel the world.
           <br />
-          WorldWise keeps track of your adventures.
+          Travel Planner keeps track of your adventures.
         </h1>
         <h2>
           Create trips, map out the cities you want to visit, and follow the
@@ -15,6 +18,9 @@ export default function Home() {
           day of your journey—all in one place. Never miss a detail of your
           travels and share your adventures with friends.
         </h2>
+        <Link to="/app" className="cta">
+          Start tracking now
+        </Link>
       </section>
     </main>
   );
