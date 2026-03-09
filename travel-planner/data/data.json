@@ -1,0 +1,60 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Rahul",
+      "email": "rahul@mail.com"
+    }
+  ],
+
+  "trips": [
+    {
+      "id": 1,
+      "userId": 1,
+      "tripName": "Asia Trip",
+      "baseCurrency": "INR",
+      "startDate": "2027-10-01",
+      "endDate": "2027-10-03"
+    }
+  ],
+
+  "cities": [
+    {
+      "id": 1,
+      "tripId": 1,
+      "cityName": "Kathmandu",
+      "country": "Nepal",
+      "lat": 27.7172,
+      "lng": 85.324,
+      "order": 1
+    }
+  ],
+
+  "expenses": [
+    {
+      "id": 1,
+      "tripId": 1,
+      "item": "Flight",
+      "price": 500,
+      "currency": "USD"
+    }
+  ],
+
+  "packingItems": [
+    {
+      "id": 1,
+      "tripId": 1,
+      "item": "Passport",
+      "packed": true
+    }
+  ],
+
+  "journals": [
+    {
+      "id": 1,
+      "tripId": 1,
+      "day": 1,
+      "activity": "Visit city center"
+    }
+  ]
+}
