@@ -1,0 +1,55 @@
+.trip {
+  width: 90%;
+  color: var(--color-light--2);
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: var(--color-dark--2);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: Arial, sans-serif;
+}
+
+.tripHeader {
+  border-bottom: 1px solid #fbfcf8;
+  margin-bottom: 1.5rem;
+}
+
+.tripHeader h1 {
+  margin-bottom: 0.3rem;
+  font-size: 3rem;
+}
+
+.tripDates {
+  color: var(--color-light--1);
+  font-size: 1.8rem;
+}
+
+.tripCurrency {
+  font-size: 1.8rem;
+  color: var(--color-light--1);
+}
+
+.tripDates span,
+.tripCurrency span {
+  margin-right: 0.8rem;
+  display: inline-block;
+  width: 2rem;
+}
+
+.tripFooter {
+  display: flex;
+  justify-content: space-between;
+}
+
+.link:link,
+.link:visited {
+  display: inline-block;
+  background-color: var(--color-brand--2);
+  color: var(--color-dark--1);
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+}
