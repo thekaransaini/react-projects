@@ -2,8 +2,8 @@
   "users": [
     {
       "id": 1,
-      "name": "Rahul",
-      "email": "rahul@mail.com"
+      "name": "Karan",
+      "email": "karan@mail.com"
     }
   ],
 
@@ -11,10 +11,26 @@
     {
       "id": 1,
       "userId": 1,
-      "tripName": "Asia Trip",
+      "tripName": "My first trip",
       "baseCurrency": "INR",
-      "startDate": "2027-10-01",
-      "endDate": "2027-10-03"
+      "startDate": "2027-03-01",
+      "endDate": "2027-03-20"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "tripName": "My last trip of the year",
+      "baseCurrency": "INR",
+      "startDate": "2027-03-20",
+      "endDate": "2027-03-27"
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "tripName": "Egypt trip",
+      "baseCurrency": "USD",
+      "startDate": "2027-03-27",
+      "endDate": "2027-04-05"
     }
   ],
 
@@ -22,11 +38,42 @@
     {
       "id": 1,
       "tripId": 1,
-      "cityName": "Kathmandu",
-      "country": "Nepal",
-      "lat": 27.7172,
-      "lng": 85.324,
+      "cityName": "Bhopal",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 23.2599,
+      "lng": 77.4126,
       "order": 1
+    },
+    {
+      "id": 2,
+      "tripId": 1,
+      "cityName": "Bangalore",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 12.9716,
+      "lng": 77.5946,
+      "order": 2
+    },
+    {
+      "id": 3,
+      "tripId": 1,
+      "cityName": "Ranchi",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 23.3441,
+      "lng": 85.3096,
+      "order": 3
+    },
+    {
+      "id": 4,
+      "tripId": 2,
+      "cityName": "Ranchi",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 23.3441,
+      "lng": 85.3096,
+      "order": 3
     }
   ],
 
@@ -34,9 +81,28 @@
     {
       "id": 1,
       "tripId": 1,
-      "item": "Flight",
+      "item": "Flight ticket",
+      "quantity": 1,
       "price": 500,
-      "currency": "USD"
+      "currency": "INR",
+      "category": "Transport"
+    },
+    {
+      "id": 2,
+      "tripId": 1,
+      "item": "Hotel rooms",
+      "quantity": 1,
+      "price": 1500,
+      "currency": "INR",
+      "category": "Accommodation"
+    },
+    {
+      "id": 3,
+      "tripId": 1,
+      "item": "Sky diving",
+      "price": 3000,
+      "currency": "INR",
+      "category": "Activity"
     }
   ],
 
@@ -45,7 +111,22 @@
       "id": 1,
       "tripId": 1,
       "item": "Passport",
+      "quantity": 1,
       "packed": true
+    },
+    {
+      "id": 2,
+      "tripId": 1,
+      "item": "Aadhar card",
+      "quantity": 1,
+      "packed": true
+    },
+    {
+      "id": 3,
+      "tripId": 1,
+      "item": "white shirts",
+      "quantity": 2,
+      "packed": false
     }
   ],
 
@@ -54,7 +135,28 @@
       "id": 1,
       "tripId": 1,
       "day": 1,
-      "activity": "Visit city center"
+      "date": "2027-03-01",
+      "activity": "Reach at hotel",
+      "notes": "",
+      "done": true
+    },
+    {
+      "id": 2,
+      "tripId": 1,
+      "day": 2,
+      "date": "2027-03-02",
+      "activity": "Explore the bhopal city like monumnets, popular restaurant",
+      "notes": "",
+      "done": false
+    },
+    {
+      "id": 3,
+      "tripId": 1,
+      "day": 3,
+      "date": "2027-03-03",
+      "activity": "Take flight for banglore",
+      "notes": "",
+      "done": false
     }
   ]
 }

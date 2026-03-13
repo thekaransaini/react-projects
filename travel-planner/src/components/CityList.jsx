@@ -1,46 +1,17 @@
 import styles from "./CityList.module.css";
+import City from "./City";
+import useTrip from "../hooks/useTrip";
 
 export default function CityList() {
+  const { cities } = useTrip();
+
   return (
-    <section class={styles.tripSection}>
+    <section className={styles.tripSection}>
       <h2>Cities</h2>
-      <ul>
-        <li>
-          <span>
-            <strong>Kathmandu</strong>, Nepal <span>🏳️‍🌈</span>
-          </span>
-          <button className={styles.deleteBtn}>&times;</button>
-        </li>
-        <li>
-          <span>
-            <strong>Kathmandu</strong>, Nepal <span>🏳️‍🌈</span>
-          </span>
-          <button className={styles.deleteBtn}>&times;</button>
-        </li>
-        <li>
-          <span>
-            <strong>Kathmandu</strong>, Nepal <span>🏳️‍🌈</span>
-          </span>
-          <button className={styles.deleteBtn}>&times;</button>
-        </li>
-        <li>
-          <span>
-            <strong>Kathmandu</strong>, Nepal <span>🏳️‍🌈</span>
-          </span>
-          <button className={styles.deleteBtn}>&times;</button>
-        </li>
-        <li>
-          <span>
-            <strong>Kathmandu</strong>, Nepal <span>🏳️‍🌈</span>
-          </span>
-          <button className={styles.deleteBtn}>&times;</button>
-        </li>
-        <li>
-          <span>
-            <strong>Kathmandu</strong>, Nepal <span>🏳️‍🌈</span>
-          </span>
-          <button className={styles.deleteBtn}>&times;</button>
-        </li>
+      <ul className={styles.cityList}>
+        {cities.map((city) => (
+          <City city={city} key={city.id} />
+        ))}
       </ul>
     </section>
   );
