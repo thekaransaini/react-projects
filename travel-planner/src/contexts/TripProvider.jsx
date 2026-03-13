@@ -47,8 +47,12 @@ function TripProvider({ children }) {
         const userTrips = trips.filter((trip) => trip.userId === 1);
 
         dispatch({ type: "tripsDataReceived", payload: userTrips });
-      } catch (err) {
-        dispatch({ type: "error", payload: err });
+      } catch {
+        dispatch({
+          type: "error",
+          payload:
+            "There was an error loading data..., Try Again by refreshing the page",
+        });
       }
     }
     fetchTrips();
@@ -72,8 +76,12 @@ function TripProvider({ children }) {
         type: "tripDataReceived",
         payload: { trip, cities: selectedCities },
       });
-    } catch (err) {
-      dispatch({ type: "error", payload: err });
+    } catch {
+      dispatch({
+        type: "error",
+        payload:
+          "There was an error loading the trip..., Try Again by refreshing the page",
+      });
     }
   }
 
