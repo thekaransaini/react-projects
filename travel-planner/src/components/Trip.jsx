@@ -3,6 +3,7 @@ import CityList from "./CityList";
 import useTrip from "../hooks/useTrip";
 import styles from "./Trip.module.css";
 import { Link, useParams } from "react-router-dom";
+import Loader from "./Loader";
 // const formatDate = (date) =>
 //   new Intl.DateTimeFormat("en", {
 //     day: "numeric",
@@ -13,12 +14,15 @@ import { Link, useParams } from "react-router-dom";
 
 export default function Trip() {
   const { id } = useParams();
-  const { trip, getCurrentTrip } = useTrip();
-  const { tripName, startDate, endDate } = trip;
+  const { trip, getCurrentTrip, isLoading } = useTrip();
+  console.log(isLoading, trip);
 
   useEffect(() => {
     getCurrentTrip(id);
   }, [id]);
+
+  if (isLoading || !trip) return <Loader />;
+  const { tripName, startDate, endDate } = trip;
 
   return (
     <div className={styles.trip}>
