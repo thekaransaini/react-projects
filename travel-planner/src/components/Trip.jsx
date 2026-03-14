@@ -14,13 +14,12 @@ import ErrorMsg from "./ErrorMsg";
 //   }).format(new Date(date));
 
 export default function Trip() {
-  const { id } = useParams();
+  const { tripId } = useParams();
   const { trip, getCurrentTrip, isLoading, error } = useTrip();
-  console.log(isLoading, trip);
 
   useEffect(() => {
-    getCurrentTrip(id);
-  }, [id]);
+    getCurrentTrip(tripId);
+  }, [tripId]);
 
   if (isLoading) return <Loader />;
   if (!trip) return <ErrorMsg message={error} />;

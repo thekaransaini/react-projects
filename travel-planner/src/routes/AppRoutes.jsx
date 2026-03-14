@@ -7,6 +7,7 @@ import NotFound from "../pages/NotFound";
 import AppLayout from "../pages/AppLayout";
 import TripList from "../components/TripList";
 import Trip from "../components/Trip";
+import City from "../components/City";
 
 export default function AppRoutes() {
   return (
@@ -18,7 +19,9 @@ export default function AppRoutes() {
       <Route path="app" element={<AppLayout />}>
         <Route index element={<Navigate replace to="trips" />} />
         <Route path="trips" element={<TripList />} />
-        <Route path="trips/:id" element={<Trip />} />
+        <Route path="trips/:tripId" element={<Trip />}>
+          <Route path="cities/:cityId" element={<City />} />
+        </Route>
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
