@@ -1,11 +1,19 @@
 import { useEffect } from "react";
 import useUrlPosition from "../hooks/useUrlPosition";
 import styles from "./Map.module.css";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import useTrip from "../hooks/useTrip";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  useMap,
+  Tooltip,
+} from "react-leaflet";
 
 const defaultPosition = [28.7041, 77.1025];
 
 export default function Map() {
+  const { cities } = useTrip();
   const [lat, lng] = useUrlPosition();
   const mapPosition =
     lat !== null && lng !== null ? [lat, lng] : defaultPosition;
@@ -23,11 +31,22 @@ export default function Map() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <ChangeView position={mapPosition} />
-        <Marker position={mapPosition}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
+        {cities.map((city, i) => (
+          <Marker position={[city.lat, city.lng]} key={city.id}>
+            <Tooltip>
+              <div className={styles["leaflet-tooltip-content"]}>
+                <span>{i + 1}</span>
+                <span>
+                  <img
+                    src={`https://flagcdn.com/16x12/${city.countryCode?.toLowerCase()}.png`}
+                    alt={`Logo of ${city.country} flag`}
+                  />
+                </span>
+                <p>{city.cityName}</p>
+              </div>
+            </Tooltip>
+          </Marker>
+        ))}
       </MapContainer>
     </div>
   );
