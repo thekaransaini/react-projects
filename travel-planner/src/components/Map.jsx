@@ -9,6 +9,7 @@ import {
   useMap,
   Tooltip,
 } from "react-leaflet";
+import Polyline from "./Polyline";
 
 const defaultPosition = [28.7041, 77.1025];
 
@@ -31,6 +32,7 @@ export default function Map() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <ChangeView position={mapPosition} />
+        <Polyline />
         {cities.map((city, i) => (
           <Marker position={[city.lat, city.lng]} key={city.id}>
             <Tooltip>
