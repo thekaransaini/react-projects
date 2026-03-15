@@ -6,6 +6,8 @@ import styles from "./Form.module.css";
 import CityItem from "./CityItem";
 import useUrlPosition from "../hooks/useUrlPosition";
 import ErrorMsg from "./ErrorMsg";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const BASE_URL_CURRENCY = "https://api.frankfurter.dev/v1/currencies";
 const BASE_URL_CITY =
@@ -94,19 +96,19 @@ export default function Form() {
 
         <div className={styles.row}>
           <label htmlFor="startDate">Departure date</label>
-          <input
-            id="startDate"
-            onChange={(e) => setStartDate(e.target.value)}
-            value={startDate}
+          <DatePicker
+            dateFormat="dd/MM/yyyy"
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
           />
         </div>
 
         <div className={styles.row}>
           <label htmlFor="endDate">Return date</label>
-          <input
-            id="endDate"
-            onChange={(e) => setEndDate(e.target.value)}
-            value={endDate}
+          <DatePicker
+            dateFormat="dd/MM/yyyy"
+            selected={endDate}
+            onChange={(date) => setEndDate(date)}
           />
         </div>
 
