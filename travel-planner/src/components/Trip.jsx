@@ -5,13 +5,14 @@ import styles from "./Trip.module.css";
 import { Link, useParams } from "react-router-dom";
 import Loader from "./Loader";
 import ErrorMsg from "./ErrorMsg";
-// const formatDate = (date) =>
-//   new Intl.DateTimeFormat("en", {
-//     day: "numeric",
-//     month: "long",
-//     year: "numeric",
-//     weekday: "long",
-//   }).format(new Date(date));
+
+const formatDate = (date) =>
+  new Intl.DateTimeFormat("en", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    weekday: "long",
+  }).format(new Date(date));
 
 export default function Trip() {
   const { tripId } = useParams();
@@ -30,7 +31,7 @@ export default function Trip() {
       <header className={styles.tripHeader}>
         <h1>{tripName}</h1>
         <p className={styles.tripDates}>
-          <span>📅</span> {startDate} – {endDate}
+          <span>📅</span> {formatDate(startDate)} – {formatDate(endDate)}
         </p>
         <p className={styles.tripCurrency}>
           <span>💸</span> Expense: 10000 INR

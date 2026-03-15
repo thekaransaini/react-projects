@@ -36,7 +36,8 @@ label {
   font-weight: 600;
 }
 
-input {
+input,
+select {
   width: 100%;
   padding: 0.8rem 1.2rem;
   font-family: inherit;
@@ -45,6 +46,7 @@ input {
   border-radius: 5px;
   background-color: var(--color-light--3);
   transition: all 0.2s;
+  flex: 1;
 }
 
 input:focus {

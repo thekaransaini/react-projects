@@ -1,0 +1,98 @@
+.form {
+  background-color: var(--color-dark--2);
+  border-radius: 7px;
+  padding: 2rem 3rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 2rem auto;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.form::-webkit-scrollbar {
+  width: 0;
+}
+
+.formFields {
+  flex-shrink: 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-shrink: 0;
+  margin-top: 1rem;
+}
+
+.flag {
+  position: absolute;
+  right: 1rem;
+  top: 2.7rem;
+  font-size: 2.8rem;
+}
+
+.form.loading {
+  opacity: 0.3;
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--color-brand--2);
+  color: var(--color-dark--1);
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+:global(.react-datepicker) {
+  font-family: inherit;
+  font-size: 1.2rem;
+}
+
+.row span {
+  display: flex;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.cityList {
+  list-style: none;
+  padding: 0;
+  font-size: 1.8rem;
+  min-height: 17rem;
+  flex: 1;
+  max-height: 180px;
+  overflow-y: auto;
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.cityList::-webkit-scrollbar {
+  width: 0;
+}
+
+.cityList::before {
+  content: "";
+  position: absolute;
+  top: 2rem;
+  bottom: 2rem;
+  left: 0.8rem;
+  background: var(--color-light--1);
+  opacity: 0.3;
+  min-height: calc(100% - 4rem);
+}

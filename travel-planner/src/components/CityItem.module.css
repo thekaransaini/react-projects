@@ -1,0 +1,58 @@
+.city {
+  padding: 0.8rem 1.2rem;
+  background-color: #d9dadb;
+  color: #34393d;
+  border-radius: 0.6rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.city::before {
+  content: "";
+  position: absolute;
+  left: -2.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--color-brand--2);
+  border-radius: 50%;
+  border: 3px solid var(--color-dark--2);
+  z-index: 2;
+}
+
+.city:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: -1.9rem;
+  top: 50%;
+  width: 2px;
+  height: calc(100% + 1.5rem);
+  background: var(--color-light--1);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.deleteBtn {
+  height: 2rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--color-dark--1);
+  color: var(--color-light--2);
+  font-size: 1.6rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.city div {
+  width: 200%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

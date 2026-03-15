@@ -8,8 +8,10 @@ import {
   Marker,
   useMap,
   Tooltip,
+  useMapEvent,
 } from "react-leaflet";
 import Polyline from "./Polyline";
+import { useNavigate } from "react-router-dom";
 
 const defaultPosition = [28.7041, 77.1025];
 
@@ -33,6 +35,7 @@ export default function Map() {
         />
         <ChangeView position={mapPosition} />
         <Polyline />
+        <ClickEvent />
         {cities.map((city, i) => (
           <Marker position={[city.lat, city.lng]} key={city.id}>
             <Tooltip>
@@ -64,6 +67,16 @@ function ChangeView({ position }) {
     [map, position],
     6,
   );
+
+  return null;
+}
+
+function ClickEvent() {
+  const navigate = useNavigate();
+
+  useMapEvent({
+    click: (e) => navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`),
+  });
 
   return null;
 }

@@ -13,24 +13,24 @@
       "userId": 1,
       "tripName": "My first trip",
       "baseCurrency": "INR",
-      "startDate": "2027-03-01",
-      "endDate": "2027-03-20"
+      "startDate": "2027-07-15T08:22:53.976Z",
+      "endDate": "2027-07-15T08:22:53.976Z"
     },
     {
       "id": 2,
       "userId": 2,
       "tripName": "My last trip of the year",
       "baseCurrency": "INR",
-      "startDate": "2027-03-20",
-      "endDate": "2027-03-27"
+      "startDate": "2027-07-15T08:22:53.976Z",
+      "endDate": "2027-07-15T08:22:53.976Z"
     },
     {
       "id": 3,
       "userId": 2,
       "tripName": "Egypt trip",
       "baseCurrency": "USD",
-      "startDate": "2027-03-27",
-      "endDate": "2027-04-05"
+      "startDate": "2027-07-15T08:22:53.976Z",
+      "endDate": "2027-07-15T08:22:53.976Z"
     }
   ],
 
@@ -135,7 +135,7 @@
       "id": 1,
       "tripId": 1,
       "day": 1,
-      "date": "2027-03-01",
+      "date": "2027-07-15T08:22:53.976Z",
       "activity": "Reach at hotel",
       "notes": "",
       "done": true
@@ -144,7 +144,7 @@
       "id": 2,
       "tripId": 1,
       "day": 2,
-      "date": "2027-03-02",
+      "date": "2027-07-15T08:22:53.976Z",
       "activity": "Explore the bhopal city like monumnets, popular restaurant",
       "notes": "",
       "done": false
@@ -153,7 +153,7 @@
       "id": 3,
       "tripId": 1,
       "day": 3,
-      "date": "2027-03-03",
+      "date": "2027-07-15T08:22:53.976Z",
       "activity": "Take flight for banglore",
       "notes": "",
       "done": false
