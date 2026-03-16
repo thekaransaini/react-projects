@@ -144,6 +144,8 @@ export default function Form() {
           <label htmlFor="tripName">Trip name</label>
           <input
             id="tripName"
+            placeholder="My first trip"
+            required
             onChange={(e) => setTripName(e.target.value)}
             value={tripName}
           />
@@ -153,20 +155,23 @@ export default function Form() {
           <label htmlFor="startDate">Departure date</label>
           <DatePicker
             dateFormat="dd/MM/yyyy"
+            required
             selected={startDate}
             onChange={(date) => setStartDate(date)}
           />
         </div>
 
         <div className={styles.row}>
-          <label htmlFor="endDate">Return date</label>
+          <label htmlFor="endDate">
+            Return date
+            {`${endDate <= startDate ? "(Date must be after departure date)" : ""}`}
+          </label>
           <DatePicker
             dateFormat="dd/MM/yyyy"
             selected={endDate}
-            onChange={(date) => setEndDate(date)}
+            onChange={(date) => setEndDate(date <= startDate ? "" : date)}
           />
         </div>
-
         <div className={styles.row}>
           <label htmlFor="baseCurrency">
             Preferred currency for total expense
@@ -174,6 +179,7 @@ export default function Form() {
           <select
             id="baseCurrency"
             value={baseCurrency}
+            required
             onChange={(e) => setBaseCurrency(e.target.value)}
           >
             <option value="">Select currency</option>
@@ -190,6 +196,8 @@ export default function Form() {
         <span>
           <input
             id="cityName"
+            placeholder="Delhi"
+            required
             onChange={(e) => setCityName(e.target.value)}
             value={cityName}
           />
