@@ -12,6 +12,7 @@ const initialState = {
 
 function reducer(state, action) {
   const { type, payload } = action;
+  const { trips, cities } = state;
 
   switch (type) {
     case "loading":
@@ -25,6 +26,18 @@ function reducer(state, action) {
         ...state,
         trip: payload.trip,
         cities: payload.cities,
+        isLoading: false,
+      };
+    case "newTripCreated":
+      return {
+        ...state,
+        trips: [...trips, payload],
+        isLoading: false,
+      };
+    case "newCitiesCreated":
+      return {
+        ...state,
+        cities: [...cities, payload],
         isLoading: false,
       };
     default:
@@ -41,10 +54,8 @@ function TripProvider({ children }) {
       try {
         dispatch({ type: "loading" });
 
-        const res = await fetch(`${BASE_URL}/trips`);
-        const trips = await res.json();
-
-        const userTrips = trips.filter((trip) => trip.userId === 1);
+        const res = await fetch(`${BASE_URL}/trips?userId=${1}`);
+        const userTrips = await res.json();
 
         dispatch({ type: "tripsDataReceived", payload: userTrips });
       } catch {
@@ -65,12 +76,8 @@ function TripProvider({ children }) {
       const tripRes = await fetch(`${BASE_URL}/trips/${id}`);
       const trip = await tripRes.json();
 
-      const cityRes = await fetch(`${BASE_URL}/cities`);
-      const cities = await cityRes.json();
-
-      const selectedCities = cities.filter(
-        (city) => city.tripId === Number(id),
-      );
+      const cityRes = await fetch(`${BASE_URL}/cities?tripId=${id}`);
+      const selectedCities = await cityRes.json();
 
       dispatch({
         type: "tripDataReceived",
@@ -85,9 +92,52 @@ function TripProvider({ children }) {
     }
   }
 
+  async function createTrip(trip, cities) {
+    const tripRes = await fetch(`${BASE_URL}/trips`, {
+      method: "POST",
+      body: JSON.stringify(trip),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    const newTrip = await tripRes.json();
+
+    dispatch({ type: "newTripCreated", payload: newTrip });
+
+    for (const city of cities) {
+      const { cityName, country, countryCode, lat, lng, order } = city;
+      const citiesRes = await fetch(`${BASE_URL}/cities`, {
+        method: "POST",
+        body: JSON.stringify({
+          tripId: newTrip.id,
+          cityName,
+          country,
+          countryCode,
+          lat,
+          lng,
+          order,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const newCities = await citiesRes.json();
+
+      dispatch({ type: "newCitiesCreated", payload: newCities });
+    }
+  }
+
   return (
     <TripContext.Provider
-      value={{ trips, trip, cities, getCurrentTrip, isLoading, error }}
+      value={{
+        trips,
+        trip,
+        cities,
+        getCurrentTrip,
+        isLoading,
+        error,
+        createTrip,
+      }}
     >
       {children}
     </TripContext.Provider>

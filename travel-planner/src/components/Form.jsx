@@ -6,8 +6,10 @@ import styles from "./Form.module.css";
 import CityItem from "./CityItem";
 import useUrlPosition from "../hooks/useUrlPosition";
 import ErrorMsg from "./ErrorMsg";
+import useTrip from "../hooks/useTrip";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate } from "react-router-dom";
 
 const BASE_URL_CURRENCY = "https://api.frankfurter.dev/v1/currencies";
 const BASE_URL_CITY =
@@ -23,12 +25,40 @@ export default function Form() {
   const [endDate, setEndDate] = useState(new Date());
   const [baseCurrency, setBaseCurrency] = useState("");
   const [currencyList, setCurrencyList] = useState({});
-
-  console.log(cities);
+  const { createTrip } = useTrip();
+  const navigate = useNavigate();
 
   function handleAddCity(cityInfo) {
-    setCities((curr) => [...curr, cityInfo]);
+    const { cityName, country, countryCode, lat, lng } = cityInfo;
+    setCities((curr) => {
+      const newCity = {
+        cityName,
+        country,
+        countryCode,
+        lat,
+        lng,
+        id: Date.now(),
+        order: cities.length + 1,
+      };
+
+      return [...curr, newCity];
+    });
     setCityName("");
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const trip = {
+      userId: 1,
+      tripName,
+      baseCurrency,
+      startDate,
+      endDate,
+    };
+    // console.log(trip);
+    // console.log(cities);
+    await createTrip(trip, cities);
+    navigate("/app/trips");
   }
 
   useEffect(() => {
@@ -56,11 +86,8 @@ export default function Form() {
           lat: latitude,
           lng: longitude,
         };
-        console.log(cityInfo);
 
         setCityInfo(cityInfo);
-
-        // console.log(data);
       } catch (err) {
         console.log(err);
       }
@@ -83,7 +110,7 @@ export default function Form() {
   }, []);
 
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.formFields}>
         <div className={styles.row}>
           <label htmlFor="tripName">Trip name</label>
@@ -158,12 +185,14 @@ Start by adding your first destination 🌍"
           />
         )}
         {cities.map((city) => (
-          <CityItem city={city} key={city.cityName} />
+          <CityItem city={city} key={city.id} />
         ))}
       </ul>
 
       <div className={styles.buttons}>
-        <button className={styles.btn}>&larr; Back</button>
+        <button className={styles.btn} onClick={() => navigate(-1)}>
+          &larr; Back
+        </button>
         <button className={styles.btn}>Add trip</button>
       </div>
     </form>

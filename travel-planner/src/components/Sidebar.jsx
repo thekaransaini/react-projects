@@ -1,7 +1,5 @@
 import styles from "./Sidebar.module.css";
 import Logo from "./Logo";
-import TripList from "./TripList";
-import Trip from "./Trip";
 import { Outlet } from "react-router-dom";
 
 export default function Sidebar() {

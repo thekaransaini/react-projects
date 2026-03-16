@@ -1,85 +1,114 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1abc",
       "name": "Karan",
       "email": "karan@mail.com"
     }
   ],
-
   "trips": [
     {
-      "id": 1,
+      "id": "5c07",
       "userId": 1,
-      "tripName": "My first trip",
+      "tripName": "My India trip",
       "baseCurrency": "INR",
-      "startDate": "2027-07-15T08:22:53.976Z",
-      "endDate": "2027-07-15T08:22:53.976Z"
+      "startDate": "2026-03-15T19:10:24.917Z",
+      "endDate": "2026-03-19T19:10:24.000Z"
     },
     {
-      "id": 2,
-      "userId": 2,
-      "tripName": "My last trip of the year",
+      "id": "3b32",
+      "userId": 1,
+      "tripName": "My international trip",
       "baseCurrency": "INR",
-      "startDate": "2027-07-15T08:22:53.976Z",
-      "endDate": "2027-07-15T08:22:53.976Z"
-    },
-    {
-      "id": 3,
-      "userId": 2,
-      "tripName": "Egypt trip",
-      "baseCurrency": "USD",
-      "startDate": "2027-07-15T08:22:53.976Z",
-      "endDate": "2027-07-15T08:22:53.976Z"
+      "startDate": "2026-03-15T19:12:01.414Z",
+      "endDate": "2026-03-17T19:12:01.000Z"
     }
   ],
-
   "cities": [
     {
-      "id": 1,
-      "tripId": 1,
-      "cityName": "Bhopal",
+      "id": "36e8",
+      "tripId": "5c07",
+      "cityName": "Padam",
       "country": "India",
       "countryCode": "IN",
-      "lat": 23.2599,
-      "lng": 77.4126,
+      "lat": 33.70518483969509,
+      "lng": 76.95251606101858,
       "order": 1
     },
     {
-      "id": 2,
-      "tripId": 1,
-      "cityName": "Bangalore",
+      "id": "7834",
+      "tripId": "5c07",
+      "cityName": "Upleta",
       "country": "India",
       "countryCode": "IN",
-      "lat": 12.9716,
-      "lng": 77.5946,
+      "lat": 21.8094771039298,
+      "lng": 70.28955197842419,
       "order": 2
     },
     {
-      "id": 3,
-      "tripId": 1,
-      "cityName": "Ranchi",
+      "id": "ad15",
+      "tripId": "5c07",
+      "cityName": "Peraiyur",
       "country": "India",
       "countryCode": "IN",
-      "lat": 23.3441,
-      "lng": 85.3096,
+      "lat": 9.61697704219257,
+      "lng": 77.5027191630193,
       "order": 3
     },
     {
-      "id": 4,
-      "tripId": 2,
-      "cityName": "Ranchi",
+      "id": "0e39",
+      "tripId": "5c07",
+      "cityName": "Sarisha",
       "country": "India",
       "countryCode": "IN",
-      "lat": 23.3441,
-      "lng": 85.3096,
+      "lat": 22.20572554585618,
+      "lng": 88.11907664868728,
+      "order": 4
+    },
+    {
+      "id": "47ca",
+      "tripId": "3b32",
+      "cityName": "Goharganj",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 23.06930464207277,
+      "lng": 77.7005529911016,
       "order": 1
+    },
+    {
+      "id": "0418",
+      "tripId": "3b32",
+      "cityName": "She Phoksundo",
+      "country": "Nepal",
+      "countryCode": "NP",
+      "lat": 29.155201441172704,
+      "lng": 82.76498236890535,
+      "order": 2
+    },
+    {
+      "id": "3121",
+      "tripId": "3b32",
+      "cityName": "Hami Shi",
+      "country": "China",
+      "countryCode": "CN",
+      "lat": 41.460593913855924,
+      "lng": 92.27321427795526,
+      "order": 3
+    },
+    {
+      "id": "be4d",
+      "tripId": "3b32",
+      "cityName": "Ust’-Udinskiy Rayon",
+      "country": "Russian Federation (the)",
+      "countryCode": "RU",
+      "lat": 55.69281556038484,
+      "lng": 105.00586700743288,
+      "order": 4
     }
   ],
-
   "expenses": [
     {
-      "id": 1,
+      "id": "1",
       "tripId": 1,
       "item": "Flight ticket",
       "quantity": 1,
@@ -88,7 +117,7 @@
       "category": "Transport"
     },
     {
-      "id": 2,
+      "id": "2",
       "tripId": 1,
       "item": "Hotel rooms",
       "quantity": 1,
@@ -97,7 +126,7 @@
       "category": "Accommodation"
     },
     {
-      "id": 3,
+      "id": "3",
       "tripId": 1,
       "item": "Sky diving",
       "price": 3000,
@@ -105,34 +134,32 @@
       "category": "Activity"
     }
   ],
-
   "packingItems": [
     {
-      "id": 1,
+      "id": "1",
       "tripId": 1,
       "item": "Passport",
       "quantity": 1,
       "packed": true
     },
     {
-      "id": 2,
+      "id": "2",
       "tripId": 1,
       "item": "Aadhar card",
       "quantity": 1,
       "packed": true
     },
     {
-      "id": 3,
+      "id": "3",
       "tripId": 1,
       "item": "white shirts",
       "quantity": 2,
       "packed": false
     }
   ],
-
   "journals": [
     {
-      "id": 1,
+      "id": "1",
       "tripId": 1,
       "day": 1,
       "date": "2027-07-15T08:22:53.976Z",
@@ -141,7 +168,7 @@
       "done": true
     },
     {
-      "id": 2,
+      "id": "2",
       "tripId": 1,
       "day": 2,
       "date": "2027-07-15T08:22:53.976Z",
@@ -150,7 +177,7 @@
       "done": false
     },
     {
-      "id": 3,
+      "id": "3",
       "tripId": 1,
       "day": 3,
       "date": "2027-07-15T08:22:53.976Z",
@@ -158,5 +185,6 @@
       "notes": "",
       "done": false
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
