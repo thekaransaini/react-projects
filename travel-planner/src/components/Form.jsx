@@ -49,6 +49,10 @@ export default function Form() {
     setCityName("");
   }
 
+  function handleDeleteCity(id) {
+    setCities((curr) => curr.filter((city) => city.id !== id));
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
     const trip = {
@@ -134,7 +138,7 @@ export default function Form() {
     <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.formFields}>
         <Link className={styles.backBtn} to="/app/trips">
-          <i class="fa-solid fa-left-long"></i>
+          <i className="fa-solid fa-left-long"></i>
         </Link>
         <div className={styles.row}>
           <label htmlFor="tripName">Trip name</label>
@@ -209,7 +213,7 @@ Start by adding your first destination 🌍"
           />
         )}
         {cities.map((city) => (
-          <CityItem city={city} key={city.id} />
+          <CityItem city={city} key={city.id} onDeleteCity={handleDeleteCity} />
         ))}
       </ul>
 

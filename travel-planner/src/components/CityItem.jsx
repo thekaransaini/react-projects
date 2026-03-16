@@ -1,7 +1,8 @@
 import styles from "./CityItem.module.css";
 
-export default function CityItem({ city }) {
-  const { cityName, country, countryCode } = city;
+export default function CityItem({ city, onDeleteCity }) {
+  const { cityName, country, countryCode, id } = city;
+
   return (
     <li className={styles.city}>
       <div>
@@ -15,7 +16,13 @@ export default function CityItem({ city }) {
           alt={`Image of ${country} flag`}
         />
       </div>
-      <button className={styles.deleteBtn} onClick={(e) => e.preventDefault()}>
+      <button
+        className={styles.deleteBtn}
+        onClick={(e) => {
+          e.preventDefault();
+          onDeleteCity(id);
+        }}
+      >
         &times;
       </button>
     </li>

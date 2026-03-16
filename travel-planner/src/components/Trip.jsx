@@ -31,7 +31,7 @@ export default function Trip() {
       <header className={styles.tripHeader}>
         <span className={styles.flex}>
           <Link className={styles.backBtn} to="/app/trips">
-            <i class="fa-solid fa-left-long"></i>
+            <i className="fa-solid fa-left-long"></i>
           </Link>
           <h1>{tripName}</h1>
         </span>
