@@ -33,6 +33,6 @@ export default function Polyline() {
       map.removeLayer(polyline);
       map.removeLayer(polylineDecorator);
     };
-  }, [citiesPosition, map]);
+  }, [cities, map]);
   return null;
 }

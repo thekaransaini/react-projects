@@ -41,7 +41,7 @@ export default function Form() {
         lat,
         lng,
         id: Date.now(),
-        order: cities.length + 1,
+        order: curr.length + 1,
       };
 
       return [...curr, newCity];

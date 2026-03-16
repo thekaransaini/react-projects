@@ -12,7 +12,6 @@ const initialState = {
 
 function reducer(state, action) {
   const { type, payload } = action;
-  const { trips, cities } = state;
 
   switch (type) {
     case "loading":
@@ -31,13 +30,20 @@ function reducer(state, action) {
     case "newTripCreated":
       return {
         ...state,
-        trips: [...trips, payload],
+        trips: [...state.trips, payload],
         isLoading: false,
       };
     case "newCitiesCreated":
       return {
         ...state,
-        cities: [...cities, payload],
+        cities: [...state.cities, payload],
+        isLoading: false,
+      };
+    case "tripDeleted":
+      return {
+        ...state,
+        trips: state.trips.filter((trip) => trip.id !== payload),
+        cities: state.cities.filter((city) => city.tripId !== payload),
         isLoading: false,
       };
     default:
@@ -107,7 +113,7 @@ function TripProvider({ children }) {
 
       for (const city of cities) {
         const { cityName, country, countryCode, lat, lng, order } = city;
-        const citiesRes = await fetch(`${BASE_URL}/cities`, {
+        await fetch(`${BASE_URL}/cities`, {
           method: "POST",
           body: JSON.stringify({
             tripId: newTrip.id,
@@ -122,15 +128,37 @@ function TripProvider({ children }) {
             "Content-Type": "application/json",
           },
         });
-
-        const newCities = await citiesRes.json();
-
-        dispatch({ type: "newCitiesCreated", payload: newCities });
       }
     } catch {
       dispatch({
         type: "error",
         payload: "There was an error creating the trip...",
+      });
+    }
+  }
+
+  async function deleteTrip(id) {
+    try {
+      dispatch({ type: "loading" });
+      const res = await fetch(`${BASE_URL}/cities?tripId=${id}`);
+      const tripCities = await res.json();
+
+      await Promise.all(
+        tripCities.map((city) =>
+          fetch(`${BASE_URL}/cities/${city.id}`, {
+            method: "DELETE",
+          }),
+        ),
+      );
+
+      await fetch(`${BASE_URL}/trips/${id}`, {
+        method: "DELETE",
+      });
+      dispatch({ type: "tripDeleted", payload: id });
+    } catch {
+      dispatch({
+        type: "error",
+        payload: "There was an error in deleting the trip...",
       });
     }
   }
@@ -145,6 +173,7 @@ function TripProvider({ children }) {
         isLoading,
         error,
         createTrip,
+        deleteTrip,
       }}
     >
       {children}

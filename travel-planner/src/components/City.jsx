@@ -19,12 +19,6 @@ export default function City({ city }) {
             alt={`Image of ${country} flag`}
           />
         </div>
-        <button
-          className={styles.deleteBtn}
-          onClick={(e) => e.preventDefault()}
-        >
-          &times;
-        </button>
       </NavLink>
     </li>
   );
