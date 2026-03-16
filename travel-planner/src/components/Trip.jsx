@@ -29,7 +29,12 @@ export default function Trip() {
   return (
     <div className={styles.trip}>
       <header className={styles.tripHeader}>
-        <h1>{tripName}</h1>
+        <span className={styles.flex}>
+          <Link className={styles.backBtn} to="/app/trips">
+            <i class="fa-solid fa-left-long"></i>
+          </Link>
+          <h1>{tripName}</h1>
+        </span>
         <p className={styles.tripDates}>
           <span>📅</span> {formatDate(startDate)} – {formatDate(endDate)}
         </p>

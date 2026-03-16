@@ -10,7 +10,7 @@ import useTrip from "../hooks/useTrip";
 import DatePicker from "react-datepicker";
 import Loader from "./Loader";
 import "react-datepicker/dist/react-datepicker.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const BASE_URL_CURRENCY = "https://api.frankfurter.dev/v1/currencies";
 const BASE_URL_CITY =
@@ -133,6 +133,9 @@ export default function Form() {
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.formFields}>
+        <Link className={styles.backBtn} to="/app/trips">
+          <i class="fa-solid fa-left-long"></i>
+        </Link>
         <div className={styles.row}>
           <label htmlFor="tripName">Trip name</label>
           <input

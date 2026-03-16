@@ -19,6 +19,12 @@
   font-size: 3rem;
 }
 
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .tripDates {
   color: var(--color-light--1);
   font-size: 1.8rem;
@@ -52,4 +58,18 @@
   font-weight: 600;
   padding: 1rem 2rem;
   border-radius: 5px;
+}
+
+.backBtn {
+  background-color: #54595f;
+  color: #e0e0e0;
+  cursor: pointer;
+  text-decoration: none;
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
 }
