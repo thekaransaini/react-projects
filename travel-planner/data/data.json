@@ -22,6 +22,14 @@
       "baseCurrency": "INR",
       "startDate": "2026-03-15T19:12:01.414Z",
       "endDate": "2026-03-17T19:12:01.000Z"
+    },
+    {
+      "id": "ca53",
+      "userId": 1,
+      "tripName": "My first trip of the year",
+      "baseCurrency": "INR",
+      "startDate": "2026-03-16T04:03:49.537Z",
+      "endDate": "2026-03-20T04:03:49.000Z"
     }
   ],
   "cities": [
@@ -103,6 +111,46 @@
       "countryCode": "RU",
       "lat": 55.69281556038484,
       "lng": 105.00586700743288,
+      "order": 4
+    },
+    {
+      "id": "7eb5",
+      "tripId": "ca53",
+      "cityName": "Ekibastuz",
+      "country": "Kazakhstan",
+      "countryCode": "KZ",
+      "lat": 51.60697088942499,
+      "lng": 75.6195601591384,
+      "order": 1
+    },
+    {
+      "id": "1f92",
+      "tripId": "ca53",
+      "cityName": "Taymyrskiy Dolgano-Nenetskiy Rayon",
+      "country": "Russian Federation (the)",
+      "countryCode": "RU",
+      "lat": 72.91739206423543,
+      "lng": 96.03196149277724,
+      "order": 2
+    },
+    {
+      "id": "c872",
+      "tripId": "ca53",
+      "cityName": "Penzhinskiy Rayon",
+      "country": "Russian Federation (the)",
+      "countryCode": "RU",
+      "lat": 64.52757266858214,
+      "lng": 165.86607094079733,
+      "order": 3
+    },
+    {
+      "id": "a58a",
+      "tripId": "ca53",
+      "cityName": "Mershing District",
+      "country": "Sudan (the)",
+      "countryCode": "SD",
+      "lat": 12.47941428152607,
+      "lng": 25.041074407790955,
       "order": 4
     }
   ],

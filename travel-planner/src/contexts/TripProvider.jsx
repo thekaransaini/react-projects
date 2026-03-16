@@ -93,37 +93,45 @@ function TripProvider({ children }) {
   }
 
   async function createTrip(trip, cities) {
-    const tripRes = await fetch(`${BASE_URL}/trips`, {
-      method: "POST",
-      body: JSON.stringify(trip),
-      headers: { "Content-Type": "application/json" },
-    });
-
-    const newTrip = await tripRes.json();
-
-    dispatch({ type: "newTripCreated", payload: newTrip });
-
-    for (const city of cities) {
-      const { cityName, country, countryCode, lat, lng, order } = city;
-      const citiesRes = await fetch(`${BASE_URL}/cities`, {
+    try {
+      dispatch({ type: "loading" });
+      const tripRes = await fetch(`${BASE_URL}/trips`, {
         method: "POST",
-        body: JSON.stringify({
-          tripId: newTrip.id,
-          cityName,
-          country,
-          countryCode,
-          lat,
-          lng,
-          order,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
+        body: JSON.stringify(trip),
+        headers: { "Content-Type": "application/json" },
       });
 
-      const newCities = await citiesRes.json();
+      const newTrip = await tripRes.json();
 
-      dispatch({ type: "newCitiesCreated", payload: newCities });
+      dispatch({ type: "newTripCreated", payload: newTrip });
+
+      for (const city of cities) {
+        const { cityName, country, countryCode, lat, lng, order } = city;
+        const citiesRes = await fetch(`${BASE_URL}/cities`, {
+          method: "POST",
+          body: JSON.stringify({
+            tripId: newTrip.id,
+            cityName,
+            country,
+            countryCode,
+            lat,
+            lng,
+            order,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        const newCities = await citiesRes.json();
+
+        dispatch({ type: "newCitiesCreated", payload: newCities });
+      }
+    } catch {
+      dispatch({
+        type: "error",
+        payload: "There was an error creating the trip...",
+      });
     }
   }
 

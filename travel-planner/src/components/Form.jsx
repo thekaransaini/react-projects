@@ -8,6 +8,7 @@ import useUrlPosition from "../hooks/useUrlPosition";
 import ErrorMsg from "./ErrorMsg";
 import useTrip from "../hooks/useTrip";
 import DatePicker from "react-datepicker";
+import Loader from "./Loader";
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
 
@@ -25,6 +26,8 @@ export default function Form() {
   const [endDate, setEndDate] = useState(new Date());
   const [baseCurrency, setBaseCurrency] = useState("");
   const [currencyList, setCurrencyList] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const { createTrip } = useTrip();
   const navigate = useNavigate();
 
@@ -64,6 +67,8 @@ export default function Form() {
   useEffect(() => {
     async function fetchCityData() {
       try {
+        setIsLoading(true);
+        setError("");
         const res = await fetch(
           `${BASE_URL_CITY}?latitude=${lat}&longitude=${lng}`,
         );
@@ -77,6 +82,11 @@ export default function Form() {
           locality,
         } = data;
 
+        if (!countryCode)
+          throw new Error(
+            "That doesn't seem to be a city. Click somewhere else 😉",
+          );
+
         setCityName(city ? city : locality);
 
         const cityInfo = {
@@ -89,7 +99,9 @@ export default function Form() {
 
         setCityInfo(cityInfo);
       } catch (err) {
-        console.log(err);
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
       }
     }
     fetchCityData();
@@ -98,16 +110,25 @@ export default function Form() {
   useEffect(() => {
     async function fetchCurrencyList() {
       try {
+        setIsLoading(true);
+        setError("");
         const res = await fetch(`${BASE_URL_CURRENCY}`);
         const data = await res.json();
 
         setCurrencyList(data);
       } catch (err) {
-        console.log(err);
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
       }
     }
     fetchCurrencyList();
   }, []);
+
+  if (isLoading) return <Loader />;
+  if (!lat && !lng)
+    return <ErrorMsg message="Start by clicking somewhere on the map" />;
+  if (error) return <ErrorMsg message={error} />;
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
