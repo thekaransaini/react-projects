@@ -28,6 +28,9 @@ export default function Trip() {
 
   return (
     <div className={styles.trip}>
+      <Link className={styles.btn}>
+        <i class="fa-solid fa-suitcase-rolling"></i>{" "}
+      </Link>
       <header className={styles.tripHeader}>
         <span className={styles.flex}>
           <Link className={styles.backBtn} to="/app/trips">

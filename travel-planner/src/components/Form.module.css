@@ -30,7 +30,7 @@
 
 .buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   flex-shrink: 0;
   margin-top: 1rem;
 }

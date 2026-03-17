@@ -222,9 +222,6 @@ Start by adding your first destination 🌍"
       </ul>
 
       <div className={styles.buttons}>
-        <button className={styles.btn} onClick={() => navigate(-1)}>
-          &larr; Back
-        </button>
         <button className={styles.btn}>Add trip</button>
       </div>
     </form>
