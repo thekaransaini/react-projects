@@ -60,13 +60,9 @@ export default function Map() {
 function ChangeView({ position }) {
   const map = useMap();
 
-  useEffect(
-    () => {
-      map.flyTo(position);
-    },
-    [map, position],
-    6,
-  );
+  useEffect(() => {
+    map.flyTo(position, 6);
+  }, [map, position]);
 
   return null;
 }

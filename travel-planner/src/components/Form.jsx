@@ -162,14 +162,11 @@ export default function Form() {
         </div>
 
         <div className={styles.row}>
-          <label htmlFor="endDate">
-            Return date
-            {`${endDate <= startDate ? "(Date must be after departure date)" : ""}`}
-          </label>
+          <label htmlFor="endDate">Return date</label>
           <DatePicker
             dateFormat="dd/MM/yyyy"
             selected={endDate}
-            onChange={(date) => setEndDate(date <= startDate ? "" : date)}
+            onChange={(date) => setEndDate(date)}
           />
         </div>
         <div className={styles.row}>
@@ -197,7 +194,6 @@ export default function Form() {
           <input
             id="cityName"
             placeholder="Delhi"
-            required
             onChange={(e) => setCityName(e.target.value)}
             value={cityName}
           />

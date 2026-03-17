@@ -6,8 +6,154 @@
       "email": "karan@mail.com"
     }
   ],
-  "trips": [],
-  "cities": [],
+  "trips": [
+    {
+      "id": "e29b",
+      "userId": 1,
+      "tripName": "My India trip",
+      "baseCurrency": "INR",
+      "startDate": "2026-03-17T03:32:45.005Z",
+      "endDate": "2026-03-20T03:32:45.000Z"
+    },
+    {
+      "id": "0dbc",
+      "userId": 1,
+      "tripName": "My international trip",
+      "baseCurrency": "INR",
+      "startDate": "2026-03-17T03:33:37.532Z",
+      "endDate": "2026-04-04T03:33:37.000Z"
+    },
+    {
+      "id": "36f8",
+      "userId": 1,
+      "tripName": "My first trip of the year",
+      "baseCurrency": "INR",
+      "startDate": "2026-03-17T03:34:57.404Z",
+      "endDate": "2026-04-01T03:34:57.000Z"
+    }
+  ],
+  "cities": [
+    {
+      "id": "6d52",
+      "tripId": "e29b",
+      "cityName": "Leh",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 33.979089973028884,
+      "lng": 77.26038152332877,
+      "order": 1
+    },
+    {
+      "id": "2fdf",
+      "tripId": "e29b",
+      "cityName": "Bhesan",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 21.564153633238583,
+      "lng": 70.77309228724431,
+      "order": 2
+    },
+    {
+      "id": "25d7",
+      "tripId": "e29b",
+      "cityName": "Sattur",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 9.257855998084853,
+      "lng": 77.87678633671975,
+      "order": 3
+    },
+    {
+      "id": "1900",
+      "tripId": "e29b",
+      "cityName": "Goghat I",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 22.91109631891789,
+      "lng": 87.73867846732654,
+      "order": 4
+    },
+    {
+      "id": "2229",
+      "tripId": "0dbc",
+      "cityName": "Ust’-Ilimskiy Rayon",
+      "country": "Russian Federation (the)",
+      "countryCode": "RU",
+      "lat": 57.22981679086837,
+      "lng": 102.40995736171449,
+      "order": 1
+    },
+    {
+      "id": "4f64",
+      "tripId": "0dbc",
+      "cityName": "Ankang",
+      "country": "China",
+      "countryCode": "CN",
+      "lat": 33.09319280098817,
+      "lng": 109.71190186706032,
+      "order": 2
+    },
+    {
+      "id": "7cdc",
+      "tripId": "0dbc",
+      "cityName": "Kecamatan Seribu Riam",
+      "country": "Indonesia",
+      "countryCode": "ID",
+      "lat": -0.14120289531537844,
+      "lng": 113.99101945595743,
+      "order": 3
+    },
+    {
+      "id": "73e7",
+      "tripId": "0dbc",
+      "cityName": "San Fernando",
+      "country": "Philippines (the)",
+      "countryCode": "PH",
+      "lat": 7.7075434786457535,
+      "lng": 125.40225856009859,
+      "order": 4
+    },
+    {
+      "id": "d376",
+      "tripId": "36f8",
+      "cityName": "Foggaret Ezzaou",
+      "country": "Algeria",
+      "countryCode": "DZ",
+      "lat": 27.17819365838952,
+      "lng": 2.818742338085199,
+      "order": 1
+    },
+    {
+      "id": "b044",
+      "tripId": "36f8",
+      "cityName": "Banamba",
+      "country": "Mali",
+      "countryCode": "ML",
+      "lat": 14.059450356689746,
+      "lng": -7.655209461187265,
+      "order": 2
+    },
+    {
+      "id": "f706",
+      "tripId": "36f8",
+      "cityName": "N’Zecrezessou",
+      "country": "Cote d'Ivoire",
+      "countryCode": "CI",
+      "lat": 7.047570722343526,
+      "lng": -4.302455421056513,
+      "order": 3
+    },
+    {
+      "id": "469f",
+      "tripId": "36f8",
+      "cityName": "Maru",
+      "country": "Nigeria",
+      "countryCode": "NG",
+      "lat": 12.375775066084005,
+      "lng": 6.275879879726381,
+      "order": 4
+    }
+  ],
   "expenses": [
     {
       "id": "1",
