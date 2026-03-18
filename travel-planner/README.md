@@ -1,16 +1,109 @@
-# React + Vite
+# 🌍 Travel Planner App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern **Travel Planner web application** built with React that helps users plan trips, manage destinations, and visualize their journey on an interactive map.
 
-Currently, two official plugins are available:
+> 🚧 **Status: Ongoing Project** – New features like Journal, Expense Tracker, and Packing List are currently in development.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- 🧳 Create and manage trips
+- 📍 Add multiple cities to a trip
+- 🗺️ Interactive map visualization using Leaflet
+- ➡️ Route display with polylines between cities
+- 📅 Trip date management
+- 🗑️ Delete trips along with associated cities
+- ⚡ Centralized state management using Context API + useReducer
+- 🔄 Real-time UI updates (without refresh)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📸 Preview
+
+![App Screenshot](./demo/app-demo.png)
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React, JavaScript, HTML, CSS
+- **State Management:** Context API + useReducer
+- **Routing:** React Router
+- **Maps:** Leaflet + React-Leaflet
+- **Backend (Mock API):** JSON Server
+
+---
+
+## 🧠 Key Learnings
+
+- Managing complex state with **useReducer**
+- Structuring scalable apps using **Context API**
+- Handling async operations & API integration
+- Working with map libraries and geolocation data
+- Implementing clean component architecture
+
+---
+
+## 🚀 Upcoming Features
+
+- 📝 Trip Journal
+- 💸 Expense Tracker (per trip)
+- 🎒 Packing List
+- 📱 Responsive Design
+- ✏️ Edit Trip & Cities (planned)
+
+---
+
+## 📂 Project Structure
+
+```
+src/
+ ├── components/
+ ├── pages/
+ ├── context/
+ ├── hooks/
+```
+
+---
+
+## ⚙️ Installation & Setup
+
+```bash
+# Clone the repo
+git clone https://github.com/your-username/travel-planner.git
+
+# Go to project folder
+cd travel-planner
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Run JSON server (mock backend)
+npm run server
+```
+
+---
+
+## 📌 Future Improvements
+
+- Better error handling
+- Optimized performance
+- Improved UX/UI
+- Backend integration (Node.js / Firebase)
+
+---
+
+## 🙌 Author
+
+**Karan Saini**  
+Frontend Developer (React)
+
+---
+
+## ⭐ Note
+
+This project is actively being improved as part of my learning journey in frontend development.
