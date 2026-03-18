@@ -14,8 +14,6 @@ A modern React application that allows users to search movies, explore detailed 
 
 ![Movie Watchlist Screenshot](./demo/app-demo.png)
 
-> 💡 Replace `screenshot.png` with your actual screenshot file or use an image URL.
-
 ---
 
 ## 🚀 Features
