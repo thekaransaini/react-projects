@@ -24,12 +24,12 @@ export default function Trip() {
 
   if (isLoading) return <Loader />;
   if (!trip) return <ErrorMsg message={error} />;
-  const { tripName, startDate, endDate } = trip;
+  const { tripName, startDate, endDate, id } = trip;
 
   return (
     <div className={styles.trip}>
-      <Link className={styles.btn}>
-        <i class="fa-solid fa-suitcase-rolling"></i>{" "}
+      <Link className={styles.btn} to={`/app/trips/${id}/packing`}>
+        <i className="fa-solid fa-suitcase-rolling"></i>
       </Link>
       <header className={styles.tripHeader}>
         <span className={styles.flex}>

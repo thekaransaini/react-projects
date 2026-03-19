@@ -9,6 +9,7 @@ import TripList from "../components/TripList";
 import Trip from "../components/Trip";
 import City from "../components/City";
 import Form from "../components/Form";
+import PackingList from "../pages/PackingList";
 
 export default function AppRoutes() {
   return (
@@ -23,6 +24,7 @@ export default function AppRoutes() {
         <Route path="trips/:tripId" element={<Trip />}>
           <Route path="cities/:cityId" element={<City />} />
         </Route>
+        <Route path="trips/:tripId/packing" element={<PackingList />} />
         <Route path="form" element={<Form />} />
       </Route>
       <Route path="*" element={<NotFound />} />
