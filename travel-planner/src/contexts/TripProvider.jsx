@@ -62,6 +62,12 @@ function reducer(state, action) {
         ),
         isLoading: false,
       };
+    case "deletePackingItem":
+      return {
+        ...state,
+        packingList: state.packingList.filter((item) => item.id !== payload),
+        isLoading: false,
+      };
     default:
       throw new Error("Action unknown!");
   }
@@ -239,6 +245,25 @@ function TripProvider({ children }) {
     }
   }
 
+  async function deletePackingItem(id) {
+    try {
+      dispatch({ type: "loading" });
+      const res = await fetch(`${BASE_URL}/packingItems/${id}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+
+      dispatch({ type: "deletePackingItem", payload: id });
+      console.log(res);
+      console.log(data);
+    } catch {
+      dispatch({
+        type: "error",
+        payload: "There was an error in deleting the packing item...",
+      });
+    }
+  }
+
   return (
     <TripContext.Provider
       value={{
@@ -253,6 +278,7 @@ function TripProvider({ children }) {
         deleteTrip,
         createPackingItem,
         updatePackingItem,
+        deletePackingItem,
       }}
     >
       {children}

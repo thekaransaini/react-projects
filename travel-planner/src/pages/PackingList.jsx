@@ -3,8 +3,14 @@ import styles from "./PackingList.module.css";
 import useTrip from "../hooks/useTrip";
 
 export default function PackingList() {
-  const { trip, cities, packingList, createPackingItem, updatePackingItem } =
-    useTrip();
+  const {
+    trip,
+    cities,
+    packingList,
+    createPackingItem,
+    updatePackingItem,
+    deletePackingItem,
+  } = useTrip();
   const [quantity, setQuantity] = useState(1);
   const [item, setItem] = useState("");
   const [packed, setPacked] = useState(false);
@@ -31,6 +37,11 @@ export default function PackingList() {
     e.preventDefault();
     setPacked(e.target.checked);
     await updatePackingItem(e.target.checked, id);
+  }
+
+  async function handleDelete(e, id) {
+    e.preventDefault();
+    await deletePackingItem(id);
   }
 
   const cityNameList = cities
@@ -93,7 +104,9 @@ export default function PackingList() {
                   <span className={item.packed ? styles.packed : ""}>
                     {item.quantity} {item.itemName}
                   </span>
-                  <button>&times;</button>
+                  <button onClick={(e) => handleDelete(e, item.id)}>
+                    &times;
+                  </button>
                 </div>
               </li>
             ))}
