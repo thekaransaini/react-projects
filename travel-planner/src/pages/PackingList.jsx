@@ -15,11 +15,11 @@ export default function PackingList() {
   const [quantity, setQuantity] = useState(1);
   const [item, setItem] = useState("");
   const [packed, setPacked] = useState(false);
-
   const packedItems = packingList.filter((item) => item.packed === true).length;
   const packedItemPercent = Math.round(
     (packedItems / packingList.length) * 100,
   );
+  const cityList = cities.filter((city) => city.tripId === trip.id);
 
   async function handleAdd(e) {
     e.preventDefault();
@@ -45,10 +45,6 @@ export default function PackingList() {
     e.preventDefault();
     await deletePackingItem(id);
   }
-
-  const cityNameList = cities
-    .filter((city) => city.tripId === trip.id)
-    .map((city) => city.cityName);
 
   return (
     <div className={styles.packingListContainer}>
@@ -89,10 +85,17 @@ export default function PackingList() {
         </form>
         <div className={styles.packingListContent}>
           <h2>{trip?.tripName}</h2>
-          {cityNameList.map((cityName, i) => (
+          {cityList.map((city, i) => (
             <>
-              <span key={i}>{cityName}&nbsp;</span>
-              {cityNameList.length - 1 !== i && (
+              <span key={city.id}>
+                {city.cityName}&nbsp;&nbsp;
+                <img
+                  src={`https://flagcdn.com/16x12/${city.countryCode.toLowerCase()}.png`}
+                  alt={`Image of ${city.country} flag`}
+                />
+                &nbsp;
+              </span>
+              {cityList.length - 1 !== i && (
                 <span key={i + 1}>&rarr;&nbsp;</span>
               )}
             </>
@@ -113,13 +116,6 @@ export default function PackingList() {
                 </button>
               </li>
             ))}
-            {/* <li>
-              <div className={styles.listItem}>
-                <input type="checkbox" value={true} />
-                <span>1 Passport</span>
-                <button>&times;</button>
-              </div>
-            </li> */}
           </ul>
         </div>
       </main>
