@@ -184,25 +184,46 @@
   ],
   "packingItems": [
     {
-      "id": "1",
-      "tripId": 1,
-      "item": "Passport",
+      "id": "63d6",
+      "tripId": "e29b",
+      "itemName": "Charger",
       "quantity": 1,
-      "packed": true
-    },
-    {
-      "id": "2",
-      "tripId": 1,
-      "item": "Aadhar card",
-      "quantity": 1,
-      "packed": true
-    },
-    {
-      "id": "3",
-      "tripId": 1,
-      "item": "white shirts",
-      "quantity": 2,
       "packed": false
+    },
+    {
+      "id": "40ba",
+      "tripId": "e29b",
+      "itemName": "Pants",
+      "quantity": "5",
+      "packed": false
+    },
+    {
+      "id": "0082",
+      "tripId": "e29b",
+      "itemName": "Laptop",
+      "quantity": 1,
+      "packed": false
+    },
+    {
+      "id": "62d0",
+      "tripId": "0dbc",
+      "itemName": "Phone",
+      "quantity": 1,
+      "packed": true
+    },
+    {
+      "id": "0045",
+      "tripId": "0dbc",
+      "itemName": "Laptop",
+      "quantity": 1,
+      "packed": true
+    },
+    {
+      "id": "0211",
+      "tripId": "0dbc",
+      "itemName": "Charger",
+      "quantity": "2",
+      "packed": true
     }
   ],
   "journals": [

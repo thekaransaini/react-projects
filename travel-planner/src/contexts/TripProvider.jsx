@@ -7,6 +7,7 @@ const initialState = {
   error: "",
   trips: [],
   trip: null,
+  packingList: [],
   cities: [],
 };
 
@@ -25,6 +26,7 @@ function reducer(state, action) {
         ...state,
         trip: payload.trip,
         cities: payload.cities,
+        packingList: payload.packingList,
         isLoading: false,
       };
     case "newTripCreated":
@@ -46,6 +48,20 @@ function reducer(state, action) {
         cities: state.cities.filter((city) => city.tripId !== payload),
         isLoading: false,
       };
+    case "newPackingItemCreated":
+      return {
+        ...state,
+        packingList: [...state.packingList, payload],
+        isLoading: false,
+      };
+    case "updatePackingItem":
+      return {
+        ...state,
+        packingList: state.packingList.map((item) =>
+          item.id === payload.id ? { ...item, packed: payload.packed } : item,
+        ),
+        isLoading: false,
+      };
     default:
       throw new Error("Action unknown!");
   }
@@ -53,7 +69,7 @@ function reducer(state, action) {
 
 function TripProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { trips, trip, cities, isLoading, error } = state;
+  const { trips, trip, cities, isLoading, error, packingList } = state;
 
   useEffect(() => {
     async function fetchTrips() {
@@ -85,9 +101,15 @@ function TripProvider({ children }) {
       const cityRes = await fetch(`${BASE_URL}/cities?tripId=${id}`);
       const selectedCities = await cityRes.json();
 
+      const packingListRes = await fetch(
+        `${BASE_URL}/packingItems?tripId=${id}`,
+      );
+      const packingList = await packingListRes.json();
+      // console.log(packingListRes);
+      // console.log(packingList);
       dispatch({
         type: "tripDataReceived",
-        payload: { trip, cities: selectedCities },
+        payload: { trip, cities: selectedCities, packingList: packingList },
       });
     } catch {
       dispatch({
@@ -163,17 +185,74 @@ function TripProvider({ children }) {
     }
   }
 
+  async function createPackingItem(id, item) {
+    try {
+      dispatch({ type: "loading" });
+      const res = await fetch(`${BASE_URL}/packingItems`, {
+        method: "POST",
+        body: JSON.stringify({
+          tripId: id,
+          itemName: item.itemName,
+          quantity: item.quantity,
+          packed: item.packed,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+
+      dispatch({ type: "newPackingItemCreated", payload: data });
+      // console.log(res);
+      // console.log(data);
+      // console.log(packingList);
+    } catch {
+      dispatch({
+        type: "error",
+        payload: "There was an error in creating the packing item...",
+      });
+    }
+  }
+
+  async function updatePackingItem(packed, id) {
+    console.log("triprovider", id, packed);
+    try {
+      dispatch({ type: "loading" });
+      const res = await fetch(`${BASE_URL}/packingItems/${id}`, {
+        method: "PATCH",
+        body: JSON.stringify({
+          packed: packed,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      console.log(res);
+      console.log(data);
+      dispatch({ type: "updatePackingItem", payload: { id, packed } });
+    } catch {
+      dispatch({
+        type: "error",
+        payload: "There was an error in updating the packing item...",
+      });
+    }
+  }
+
   return (
     <TripContext.Provider
       value={{
         trips,
         trip,
         cities,
+        packingList,
         getCurrentTrip,
         isLoading,
         error,
         createTrip,
         deleteTrip,
+        createPackingItem,
+        updatePackingItem,
       }}
     >
       {children}

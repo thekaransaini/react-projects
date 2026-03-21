@@ -1,6 +1,42 @@
+import { useState } from "react";
 import styles from "./PackingList.module.css";
+import useTrip from "../hooks/useTrip";
 
 export default function PackingList() {
+  const { trip, cities, packingList, createPackingItem, updatePackingItem } =
+    useTrip();
+  const [quantity, setQuantity] = useState(1);
+  const [item, setItem] = useState("");
+  const [packed, setPacked] = useState(false);
+
+  const packedItems = packingList.filter((item) => item.packed === true).length;
+  const packedItemPercent = Math.round(
+    (packedItems / packingList.length) * 100,
+  );
+
+  async function handleAdd(e) {
+    e.preventDefault();
+    const packingItem = {
+      itemName: item,
+      quantity,
+      packed,
+    };
+    await createPackingItem(trip.id, packingItem);
+    setItem("");
+    setQuantity(1);
+  }
+
+  async function handleUpdate(e, id) {
+    console.log("packinglist", id, e.target.checked);
+    e.preventDefault();
+    setPacked(e.target.checked);
+    await updatePackingItem(e.target.checked, id);
+  }
+
+  const cityNameList = cities
+    .filter((city) => city.tripId === trip.id)
+    .map((city) => city.cityName);
+
   return (
     <div className={styles.packingListContainer}>
       <header className={styles.header}>
@@ -12,37 +48,89 @@ export default function PackingList() {
             <h2>What do you need for your trip ✈️?</h2>
           </div>
           <div className={styles.row}>
-            <select name="" id="">
+            <select
+              value={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
+            >
               {Array.from({ length: 20 }, (_, i) => (
-                <option value={i + 1}>{i + 1}</option>
+                <option value={i + 1} key={i + 1}>
+                  {i + 1}
+                </option>
               ))}
             </select>
           </div>
           <div className={styles.row}>
-            <input type="text" placeholder="Item..." />
+            <input
+              type="text"
+              placeholder="Item..."
+              value={item}
+              onChange={(e) => setItem(e.target.value)}
+            />
           </div>
           <div className={styles.row}>
-            <button>Add</button>
+            <button onClick={(e) => handleAdd(e)}>Add</button>
           </div>
         </form>
         <div className={styles.packingListContent}>
-          <h2>Trip Name</h2>
-          <p>city1 &rarr; city2 &rarr; city3 &rarr; city4</p>
+          <h2>{trip?.tripName}</h2>
+          {cityNameList.map((cityName, i) => (
+            <>
+              <span key={i}>{cityName}&nbsp;</span>
+              {cityNameList.length - 1 !== i && (
+                <span key={i + 1}>&rarr;&nbsp;</span>
+              )}
+            </>
+          ))}
           <ul>
-            <li>
+            {packingList.map((item) => (
+              <li key={item.id}>
+                <div className={styles.listItem}>
+                  <input
+                    type="checkbox"
+                    checked={item.packed}
+                    onChange={(e) => handleUpdate(e, item.id)}
+                  />
+                  <span className={item.packed ? styles.packed : ""}>
+                    {item.quantity} {item.itemName}
+                  </span>
+                  <button>&times;</button>
+                </div>
+              </li>
+            ))}
+            {/* <li>
               <div className={styles.listItem}>
-                <input type="checkbox" />
+                <input type="checkbox" value={true} />
                 <span>1 Passport</span>
                 <button>&times;</button>
               </div>
-            </li>
+            </li> */}
           </ul>
         </div>
       </main>
       <footer className={styles.footer}>
-        <p>Items: 2 / 30</p>
-        <progress className={styles.progress} value={30} max={100}></progress>
-        <p>(30%)</p>
+        {packingList.length === 0 ? (
+          <p>
+            <em>Start adding some items to your packing list 🚀</em>
+          </p>
+        ) : packedItemPercent === 100 ? (
+          <p>
+            <em>You got everything! Ready to go ✈️</em>
+          </p>
+        ) : (
+          <>
+            <p>
+              Items: {packedItems} / {packingList.length}
+            </p>
+            <div className={styles.progressContainer}>
+              <progress
+                className={styles.progress}
+                value={packedItems}
+                max={packingList.length}
+              ></progress>
+            </div>
+            <p>({packedItemPercent}%)</p>
+          </>
+        )}
       </footer>
     </div>
   );
