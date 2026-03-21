@@ -50,6 +50,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
+  gap: 1.4rem;
   height: 30rem;
   margin-top: 2rem;
   padding: 0 5rem;
@@ -67,6 +68,12 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  width: 80%;
+  height: 82%;
+  background-color: #f4a226;
+  color: var(--color-dark--1);
+  padding: 1rem 2rem;
+  border-radius: 10rem;
 }
 
 .packingListContent input[type="checkbox"] {
@@ -87,17 +94,6 @@
   font-weight: 400;
   cursor: pointer;
   transition: all 0.2s;
-}
-
-.listItem {
-  background-color: #f4a226;
-  color: var(--color-dark--1);
-  padding: 1rem 2rem;
-  border-radius: 10rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
 }
 
 .footer {

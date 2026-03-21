@@ -22,6 +22,7 @@ export default function PackingList() {
 
   async function handleAdd(e) {
     e.preventDefault();
+    if (!item) return;
     const packingItem = {
       itemName: item,
       quantity,
@@ -95,19 +96,17 @@ export default function PackingList() {
           <ul>
             {packingList.map((item) => (
               <li key={item.id}>
-                <div className={styles.listItem}>
-                  <input
-                    type="checkbox"
-                    checked={item.packed}
-                    onChange={(e) => handleUpdate(e, item.id)}
-                  />
-                  <span className={item.packed ? styles.packed : ""}>
-                    {item.quantity} {item.itemName}
-                  </span>
-                  <button onClick={(e) => handleDelete(e, item.id)}>
-                    &times;
-                  </button>
-                </div>
+                <input
+                  type="checkbox"
+                  checked={item.packed}
+                  onChange={(e) => handleUpdate(e, item.id)}
+                />
+                <span className={item.packed ? styles.packed : ""}>
+                  {item.quantity} {item.itemName}
+                </span>
+                <button onClick={(e) => handleDelete(e, item.id)}>
+                  &times;
+                </button>
               </li>
             ))}
             {/* <li>
