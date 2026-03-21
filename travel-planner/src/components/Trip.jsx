@@ -47,7 +47,9 @@ export default function Trip() {
       </header>
       <CityList />
       <footer className={styles.tripFooter}>
-        <Link className={styles.link}>Track Expenses</Link>
+        <Link className={styles.link} to={`/app/trips/${id}/expenses`}>
+          Track Expenses
+        </Link>
         <Link className={styles.link}>Journal</Link>
       </footer>
     </div>

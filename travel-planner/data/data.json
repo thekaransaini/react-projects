@@ -156,28 +156,29 @@
   ],
   "expenses": [
     {
-      "id": "1",
-      "tripId": 1,
+      "id": "ab",
+      "tripId": "e29b",
       "item": "Flight ticket",
       "quantity": 1,
-      "price": 500,
+      "rate": 500,
       "currency": "INR",
       "category": "Transport"
     },
     {
-      "id": "2",
-      "tripId": 1,
+      "id": "bs",
+      "tripId": "e29b",
       "item": "Hotel rooms",
       "quantity": 1,
-      "price": 1500,
+      "rate": 1500,
       "currency": "INR",
       "category": "Accommodation"
     },
     {
-      "id": "3",
-      "tripId": 1,
+      "id": "cd",
+      "tripId": "e29b",
       "item": "Sky diving",
-      "price": 3000,
+      "quantity": 1,
+      "rate": 3000,
       "currency": "INR",
       "category": "Activity"
     }
