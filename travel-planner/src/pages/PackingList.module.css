@@ -4,15 +4,21 @@
 }
 
 .header {
+  padding: 2rem;
   margin-bottom: 2rem;
   background-color: #f4a226;
   color: var(--color-dark--1);
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .header h1 {
   font-size: 5rem;
   text-transform: uppercase;
-  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .packingListForm {
@@ -140,4 +146,19 @@
 
 .packed {
   text-decoration: line-through;
+}
+
+.backBtn {
+  background-color: #54595f;
+  color: #e0e0e0;
+  text-decoration: none;
+  font-size: 2rem;
+  height: 4rem;
+  width: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
 }

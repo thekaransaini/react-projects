@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./PackingList.module.css";
 import useTrip from "../hooks/useTrip";
+import { Link } from "react-router-dom";
 
 export default function PackingList() {
   const {
@@ -52,6 +53,9 @@ export default function PackingList() {
   return (
     <div className={styles.packingListContainer}>
       <header className={styles.header}>
+        <Link className={styles.backBtn} to={`/app/trips/${trip.id}`}>
+          <i className="fa-solid fa-left-long"></i>
+        </Link>
         <h1>Packing List 🧳</h1>
       </header>
       <main>
