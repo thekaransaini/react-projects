@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 const BASE_URL_CURRENCY = "https://api.frankfurter.dev/v1/currencies";
 
 export default function Expenses() {
-  const { trip, cities, expenses, formattedTotalTripExpense } = useTrip();
+  const { trip, cities, expenses, createExpense, formattedTotalTripExpense } =
+    useTrip();
   const [currencyList, setCurrencyList] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -35,6 +36,25 @@ export default function Expenses() {
     }
     fetchCurrencyList();
   }, []);
+
+  async function handleAdd(e) {
+    e.preventDefault();
+    if (!item) return;
+    const expense = {
+      itemName: item,
+      quantity: Number(quantity),
+      rate: Number(rate),
+      currency,
+      category,
+    };
+    console.log(expense);
+    await createExpense(trip.id, expense);
+    setItem("");
+    setQuantity(1);
+    setRate("");
+    setCurrency("");
+    setCategory("");
+  }
 
   return (
     <div className={styles.expensesContainer}>
@@ -105,7 +125,7 @@ export default function Expenses() {
             </select>
           </div>
           <div className={styles.row}>
-            <button>Add</button>
+            <button onClick={(e) => handleAdd(e)}>Add</button>
           </div>
         </form>
 
@@ -150,7 +170,7 @@ export default function Expenses() {
                       <td>{expense.category}</td>
                       <td>{expense.quantity}</td>
                       <td>
-                        {expense.rate.toLocaleString("en-IN", {
+                        {Number(expense.rate).toLocaleString("en-IN", {
                           style: "currency",
                           currency: expense.currency,
                           minimumFractionDigits: Number.isInteger(expense.rate)
@@ -159,7 +179,7 @@ export default function Expenses() {
                         })}
                       </td>
                       <td>
-                        {(expense.rate * expense.quantity).toLocaleString(
+                        {Number(expense.rate * expense.quantity).toLocaleString(
                           "en-IN",
                           {
                             style: "currency",

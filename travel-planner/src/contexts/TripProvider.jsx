@@ -70,6 +70,12 @@ function reducer(state, action) {
         packingList: state.packingList.filter((item) => item.id !== payload),
         isLoading: false,
       };
+    case "newExpenseCreated":
+      return {
+        ...state,
+        expenses: [...state.expenses, payload],
+        isLoading: false,
+      };
     default:
       throw new Error("Action unknown!");
   }
@@ -118,7 +124,7 @@ function TripProvider({ children }) {
   }, [trip]);
 
   const totalTripExpense = expenses.reduce((acc, expense) => {
-    const totalItemPrice = expense.quantity * expense.rate;
+    const totalItemPrice = Number(expense.quantity) * Number(expense.rate);
     const convertedTotalItemPrice =
       trip.baseCurrency === expense.currency
         ? totalItemPrice
@@ -305,6 +311,34 @@ function TripProvider({ children }) {
     }
   }
 
+  async function createExpense(id, expense) {
+    try {
+      dispatch({ type: "loading" });
+      const res = await fetch(`${BASE_URL}/expenses`, {
+        method: "POST",
+        body: JSON.stringify({
+          tripId: id,
+          itemName: expense.itemName,
+          quantity: expense.quantity,
+          rate: expense.rate,
+          currency: expense.currency,
+          category: expense.category,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+
+      dispatch({ type: "newExpenseCreated", payload: data });
+    } catch {
+      dispatch({
+        type: "error",
+        payload: "There was an error in creating the packing item...",
+      });
+    }
+  }
+
   return (
     <TripContext.Provider
       value={{
@@ -321,6 +355,7 @@ function TripProvider({ children }) {
         createPackingItem,
         updatePackingItem,
         deletePackingItem,
+        createExpense,
         formattedTotalTripExpense,
       }}
     >
