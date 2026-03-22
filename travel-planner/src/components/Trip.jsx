@@ -16,7 +16,8 @@ const formatDate = (date) =>
 
 export default function Trip() {
   const { tripId } = useParams();
-  const { trip, getCurrentTrip, isLoading, error } = useTrip();
+  const { trip, getCurrentTrip, isLoading, error, formattedTotalTripExpense } =
+    useTrip();
 
   useEffect(() => {
     getCurrentTrip(tripId);
@@ -42,7 +43,7 @@ export default function Trip() {
           <span>📅</span> {formatDate(startDate)} – {formatDate(endDate)}
         </p>
         <p className={styles.tripCurrency}>
-          <span>💸</span> Expense: 10000 INR
+          <span>💸</span> Expense: {formattedTotalTripExpense}
         </p>
       </header>
       <CityList />

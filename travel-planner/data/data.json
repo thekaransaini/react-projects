@@ -19,7 +19,7 @@
       "id": "0dbc",
       "userId": 1,
       "tripName": "My international trip",
-      "baseCurrency": "INR",
+      "baseCurrency": "USD",
       "startDate": "2026-03-17T03:33:37.532Z",
       "endDate": "2026-04-04T03:33:37.000Z"
     },
@@ -158,29 +158,83 @@
     {
       "id": "ab",
       "tripId": "e29b",
-      "item": "Flight ticket",
+      "itemName": "Flight ticket",
       "quantity": 1,
       "rate": 500,
       "currency": "INR",
-      "category": "Transport"
+      "category": "🚕 Transport"
     },
     {
       "id": "bs",
       "tripId": "e29b",
-      "item": "Hotel rooms",
+      "itemName": "Hotel rooms",
       "quantity": 1,
       "rate": 1500,
-      "currency": "INR",
-      "category": "Accommodation"
+      "currency": "CNY",
+      "category": "🏨 Accommodation"
     },
     {
-      "id": "cd",
+      "id": "ef",
       "tripId": "e29b",
-      "item": "Sky diving",
+      "itemName": "Sky diving",
       "quantity": 1,
       "rate": 3000,
       "currency": "INR",
-      "category": "Activity"
+      "category": "🎟️ Activities"
+    },
+    {
+      "id": "gh",
+      "tripId": "0dbc",
+      "itemName": "Taxi",
+      "quantity": 1,
+      "rate": 500,
+      "currency": "INR",
+      "category": "🚕 Transport"
+    },
+    {
+      "id": "ij",
+      "tripId": "0dbc",
+      "itemName": "Hotel rooms",
+      "quantity": 1,
+      "rate": 1500,
+      "currency": "CNY",
+      "category": "🏨 Accommodation"
+    },
+    {
+      "id": "kl",
+      "tripId": "0dbc",
+      "itemName": "Museum",
+      "quantity": 1,
+      "rate": 3000,
+      "currency": "INR",
+      "category": "🎟️ Activities"
+    },
+    {
+      "id": "mn",
+      "tripId": "0dbc",
+      "itemName": "Bus",
+      "quantity": 1,
+      "rate": 500,
+      "currency": "INR",
+      "category": "🚕 Transport"
+    },
+    {
+      "id": "op",
+      "tripId": "0dbc",
+      "itemName": "Sleeping room",
+      "quantity": 1,
+      "rate": 1500,
+      "currency": "CNY",
+      "category": "🏨 Accommodation"
+    },
+    {
+      "id": "qr",
+      "tripId": "0dbc",
+      "itemName": "Massage",
+      "quantity": 1,
+      "rate": 3000,
+      "currency": "INR",
+      "category": "🎟️ Activities"
     }
   ],
   "packingItems": [],

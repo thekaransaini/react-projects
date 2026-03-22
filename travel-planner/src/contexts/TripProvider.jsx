@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useEffect, useReducer, useState } from "react";
 
 const TripContext = createContext();
 const BASE_URL = "http://localhost:8000";
@@ -8,6 +8,7 @@ const initialState = {
   trips: [],
   trip: null,
   packingList: [],
+  expenses: [],
   cities: [],
 };
 
@@ -27,6 +28,7 @@ function reducer(state, action) {
         trip: payload.trip,
         cities: payload.cities,
         packingList: payload.packingList,
+        expenses: payload.expenses,
         isLoading: false,
       };
     case "newTripCreated":
@@ -75,7 +77,9 @@ function reducer(state, action) {
 
 function TripProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { trips, trip, cities, isLoading, error, packingList } = state;
+  const { trips, trip, cities, isLoading, error, packingList, expenses } =
+    state;
+  const [currencyRates, setCurrencyRates] = useState({});
 
   useEffect(() => {
     async function fetchTrips() {
@@ -97,6 +101,37 @@ function TripProvider({ children }) {
     fetchTrips();
   }, []);
 
+  useEffect(() => {
+    async function fetchCurrencyRates() {
+      if (!trip?.id) return;
+      try {
+        const res = await fetch(
+          `https://api.frankfurter.dev/v1/latest?base=${trip.baseCurrency}`,
+        );
+        const data = await res.json();
+        setCurrencyRates(data.rates);
+      } catch (err) {
+        console.log(err.message);
+      }
+    }
+    fetchCurrencyRates();
+  }, [trip]);
+
+  const totalTripExpense = expenses.reduce((acc, expense) => {
+    const totalItemPrice = expense.quantity * expense.rate;
+    const convertedTotalItemPrice =
+      trip.baseCurrency === expense.currency
+        ? totalItemPrice
+        : totalItemPrice / currencyRates[expense.currency];
+    return acc + convertedTotalItemPrice;
+  }, 0);
+
+  const formattedTotalTripExpense = totalTripExpense.toLocaleString("en-IN", {
+    style: "currency",
+    currency: trip?.baseCurrency || "INR",
+    minimumFractionDigits: 2,
+  });
+
   async function getCurrentTrip(id) {
     try {
       dispatch({ type: "loading" });
@@ -113,9 +148,15 @@ function TripProvider({ children }) {
       const packingList = await packingListRes.json();
       // console.log(packingListRes);
       // console.log(packingList);
+
+      const expensesRes = await fetch(`${BASE_URL}/expenses?tripId=${id}`);
+      const expenses = await expensesRes.json();
+      // console.log(expensesRes);
+      // console.log(expenses);
+
       dispatch({
         type: "tripDataReceived",
-        payload: { trip, cities: selectedCities, packingList: packingList },
+        payload: { trip, cities: selectedCities, packingList, expenses },
       });
     } catch {
       dispatch({
@@ -271,6 +312,7 @@ function TripProvider({ children }) {
         trip,
         cities,
         packingList,
+        expenses,
         getCurrentTrip,
         isLoading,
         error,
@@ -279,6 +321,7 @@ function TripProvider({ children }) {
         createPackingItem,
         updatePackingItem,
         deletePackingItem,
+        formattedTotalTripExpense,
       }}
     >
       {children}

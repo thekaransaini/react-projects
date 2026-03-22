@@ -1,7 +1,7 @@
 import styles from "./AppLayout.module.css";
 import Sidebar from "../components/Sidebar";
 import Map from "../components/Map";
-import { Outlet, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import PackingList from "./PackingList";
 import Expenses from "./Expenses";
 
