@@ -1,0 +1,23 @@
+.citySearch {
+  width: 40rem;
+  max-width: 90%;
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+.citySearch input {
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 10rem;
+  padding: 1rem 2rem;
+  backdrop-filter: blur(6px);
+  transition: all 0.2s ease;
+}
+
+.citySearch input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #76c7ad;
+}

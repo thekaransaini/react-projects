@@ -12,6 +12,7 @@ import {
 } from "react-leaflet";
 import Polyline from "./Polyline";
 import { useNavigate } from "react-router-dom";
+import CitySearch from "./CitySearch";
 
 const defaultPosition = [28.7041, 77.1025];
 
@@ -23,6 +24,7 @@ export default function Map() {
 
   return (
     <div className={styles.mapContainer}>
+      <CitySearch />
       <MapContainer
         center={mapPosition}
         zoom={6}
