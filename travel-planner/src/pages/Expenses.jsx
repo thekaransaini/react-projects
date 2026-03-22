@@ -6,8 +6,14 @@ import { Link } from "react-router-dom";
 const BASE_URL_CURRENCY = "https://api.frankfurter.dev/v1/currencies";
 
 export default function Expenses() {
-  const { trip, cities, expenses, createExpense, formattedTotalTripExpense } =
-    useTrip();
+  const {
+    trip,
+    cities,
+    expenses,
+    createExpense,
+    deleteExpense,
+    formattedTotalTripExpense,
+  } = useTrip();
   const [currencyList, setCurrencyList] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -54,6 +60,11 @@ export default function Expenses() {
     setRate("");
     setCurrency("");
     setCategory("");
+  }
+
+  async function handleDelete(e, id) {
+    e.preventDefault();
+    await deleteExpense(id);
   }
 
   return (
@@ -160,28 +171,19 @@ export default function Expenses() {
                     <th>Qty</th>
                     <th>Rate</th>
                     <th>Total</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {expenses.map((expense, i) => (
-                    <tr key={i + 1}>
-                      <td>{i + 1}</td>
-                      <td>{expense.itemName}</td>
-                      <td>{expense.category}</td>
-                      <td>{expense.quantity}</td>
-                      <td>
-                        {Number(expense.rate).toLocaleString("en-IN", {
-                          style: "currency",
-                          currency: expense.currency,
-                          minimumFractionDigits: Number.isInteger(expense.rate)
-                            ? 0
-                            : 2,
-                        })}
-                      </td>
-                      <td>
-                        {Number(expense.rate * expense.quantity).toLocaleString(
-                          "en-IN",
-                          {
+                    <>
+                      <tr key={i + 1}>
+                        <td>{i + 1}</td>
+                        <td>{expense.itemName}</td>
+                        <td>{expense.category}</td>
+                        <td>{expense.quantity}</td>
+                        <td>
+                          {Number(expense.rate).toLocaleString("en-IN", {
                             style: "currency",
                             currency: expense.currency,
                             minimumFractionDigits: Number.isInteger(
@@ -189,10 +191,28 @@ export default function Expenses() {
                             )
                               ? 0
                               : 2,
-                          },
-                        )}
-                      </td>
-                    </tr>
+                          })}
+                        </td>
+                        <td>
+                          {Number(
+                            expense.rate * expense.quantity,
+                          ).toLocaleString("en-IN", {
+                            style: "currency",
+                            currency: expense.currency,
+                            minimumFractionDigits: Number.isInteger(
+                              expense.rate,
+                            )
+                              ? 0
+                              : 2,
+                          })}
+                        </td>
+                        <td>
+                          <button onClick={(e) => handleDelete(e, expense.id)}>
+                            &times;
+                          </button>
+                        </td>
+                      </tr>
+                    </>
                   ))}
                 </tbody>
               </table>
