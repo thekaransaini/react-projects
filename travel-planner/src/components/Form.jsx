@@ -56,7 +56,6 @@ export default function Form() {
   async function handleSubmit(e) {
     e.preventDefault();
     const trip = {
-      userId: 1,
       tripName,
       baseCurrency,
       startDate,

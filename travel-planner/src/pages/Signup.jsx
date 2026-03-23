@@ -1,19 +1,43 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Signup.module.css";
+import useTrip from "../hooks/useTrip";
+import ErrorMsg from "../components/ErrorMsg";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Signup() {
-  const [username, setUsername] = useState("jack12");
-  const [email, setEmail] = useState("jack@example.com");
-  const [password, setPassword] = useState("qwerty");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { createUser, error, isAuthenticated, dispatch } = useTrip();
+  const navigate = useNavigate();
+
+  function handleAdd(e) {
+    e.preventDefault();
+    const user = {
+      username,
+      email,
+      password,
+    };
+    createUser(user);
+    setUsername("");
+    setEmail("");
+    setPassword("");
+  }
+
+  useEffect(() => {
+    if (isAuthenticated) navigate("/app", { replace: true });
+  }, [isAuthenticated, navigate]);
 
   return (
     <main className={styles.signup}>
+      {error && <ErrorMsg message={error} />}
       <form className={styles.form}>
         <div className={styles.row}>
           <label htmlFor="email">Username</label>
           <input
             type="email"
             id="email"
+            placeholder="johndoe87"
             onChange={(e) => setUsername(e.target.value)}
             value={username}
           />
@@ -24,6 +48,7 @@ export default function Signup() {
           <input
             type="email"
             id="email"
+            placeholder="name@example.com"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
           />
@@ -34,13 +59,27 @@ export default function Signup() {
           <input
             type="password"
             id="password"
+            placeholder="••••••••"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
         </div>
 
         <div>
-          <button className="cta">Sign up</button>
+          <button onClick={(e) => handleAdd(e)}>Sign up</button>
+        </div>
+
+        <div className={styles.loginRow}>
+          <p>Already have an account?</p>
+          <Link
+            to="/login"
+            className={styles.loginLink}
+            onClick={() => {
+              dispatch({ type: "clearError" });
+            }}
+          >
+            Login
+          </Link>
         </div>
       </form>
     </main>

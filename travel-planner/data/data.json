@@ -1,15 +1,22 @@
 {
   "users": [
     {
-      "id": "1abc",
-      "name": "Karan",
-      "email": "karan@mail.com"
+      "id": "4d92",
+      "username": "karan",
+      "email": "karan@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "11d9",
+      "username": "sujal",
+      "email": "sujal@gmail.com",
+      "password": "124578"
     }
   ],
   "trips": [
     {
       "id": "e29b",
-      "userId": 1,
+      "userId": "4d92",
       "tripName": "My India trip",
       "baseCurrency": "INR",
       "startDate": "2026-03-17T03:32:45.005Z",
@@ -17,7 +24,7 @@
     },
     {
       "id": "0dbc",
-      "userId": 1,
+      "userId": "4d92",
       "tripName": "My international trip",
       "baseCurrency": "USD",
       "startDate": "2026-03-17T03:33:37.532Z",
@@ -25,11 +32,19 @@
     },
     {
       "id": "36f8",
-      "userId": 1,
+      "userId": "4d92",
       "tripName": "My first trip of the year",
       "baseCurrency": "INR",
       "startDate": "2026-03-17T03:34:57.404Z",
       "endDate": "2026-04-01T03:34:57.000Z"
+    },
+    {
+      "id": "6b98",
+      "userId": "11d9",
+      "tripName": "My first trip",
+      "baseCurrency": "INR",
+      "startDate": "2026-03-23T09:19:54.565Z",
+      "endDate": "2026-04-04T09:19:54.000Z"
     }
   ],
   "cities": [
@@ -151,6 +166,46 @@
       "countryCode": "NG",
       "lat": 12.375775066084005,
       "lng": 6.275879879726381,
+      "order": 4
+    },
+    {
+      "id": "239e",
+      "tripId": "6b98",
+      "cityName": "Lahore",
+      "country": "Pakistan",
+      "countryCode": "PK",
+      "lat": 31.5656822,
+      "lng": 74.3141829,
+      "order": 1
+    },
+    {
+      "id": "3c2a",
+      "tripId": "6b98",
+      "cityName": "Shanghai",
+      "country": "China",
+      "countryCode": "CN",
+      "lat": 31.2323437,
+      "lng": 121.4691024,
+      "order": 2
+    },
+    {
+      "id": "4050",
+      "tripId": "6b98",
+      "cityName": "Kochi",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 9.9679032,
+      "lng": 76.2444378,
+      "order": 3
+    },
+    {
+      "id": "d08e",
+      "tripId": "6b98",
+      "cityName": "Delhi",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 28.6328027,
+      "lng": 77.2197713,
       "order": 4
     }
   ],

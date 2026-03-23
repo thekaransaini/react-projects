@@ -1,8 +1,11 @@
 import styles from "./Home.module.css";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
+import useTrip from "../hooks/useTrip";
 
 export default function Home() {
+  const { isAuthenticated } = useTrip();
+
   return (
     <main className={styles.home}>
       <Navbar />
@@ -18,7 +21,7 @@ export default function Home() {
           day of your journey—all in one place. Never miss a detail of your
           travels and share your adventures with friends.
         </h2>
-        <Link to="/app" className="cta">
+        <Link to={`${isAuthenticated ? "/app" : "/login"}`} className="cta">
           Start tracking now
         </Link>
       </section>

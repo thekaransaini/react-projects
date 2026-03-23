@@ -22,3 +22,26 @@
   flex-direction: column;
   gap: 0.5rem;
 }
+
+.form button {
+  display: inline-block;
+  background-color: var(--color-brand--2);
+  color: var(--color-dark--1);
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: 550;
+  padding: 1rem 3rem;
+  border-radius: 5px;
+  border: none;
+}
+
+.signupRow {
+  font-size: 1.6rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.signupLink {
+  color: var(--color-light--2);
+}

@@ -10,6 +10,9 @@ const initialState = {
   packingList: [],
   expenses: [],
   cities: [],
+  users: [],
+  user: null,
+  isAuthenticated: false,
 };
 
 function reducer(state, action) {
@@ -82,6 +85,34 @@ function reducer(state, action) {
         expenses: state.expenses.filter((expense) => expense.id !== payload),
         isLoading: false,
       };
+    case "usersDataReceived":
+      return {
+        ...state,
+        users: payload,
+        isLoading: false,
+      };
+    case "newUserCreated":
+      return {
+        ...state,
+        users: [...state.users, payload],
+        user: payload,
+        isAuthenticated: true,
+        isLoading: false,
+        error: "",
+      };
+    case "login":
+      return {
+        ...state,
+        user: payload,
+        isAuthenticated: true,
+        isLoading: false,
+        error: "",
+      };
+    case "clearError":
+      return {
+        ...state,
+        error: "",
+      };
     default:
       throw new Error("Action unknown!");
   }
@@ -89,16 +120,47 @@ function reducer(state, action) {
 
 function TripProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { trips, trip, cities, isLoading, error, packingList, expenses } =
-    state;
+  const {
+    trips,
+    trip,
+    cities,
+    isLoading,
+    error,
+    packingList,
+    expenses,
+    users,
+    user,
+    isAuthenticated,
+  } = state;
   const [currencyRates, setCurrencyRates] = useState({});
+
+  useEffect(() => {
+    async function fetchUsers() {
+      try {
+        dispatch({ type: "loading" });
+
+        const res = await fetch(`${BASE_URL}/users`);
+        const users = await res.json();
+
+        dispatch({ type: "usersDataReceived", payload: users });
+      } catch {
+        dispatch({
+          type: "error",
+          payload:
+            "There was an error loading data..., Try Again by refreshing the page",
+        });
+      }
+    }
+    fetchUsers();
+  }, []);
 
   useEffect(() => {
     async function fetchTrips() {
       try {
+        if (!user?.id) return;
         dispatch({ type: "loading" });
 
-        const res = await fetch(`${BASE_URL}/trips?userId=${1}`);
+        const res = await fetch(`${BASE_URL}/trips?userId=${user.id}`);
         const userTrips = await res.json();
 
         dispatch({ type: "tripsDataReceived", payload: userTrips });
@@ -111,7 +173,7 @@ function TripProvider({ children }) {
       }
     }
     fetchTrips();
-  }, []);
+  }, [user?.id]);
 
   useEffect(() => {
     async function fetchCurrencyRates() {
@@ -158,13 +220,9 @@ function TripProvider({ children }) {
         `${BASE_URL}/packingItems?tripId=${id}`,
       );
       const packingList = await packingListRes.json();
-      // console.log(packingListRes);
-      // console.log(packingList);
 
       const expensesRes = await fetch(`${BASE_URL}/expenses?tripId=${id}`);
       const expenses = await expensesRes.json();
-      // console.log(expensesRes);
-      // console.log(expenses);
 
       dispatch({
         type: "tripDataReceived",
@@ -180,16 +238,24 @@ function TripProvider({ children }) {
   }
 
   async function createTrip(trip, cities) {
+    console.log("trip", trip);
+    console.log("user", user);
     try {
       dispatch({ type: "loading" });
       const tripRes = await fetch(`${BASE_URL}/trips`, {
         method: "POST",
-        body: JSON.stringify(trip),
+        body: JSON.stringify({
+          userId: user.id,
+          tripName: trip.tripName,
+          baseCurrency: trip.baseCurrency,
+          startDate: trip.startDate,
+          endDate: trip.endDate,
+        }),
         headers: { "Content-Type": "application/json" },
       });
 
       const newTrip = await tripRes.json();
-
+      console.log("newTrip", newTrip);
       dispatch({ type: "newTripCreated", payload: newTrip });
 
       for (const city of cities) {
@@ -262,9 +328,6 @@ function TripProvider({ children }) {
       const data = await res.json();
 
       dispatch({ type: "newPackingItemCreated", payload: data });
-      // console.log(res);
-      // console.log(data);
-      // console.log(packingList);
     } catch {
       dispatch({
         type: "error",
@@ -277,7 +340,8 @@ function TripProvider({ children }) {
     console.log("triprovider", id, packed);
     try {
       dispatch({ type: "loading" });
-      const res = await fetch(`${BASE_URL}/packingItems/${id}`, {
+
+      await fetch(`${BASE_URL}/packingItems/${id}`, {
         method: "PATCH",
         body: JSON.stringify({
           packed: packed,
@@ -286,9 +350,7 @@ function TripProvider({ children }) {
           "Content-Type": "application/json",
         },
       });
-      const data = await res.json();
-      console.log(res);
-      console.log(data);
+
       dispatch({ type: "updatePackingItem", payload: { id, packed } });
     } catch {
       dispatch({
@@ -301,14 +363,12 @@ function TripProvider({ children }) {
   async function deletePackingItem(id) {
     try {
       dispatch({ type: "loading" });
-      const res = await fetch(`${BASE_URL}/packingItems/${id}`, {
+
+      await fetch(`${BASE_URL}/packingItems/${id}`, {
         method: "DELETE",
       });
-      const data = await res.json();
 
       dispatch({ type: "deletePackingItem", payload: id });
-      console.log(res);
-      console.log(data);
     } catch {
       dispatch({
         type: "error",
@@ -320,6 +380,7 @@ function TripProvider({ children }) {
   async function createExpense(id, expense) {
     try {
       dispatch({ type: "loading" });
+
       const res = await fetch(`${BASE_URL}/expenses`, {
         method: "POST",
         body: JSON.stringify({
@@ -348,19 +409,64 @@ function TripProvider({ children }) {
   async function deleteExpense(id) {
     try {
       dispatch({ type: "loading" });
-      const res = await fetch(`${BASE_URL}/expenses/${id}`, {
+
+      fetch(`${BASE_URL}/expenses/${id}`, {
         method: "DELETE",
       });
-      const data = await res.json();
 
       dispatch({ type: "deleteExpense", payload: id });
-      console.log(res);
-      console.log(data);
     } catch {
       dispatch({
         type: "error",
         payload: "There was an error in deleting the packing item...",
       });
+    }
+  }
+
+  async function createUser(newUser) {
+    const isUserExistAlready = users.some(
+      (user) =>
+        user.email === newUser.email || user.username === newUser.username,
+    );
+    try {
+      dispatch({ type: "loading" });
+
+      if (isUserExistAlready) {
+        throw new Error(
+          "An account with this email or username already exists.",
+        );
+      }
+
+      const res = await fetch(`${BASE_URL}/users`, {
+        method: "POST",
+        body: JSON.stringify(newUser),
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await res.json();
+
+      dispatch({ type: "newUserCreated", payload: data });
+    } catch (err) {
+      dispatch({
+        type: "error",
+        payload: err.message,
+      });
+    }
+  }
+
+  function login(email, password) {
+    try {
+      const user = users.find(
+        (user) => user.email === email && user.password === password,
+      );
+
+      if (!user?.email)
+        throw new Error(
+          "Invalid email or password. Please try again or create a new account.",
+        );
+
+      dispatch({ type: "login", payload: user });
+    } catch (err) {
+      dispatch({ type: "error", payload: err.message });
     }
   }
 
@@ -383,6 +489,10 @@ function TripProvider({ children }) {
         createExpense,
         deleteExpense,
         formattedTotalTripExpense,
+        createUser,
+        login,
+        isAuthenticated,
+        dispatch,
       }}
     >
       {children}
