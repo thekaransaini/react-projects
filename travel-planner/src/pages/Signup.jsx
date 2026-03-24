@@ -3,6 +3,7 @@ import styles from "./Signup.module.css";
 import useTrip from "../hooks/useTrip";
 import ErrorMsg from "../components/ErrorMsg";
 import { Link, useNavigate } from "react-router-dom";
+import Logo from "../components/Logo";
 
 export default function Signup() {
   const [username, setUsername] = useState("");
@@ -30,6 +31,7 @@ export default function Signup() {
 
   return (
     <main className={styles.signup}>
+      <Logo />
       {error && <ErrorMsg message={error} />}
       <form className={styles.form}>
         <div className={styles.row}>
