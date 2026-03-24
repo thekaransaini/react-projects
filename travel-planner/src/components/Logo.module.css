@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  cursor: default;
 }
 
 .logo span {
@@ -13,4 +14,21 @@
 .logo p {
   font-size: 3rem;
   font-weight: bold;
+}
+
+.logo span {
+  transition: transform 0.3s ease;
+}
+
+.logo:hover span {
+  transform: rotate(10deg) scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .logo {
+    gap: 0;
+  }
+  .logo p {
+    font-size: 2rem;
+  }
 }

@@ -24,7 +24,7 @@ export default function Trip() {
   }, [tripId]);
 
   if (isLoading) return <Loader />;
-  if (!trip) return <ErrorMsg message={error} />;
+  if (!trip?.id) return <ErrorMsg message={error} />;
   const { tripName, startDate, endDate, id } = trip;
 
   return (

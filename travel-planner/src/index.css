@@ -54,6 +54,17 @@ input:focus {
   background-color: #fff;
 }
 
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .cta:link,
 .cta:visited {
   display: inline-block;
@@ -65,4 +76,24 @@ input:focus {
   font-weight: 600;
   padding: 1rem 3rem;
   border-radius: 5px;
+  animation: fadeUp 1.2s ease-out forwards;
+  transition: all 0.3s ease;
+}
+
+@media (hover: hover) {
+  .cta:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 196, 106, 0.4);
+  }
+}
+
+@media (max-width: 768px) {
+  .cta:link,
+  .cta:visited {
+    font-size: 1.2rem;
+    padding: 1rem 1.4rem;
+  }
+  .cta:active {
+    transform: scale(0.97);
+  }
 }

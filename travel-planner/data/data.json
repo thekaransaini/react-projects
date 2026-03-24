@@ -45,6 +45,14 @@
       "baseCurrency": "INR",
       "startDate": "2026-03-23T09:19:54.565Z",
       "endDate": "2026-04-04T09:19:54.000Z"
+    },
+    {
+      "id": "79a4",
+      "userId": "11d9",
+      "tripName": "My last trip",
+      "baseCurrency": "INR",
+      "startDate": "2026-03-23T10:00:20.837Z",
+      "endDate": "2026-04-02T10:00:20.000Z"
     }
   ],
   "cities": [
@@ -207,10 +215,118 @@
       "lat": 28.6328027,
       "lng": 77.2197713,
       "order": 4
+    },
+    {
+      "id": "f0e1",
+      "tripId": null,
+      "cityName": "Singapore",
+      "country": "Singapore",
+      "countryCode": "SG",
+      "lat": 1.357107,
+      "lng": 103.8194992,
+      "order": 1
+    },
+    {
+      "id": "b03f",
+      "tripId": null,
+      "cityName": "London",
+      "country": "United Kingdom of Great Britain and Northern Ireland (the)",
+      "countryCode": "GB",
+      "lat": 51.5074456,
+      "lng": -0.1277653,
+      "order": 2
+    },
+    {
+      "id": "3285",
+      "tripId": null,
+      "cityName": "Chuda",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 22.3850051,
+      "lng": 71.745261,
+      "order": 3
+    },
+    {
+      "id": "398e",
+      "tripId": "79a4",
+      "cityName": "London",
+      "country": "United Kingdom of Great Britain and Northern Ireland (the)",
+      "countryCode": "GB",
+      "lat": 51.5074456,
+      "lng": -0.1277653,
+      "order": 1
+    },
+    {
+      "id": "c277",
+      "tripId": "79a4",
+      "cityName": "Berlin",
+      "country": "Germany",
+      "countryCode": "DE",
+      "lat": 52.5173885,
+      "lng": 13.3951309,
+      "order": 2
+    },
+    {
+      "id": "157e",
+      "tripId": "79a4",
+      "cityName": "Kochi",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 9.9679032,
+      "lng": 76.2444378,
+      "order": 3
     }
   ],
-  "expenses": [],
-  "packingItems": [],
+  "expenses": [
+    {
+      "id": "4b58",
+      "tripId": "6b98",
+      "itemName": " hotel room",
+      "quantity": 1,
+      "rate": 560,
+      "currency": "CNY",
+      "category": "🏨 Accommodation"
+    },
+    {
+      "id": "482b",
+      "tripId": "6b98",
+      "itemName": "food",
+      "quantity": 2,
+      "rate": 300,
+      "currency": "CAD",
+      "category": "🍔 Food"
+    }
+  ],
+  "packingItems": [
+    {
+      "id": "4e23",
+      "tripId": "6b98",
+      "itemName": "Laptop",
+      "quantity": 1,
+      "packed": true
+    },
+    {
+      "id": "6f37",
+      "tripId": "6b98",
+      "itemName": "Charger",
+      "quantity": 1,
+      "packed": true
+    },
+    {
+      "id": "7a7d",
+      "tripId": "6b98",
+      "itemName": "suitcase",
+      "quantity": 1,
+      "packed": false
+    },
+    {
+      "id": "95a4",
+      "tripId": "6b98",
+      "itemName": "passport",
+      "quantity": 1,
+      "packed": false
+    }
+  ],
   "journals": [
     {
       "id": "1",

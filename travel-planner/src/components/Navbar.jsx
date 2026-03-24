@@ -8,7 +8,9 @@ export default function Navbar() {
       <Logo />
       <ul>
         <li>
-          <NavLink to="/about">About</NavLink>
+          <NavLink to="/about" className={styles.aboutLink}>
+            About
+          </NavLink>
         </li>
         <li>
           <NavLink to="/login" className={styles.ctaLink}>

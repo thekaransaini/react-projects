@@ -31,3 +31,31 @@ a.ctaLink:visited {
   padding: 0.8rem 2rem;
   border-radius: 7px;
 }
+
+.aboutLink {
+  position: relative;
+}
+
+.aboutLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: var(--color-brand--2);
+  transition: width 0.3s ease;
+}
+
+.aboutLink:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  a.ctaLink:link,
+  a.ctaLink:visited,
+  a.aboutLink:link,
+  a.aboutLink:link {
+    display: none;
+  }
+}
