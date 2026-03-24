@@ -46,7 +46,6 @@
 
 @media (max-width: 768px) {
   .home {
-    height: calc(100vh - 7.1rem);
     padding: 1.5rem;
   }
 
@@ -60,9 +59,7 @@
   }
 
   .home h2 {
-    width: 90%;
     font-size: 1.8rem;
-    color: var(--color-light--1);
     margin: 0;
   }
 }

@@ -137,18 +137,20 @@ function TripProvider({ children }) {
   useEffect(() => {
     async function fetchUsers() {
       try {
+        dispatch({ type: "clearError" });
         dispatch({ type: "loading" });
-
         const res = await fetch(`${BASE_URL}/users`);
         const users = await res.json();
 
         dispatch({ type: "usersDataReceived", payload: users });
       } catch {
-        dispatch({
-          type: "error",
-          payload:
-            "There was an error loading data..., Try Again by refreshing the page",
-        });
+        if (users.length !== 0) {
+          dispatch({
+            type: "error",
+            payload:
+              "There was an error loading data..., Try Again by refreshing the page",
+          });
+        }
       }
     }
     fetchUsers();
@@ -157,9 +159,8 @@ function TripProvider({ children }) {
   useEffect(() => {
     async function fetchTrips() {
       try {
-        if (!user?.id) return;
+        dispatch({ type: "clearError" });
         dispatch({ type: "loading" });
-
         const res = await fetch(`${BASE_URL}/trips?userId=${user.id}`);
         const userTrips = await res.json();
 
@@ -172,8 +173,9 @@ function TripProvider({ children }) {
         });
       }
     }
+    if (user === null) return;
     fetchTrips();
-  }, [user?.id]);
+  }, [user]);
 
   useEffect(() => {
     async function fetchCurrencyRates() {

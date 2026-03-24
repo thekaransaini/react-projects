@@ -3,6 +3,7 @@ import styles from "./Login.module.css";
 import useTrip from "../hooks/useTrip";
 import { Link, useNavigate } from "react-router-dom";
 import ErrorMsg from "../components/ErrorMsg";
+import Logo from "../components/Logo";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -23,6 +24,7 @@ export default function Login() {
 
   return (
     <main className={styles.login}>
+      <Logo />
       {error && <ErrorMsg message={error} />}
       <form className={styles.form}>
         <div className={styles.row}>
