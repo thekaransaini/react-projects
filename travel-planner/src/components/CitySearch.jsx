@@ -46,6 +46,9 @@ export default function CitySearch() {
         type="text"
         placeholder="🔍 Search city..."
       />
+      <span className={styles.hamburger}>
+        <i className="fa-solid fa-bars"></i>
+      </span>
     </div>
   );
 }

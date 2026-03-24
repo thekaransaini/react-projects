@@ -1,3 +1,14 @@
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .citySearch {
   width: 40rem;
   max-width: 90%;
@@ -6,6 +17,9 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
+  display: flex;
+  align-items: stretch;
+  gap: 1.4rem;
 }
 
 .citySearch input {
@@ -15,9 +29,53 @@
   padding: 1rem 2rem;
   backdrop-filter: blur(6px);
   transition: all 0.2s ease;
+  border: none;
+  flex: 1;
+  width: 100%;
 }
 
 .citySearch input:focus {
   outline: none;
   box-shadow: 0 0 0 2px #76c7ad;
+}
+
+.hamburger {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .citySearch {
+    width: 88%;
+  }
+
+  .map {
+    width: 100%;
+  }
+
+  .hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: slideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-tap-highlight-color: transparent;
+    height: 4.3rem;
+    width: 4.3rem;
+    aspect-ratio: 1 / 1;
+    background: white;
+    color: #333;
+    backdrop-filter: blur(6px);
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    font-size: 2rem;
+    line-height: 0;
+  }
+
+  .hamburger:active {
+    background-color: #eeeeee;
+    transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.1s ease;
+  }
 }
