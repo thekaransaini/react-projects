@@ -28,7 +28,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* font-size: 1.7rem; */
   gap: 2.2rem;
   margin-bottom: 3rem;
 }
@@ -37,6 +36,11 @@
   font-size: 1.7rem;
   text-align: center;
   margin-bottom: 1.3rem;
+}
+
+.flex {
+  display: flex;
+  gap: 2.2rem;
 }
 
 .row input,
@@ -98,44 +102,6 @@ tr:hover {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-.expensesContent ul {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  gap: 1.4rem;
-  height: 30rem;
-  margin-top: 2rem;
-  padding: 0 5rem;
-  text-align: center;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.expensesContent ul::-webkit-scrollbar {
-  width: 0;
-}
-
-.expensesContent ul li {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  width: 80%;
-  height: 82%;
-  background-color: #f4a226;
-  color: var(--color-dark--1);
-  padding: 1rem 2rem;
-  border-radius: 10rem;
-}
-
-.expensesContent input[type="checkbox"] {
-  display: inline-block;
-  height: 2rem;
-  width: 2rem;
-  flex: none;
-}
-
 .expensesContent button {
   height: 2rem;
   aspect-ratio: 1;
@@ -185,4 +151,160 @@ tr:hover {
   border: none;
   border-radius: 50%;
   cursor: pointer;
+}
+
+.expenseList {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .expensesContainer {
+    background-color: #555d61;
+  }
+
+  .header {
+    background-color: #f7b030;
+    padding: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .row input,
+  .row select {
+    background-color: #feebb3;
+  }
+
+  .row button {
+    background-color: #7bc5a2;
+  }
+
+  .backBtn {
+    height: 3rem;
+    width: 3rem;
+  }
+
+  .expensesForm {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.7rem;
+    margin-bottom: 1.2rem;
+    padding: 0 1.2rem;
+  }
+
+  .formHeading {
+    font-size: 1.4rem;
+    text-align: center;
+    margin-bottom: 0.6rem;
+  }
+
+  .flex {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    justify-content: stretch;
+  }
+
+  .itemInput {
+    width: 100%;
+  }
+
+  .row button {
+    width: 100%;
+  }
+
+  .expensesContent {
+    font-size: 1.6rem;
+  }
+
+  .tripDetails {
+    margin-left: 2rem;
+    margin-bottom: 0;
+  }
+
+  .tripDetails h2 {
+    font-size: 2rem;
+  }
+
+  .tripDetails span {
+    display: none;
+  }
+
+  .tableContainer {
+    display: none;
+  }
+
+  .expenseList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.7rem;
+    height: 28rem;
+    margin: 0.6rem 1rem;
+    text-align: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .expenseList::-webkit-scrollbar {
+    width: 0;
+  }
+
+  .expenseItem {
+    background-color: #e8f0f8;
+    border-radius: 1rem;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 0.8fr 0.1fr;
+    position: relative;
+    color: var(--color-dark--1);
+  }
+
+  .row button:active {
+    transform: scale(0.96);
+  }
+
+  .expenseInfoBox1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .expenseInfoBox2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+    font-size: 1.5rem;
+  }
+
+  .itemName {
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+
+  .category {
+    font-size: 1.4rem;
+    background-color: #b3dbd0;
+    padding: 0.2rem 0.6rem;
+    border-radius: 1.6rem;
+    text-align: center;
+  }
+
+  .footer {
+    padding: 0.8rem 0;
+  }
+
+  .footer p {
+    font-size: 1.7rem;
+    text-align: center;
+  }
+  .footer em {
+    display: block;
+  }
 }

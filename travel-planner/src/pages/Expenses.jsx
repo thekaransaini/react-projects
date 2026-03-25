@@ -80,25 +80,27 @@ export default function Expenses() {
           <h2>Track your trip expenses 💸</h2>
         </div>
         <form className={styles.expensesForm}>
-          <div className={styles.row}>
-            <select
-              value={quantity}
-              onChange={(e) => setQuantity(e.target.value)}
-            >
-              {Array.from({ length: 20 }, (_, i) => (
-                <option value={i + 1} key={i + 1}>
-                  {i + 1}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className={styles.row}>
-            <input
-              type="text"
-              placeholder="Item..."
-              value={item}
-              onChange={(e) => setItem(e.target.value)}
-            />
+          <div className={styles.flex}>
+            <div className={styles.row}>
+              <select
+                value={quantity}
+                onChange={(e) => setQuantity(e.target.value)}
+              >
+                {Array.from({ length: 20 }, (_, i) => (
+                  <option value={i + 1} key={i + 1}>
+                    {i + 1}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className={`${styles.row} ${styles.itemInput}`}>
+              <input
+                type="text"
+                placeholder="Item..."
+                value={item}
+                onChange={(e) => setItem(e.target.value)}
+              />
+            </div>
           </div>
           <div className={styles.row}>
             <input
@@ -159,6 +161,48 @@ export default function Expenses() {
               </>
             ))}
           </div>
+
+          <ul className={styles.expenseList}>
+            {expenses.map((expense, i) => (
+              <li className={styles.expenseItem}>
+                <div className={styles.expenseInfoBox1}>
+                  <p className={styles.itemName}>
+                    {i + 1}. {expense.itemName}
+                  </p>
+                  <p className={styles.category}>{expense.category}</p>
+                </div>
+                <div className={styles.expenseInfoBox2}>
+                  <p>Qty: {expense.quantity}</p>
+                  <p>
+                    Rate:{" "}
+                    {Number(expense.rate).toLocaleString("en-IN", {
+                      style: "currency",
+                      currency: expense.currency,
+                      minimumFractionDigits: Number.isInteger(expense.rate)
+                        ? 0
+                        : 2,
+                    })}
+                  </p>
+                  <p>
+                    Total:{" "}
+                    {Number(expense.rate * expense.quantity).toLocaleString(
+                      "en-IN",
+                      {
+                        style: "currency",
+                        currency: expense.currency,
+                        minimumFractionDigits: Number.isInteger(expense.rate)
+                          ? 0
+                          : 2,
+                      },
+                    )}
+                  </p>
+                </div>
+                <button onClick={(e) => handleDelete(e, expense.id)}>
+                  &times;
+                </button>
+              </li>
+            ))}
+          </ul>
 
           <div className={styles.tableContainer}>
             {expenses.length > 0 && (
@@ -222,11 +266,14 @@ export default function Expenses() {
       </main>
       <footer className={styles.footer}>
         <p>
-          <em>
-            {expenses.length === 0
-              ? `No expenses added yet. Start tracking your spending 💸`
-              : `Total: ${formattedTotalTripExpense} 💸`}
-          </em>
+          {expenses.length === 0 ? (
+            <>
+              <em>No expenses added yet.&nbsp;</em>
+              <em>Start tracking your spending 💸</em>
+            </>
+          ) : (
+            <em>{`Total: ${formattedTotalTripExpense} 💸`}</em>
+          )}
         </p>
       </footer>
     </div>

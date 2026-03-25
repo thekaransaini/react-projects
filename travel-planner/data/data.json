@@ -423,6 +423,69 @@
       "rate": 300,
       "currency": "CAD",
       "category": "🍔 Food"
+    },
+    {
+      "id": "9e57",
+      "tripId": "e29b",
+      "itemName": "Dresses",
+      "quantity": 1,
+      "rate": 240,
+      "currency": "BRL",
+      "category": "🛍️ Shopping"
+    },
+    {
+      "id": "8a6a",
+      "tripId": "e29b",
+      "itemName": "Hotel room",
+      "quantity": 1,
+      "rate": 300,
+      "currency": "CAD",
+      "category": "🏨 Accommodation"
+    },
+    {
+      "id": "e978",
+      "tripId": "e29b",
+      "itemName": "Flight ticket",
+      "quantity": 1,
+      "rate": 200,
+      "currency": "GBP",
+      "category": "🚕 Transport"
+    },
+    {
+      "id": "a2e9",
+      "tripId": "e29b",
+      "itemName": "Lunch",
+      "quantity": 4,
+      "rate": 200,
+      "currency": "ILS",
+      "category": "🍔 Food"
+    },
+    {
+      "id": "fa50",
+      "tripId": "e29b",
+      "itemName": "Sky diving",
+      "quantity": 1,
+      "rate": 400,
+      "currency": "IDR",
+      "category": "🎟️ Activities"
+    },
+    {
+      "id": "0513",
+      "tripId": "e29b",
+      "itemName": "Concert",
+      "quantity": 1,
+      "rate": 5000,
+      "currency": "DKK",
+      "category": "☕ Miscellaneous"
+    },
+    {
+      "id": "a885",
+      "tripId": "e29b",
+      "itemName": "Bracelet ",
+      "quantity": 1,
+      "rate": 569,
+      "currency": "EUR",
+      "category": "🛍️ Shopping"
     }
   ],
   "packingItems": [
