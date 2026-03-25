@@ -11,6 +11,12 @@
       "username": "sujal",
       "email": "sujal@gmail.com",
       "password": "124578"
+    },
+    {
+      "id": "692e",
+      "username": "jai",
+      "email": "jai@gmail.com",
+      "password": "12345"
     }
   ],
   "trips": [
@@ -61,6 +67,14 @@
       "baseCurrency": "JPY",
       "startDate": "2026-03-25T08:42:19.384Z",
       "endDate": "2026-04-04T08:42:19.000Z"
+    },
+    {
+      "id": "f2f7",
+      "userId": "692e",
+      "tripName": "My first trip",
+      "baseCurrency": "INR",
+      "startDate": "2026-03-25T20:49:47.680Z",
+      "endDate": "2026-04-03T20:49:47.000Z"
     }
   ],
   "cities": [
@@ -403,6 +417,56 @@
       "lat": -6.8699697,
       "lng": -75.0458515,
       "order": 5
+    },
+    {
+      "id": "1595",
+      "tripId": "f2f7",
+      "cityName": "Delhi",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 28.6328027,
+      "lng": 77.2197713,
+      "order": 1
+    },
+    {
+      "id": "9799",
+      "tripId": "f2f7",
+      "cityName": "Kochi",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 9.9679032,
+      "lng": 76.2444378,
+      "order": 2
+    },
+    {
+      "id": "2bd2",
+      "tripId": "f2f7",
+      "cityName": "Kota",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 25.1737019,
+      "lng": 75.8574194,
+      "order": 3
+    },
+    {
+      "id": "98cf",
+      "tripId": "f2f7",
+      "cityName": "Rohtak",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 28.9010899,
+      "lng": 76.5801935,
+      "order": 4
+    },
+    {
+      "id": "8f82",
+      "tripId": "f2f7",
+      "cityName": "Leh",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 33.9456407,
+      "lng": 77.6568576,
+      "order": 5
     }
   ],
   "expenses": [
@@ -486,36 +550,31 @@
       "rate": 569,
       "currency": "EUR",
       "category": "🛍️ Shopping"
+    },
+    {
+      "id": "4fea",
+      "tripId": "f2f7",
+      "itemName": "Hotel room",
+      "quantity": 1,
+      "rate": 245,
+      "currency": "DKK",
+      "category": "🏨 Accommodation"
     }
   ],
   "packingItems": [
     {
-      "id": "140f",
-      "tripId": "e29b",
-      "itemName": "Vjjvcnn",
+      "id": "b5ca",
+      "tripId": "f2f7",
+      "itemName": "Passport ",
       "quantity": 1,
       "packed": false
     },
     {
-      "id": "0942",
-      "tripId": "e29b",
-      "itemName": "Ggfvnj",
+      "id": "db2b",
+      "tripId": "f2f7",
+      "itemName": "ID CARD",
       "quantity": 1,
-      "packed": false
-    },
-    {
-      "id": "a2cf",
-      "tripId": "e29b",
-      "itemName": "Gfvh",
-      "quantity": 1,
-      "packed": false
-    },
-    {
-      "id": "052d",
-      "tripId": "e29b",
-      "itemName": "Hgv bby",
-      "quantity": 1,
-      "packed": false
+      "packed": true
     }
   ],
   "journals": [

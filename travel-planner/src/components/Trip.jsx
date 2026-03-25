@@ -55,7 +55,6 @@ export default function Trip() {
         <Link className={styles.link} to={`/app/trips/${id}/expenses`}>
           Track Expenses
         </Link>
-        <Link className={styles.link}>Journal</Link>
       </footer>
     </div>
   );

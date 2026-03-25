@@ -43,7 +43,7 @@
 
 .tripFooter {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .link:link,
@@ -127,8 +127,6 @@
   }
 
   .tripFooter {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
     margin-top: 1.1rem;
   }
