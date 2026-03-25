@@ -218,6 +218,9 @@ Start by adding your first destination 🌍"
         {cities.map((city) => (
           <CityItem city={city} key={city.id} onDeleteCity={handleDeleteCity} />
         ))}
+        {cities.length === 1 && (
+          <ErrorMsg message="Add more cities or click ‘Add Trip’ to finish ✈️" />
+        )}
       </ul>
 
       <div className={styles.buttons}>

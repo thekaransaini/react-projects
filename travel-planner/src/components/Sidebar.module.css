@@ -2,10 +2,10 @@
   flex-basis: 56rem;
   background-color: var(--color-dark--1);
   padding: 3rem 5rem 3.5rem 5rem;
-
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .footer {
@@ -18,15 +18,31 @@
 }
 
 @media (max-width: 768px) {
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    transition: 0.3s;
+    z-index: 999;
+  }
+
   .sidebar {
-    /* display: none; */
     width: 90%;
     height: 80%;
     padding: 1.3rem 1.3rem 1rem 1.3rem;
     z-index: 1000;
-    position: absolute;
+    position: fixed;
     bottom: 2rem;
-    right: 1.66rem;
+    right: 1.76rem;
     border-radius: 1rem;
+    transform: translateY(100%);
+  }
+
+  .open {
+    transform: translateY(0);
+  }
+
+  .closed {
+    transform: translateY(105%);
   }
 }

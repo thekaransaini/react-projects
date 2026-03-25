@@ -1,7 +1,8 @@
 import { createContext, useEffect, useReducer, useState } from "react";
 
 const TripContext = createContext();
-const BASE_URL = "http://localhost:8000";
+// const BASE_URL = "http://localhost:8000";
+const BASE_URL = "http://10.147.190.54:8000";
 const initialState = {
   isLoading: false,
   error: "",

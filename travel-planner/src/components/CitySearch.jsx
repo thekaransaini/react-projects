@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const BASE_URL = "https://api.geoapify.com/v1/geocode/search";
 const API_KEY = import.meta.env.VITE_API_KEY;
 
-export default function CitySearch() {
+export default function CitySearch({ isOpen, handleSidebar, handleOpen }) {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
@@ -22,6 +22,7 @@ export default function CitySearch() {
 
         if (!data.features[0]?.properties.lat) return;
 
+        handleOpen();
         navigate(
           `form?lat=${data.features[0].properties.lat}&lng=${data.features[0].properties.lon}`,
         );
@@ -46,8 +47,10 @@ export default function CitySearch() {
         type="text"
         placeholder="🔍 Search city..."
       />
-      <span className={styles.hamburger}>
-        <i className="fa-solid fa-bars"></i>
+      <span className={styles.hamburger} onClick={() => handleSidebar()}>
+        <i
+          className={`${isOpen ? "fa-solid fa-xmark" : "fa-solid fa-bars"} ${styles.icon} ${isOpen ? styles.open : ""}`}
+        ></i>
       </span>
     </div>
   );

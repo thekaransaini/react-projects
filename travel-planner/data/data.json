@@ -53,6 +53,14 @@
       "baseCurrency": "JPY",
       "startDate": "2026-03-24T23:37:35.432Z",
       "endDate": "2026-04-02T23:37:35.000Z"
+    },
+    {
+      "id": "bdaf",
+      "userId": "4d92",
+      "tripName": "My last trip",
+      "baseCurrency": "JPY",
+      "startDate": "2026-03-25T08:42:19.384Z",
+      "endDate": "2026-04-04T08:42:19.000Z"
     }
   ],
   "cities": [
@@ -345,6 +353,56 @@
       "lat": 19.078313772444297,
       "lng": 80.35400390625001,
       "order": 11
+    },
+    {
+      "id": "88b3",
+      "tripId": "bdaf",
+      "cityName": "Faridabad",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 28.4031478,
+      "lng": 77.3105561,
+      "order": 1
+    },
+    {
+      "id": "88f2",
+      "tripId": "bdaf",
+      "cityName": "Kota",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 25.1737019,
+      "lng": 75.8574194,
+      "order": 2
+    },
+    {
+      "id": "55f5",
+      "tripId": "bdaf",
+      "cityName": "Kochi",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 9.9679032,
+      "lng": 76.2444378,
+      "order": 3
+    },
+    {
+      "id": "d031",
+      "tripId": "bdaf",
+      "cityName": "Lahore",
+      "country": "Pakistan",
+      "countryCode": "PK",
+      "lat": 31.5656822,
+      "lng": 74.3141829,
+      "order": 4
+    },
+    {
+      "id": "34d6",
+      "tripId": "bdaf",
+      "cityName": "Orellana",
+      "country": "Peru",
+      "countryCode": "PE",
+      "lat": -6.8699697,
+      "lng": -75.0458515,
+      "order": 5
     }
   ],
   "expenses": [

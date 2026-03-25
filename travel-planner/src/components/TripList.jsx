@@ -9,7 +9,9 @@ export default function TripList() {
 
   if (isLoading) return <Loader />;
   if (!trips.length)
-    return <ErrorMsg message="Add your first trip by clicking on the map" />;
+    return (
+      <ErrorMsg message="Use the search bar to find a city and add your first trip." />
+    );
 
   return (
     <div className={styles.tripList}>
