@@ -54,40 +54,42 @@ export default function PackingList() {
         </Link>
         <h1>Packing List 🧳</h1>
       </header>
-      <main>
-        <form className={styles.packingListForm}>
-          <div className={styles.row}>
+      <main className={styles.main}>
+        <div className={styles.formBody}>
+          <div className={styles.formHeading}>
             <h2>What do you need for your trip ✈️?</h2>
           </div>
-          <div className={styles.row}>
-            <select
-              value={quantity}
-              onChange={(e) => setQuantity(e.target.value)}
-            >
-              {Array.from({ length: 20 }, (_, i) => (
-                <option value={i + 1} key={i + 1}>
-                  {i + 1}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className={styles.row}>
-            <input
-              type="text"
-              placeholder="Item..."
-              value={item}
-              onChange={(e) => setItem(e.target.value)}
-            />
-          </div>
-          <div className={styles.row}>
-            <button onClick={(e) => handleAdd(e)}>Add</button>
-          </div>
-        </form>
+          <form className={styles.packingListForm}>
+            <div className={styles.row}>
+              <select
+                value={quantity}
+                onChange={(e) => setQuantity(e.target.value)}
+              >
+                {Array.from({ length: 20 }, (_, i) => (
+                  <option value={i + 1} key={i + 1}>
+                    {i + 1}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className={`${styles.itemInput} ${styles.row}`}>
+              <input
+                type="text"
+                placeholder="Item..."
+                value={item}
+                onChange={(e) => setItem(e.target.value)}
+              />
+            </div>
+            <div className={styles.row}>
+              <button onClick={(e) => handleAdd(e)}>Add</button>
+            </div>
+          </form>
+        </div>
         <div className={styles.packingListContent}>
           <h2>{trip?.tripName}</h2>
           {cityList.map((city, i) => (
             <>
-              <span key={city.id}>
+              <span key={city.id} className={styles.cityList}>
                 {city.cityName}&nbsp;&nbsp;
                 <img
                   src={`https://flagcdn.com/16x12/${city.countryCode.toLowerCase()}.png`}
@@ -96,13 +98,15 @@ export default function PackingList() {
                 &nbsp;
               </span>
               {cityList.length - 1 !== i && (
-                <span key={i + 1}>&rarr;&nbsp;</span>
+                <span key={i + 1} className={styles.cityList}>
+                  &rarr;&nbsp;
+                </span>
               )}
             </>
           ))}
-          <ul>
+          <ul className={styles.packingList}>
             {packingList.map((item) => (
-              <li key={item.id}>
+              <li key={item.id} className={styles.packingItem}>
                 <input
                   type="checkbox"
                   checked={item.packed}

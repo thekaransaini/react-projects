@@ -21,12 +21,25 @@
   transform: translateX(-50%);
 }
 
+.formBody {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  /* align-items: center; */
+  /* width: 100%; */
+}
+
+.formHeading {
+  font-size: 2rem;
+}
+
 .packingListForm {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
+  /* justify-content: center; */
   font-size: 1.7rem;
-  gap: 2.2rem;
+  gap: 1rem;
+  margin-top: 0.55rem;
   margin-bottom: 3rem;
 }
 
@@ -44,6 +57,7 @@
   border: none;
   background-color: #76c7ad;
   font-weight: 525;
+  height: 100%;
 }
 
 .packingListContent {
@@ -51,7 +65,7 @@
   margin-left: 5rem;
 }
 
-.packingListContent ul {
+.packingList {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -65,18 +79,18 @@
   overflow-x: hidden;
 }
 
-.packingListContent ul::-webkit-scrollbar {
+.packingList::-webkit-scrollbar {
   width: 0;
 }
 
-.packingListContent ul li {
+.packingItem {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
   width: 80%;
   height: 82%;
-  background-color: #f4a226;
+  background-color: #e8f0f8;
   color: var(--color-dark--1);
   padding: 1rem 2rem;
   border-radius: 10rem;
@@ -161,4 +175,139 @@
   border: none;
   border-radius: 50%;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .packingListContainer {
+    background-color: #555d61;
+  }
+
+  .header {
+    background-color: #f7b030;
+    padding: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .formBody {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .row input,
+  .row select {
+    background-color: #feebb3;
+  }
+
+  .row select {
+    width: 125%;
+  }
+
+  .itemInput {
+    margin-left: 1rem;
+  }
+
+  .packingListForm {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 1.2rem;
+    margin-top: 0;
+    padding: 0 1rem;
+  }
+
+  .row button {
+    background-color: #7bc5a2;
+    height: 100%;
+    font-size: 1.5rem;
+    padding: 0.2rem 1.4rem;
+    border-radius: 2rem;
+  }
+
+  .backBtn {
+    height: 3rem;
+    width: 3rem;
+  }
+
+  .formHeading {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  .row button {
+    width: 100%;
+  }
+
+  .expensesContent {
+    font-size: 1.6rem;
+  }
+
+  .packingListContent {
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+
+  .packingListContent h2 {
+    font-size: 2rem;
+    margin-left: 2rem;
+  }
+
+  .cityList {
+    display: none;
+  }
+
+  .packingList {
+    color: var(--color-dark--1);
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    height: 44.5rem;
+    margin: 0;
+    padding: 0.4rem 1.8rem;
+    margin: 0.4rem auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .packingList::-webkit-scrollbar {
+    width: 0;
+  }
+
+  .packingItem {
+    font-size: 1.8rem;
+    font-weight: 600;
+    width: 100%;
+    max-height: 10%;
+    background-color: #e8f0f8;
+    border-radius: 1rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    color: var(--color-dark--1);
+  }
+
+  .row button:active {
+    transform: scale(0.96);
+  }
+
+  .footer {
+    padding: 1rem 0.8rem;
+  }
+
+  .footer p {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .footer em {
+    display: block;
+  }
+
+  .progressContainer {
+    width: 50%;
+  }
 }

@@ -490,30 +490,30 @@
   ],
   "packingItems": [
     {
-      "id": "4e23",
-      "tripId": "6b98",
-      "itemName": "Laptop",
-      "quantity": 1,
-      "packed": true
-    },
-    {
-      "id": "6f37",
-      "tripId": "6b98",
-      "itemName": "Charger",
-      "quantity": 1,
-      "packed": true
-    },
-    {
-      "id": "7a7d",
-      "tripId": "6b98",
-      "itemName": "suitcase",
+      "id": "140f",
+      "tripId": "e29b",
+      "itemName": "Vjjvcnn",
       "quantity": 1,
       "packed": false
     },
     {
-      "id": "95a4",
-      "tripId": "6b98",
-      "itemName": "passport",
+      "id": "0942",
+      "tripId": "e29b",
+      "itemName": "Ggfvnj",
+      "quantity": 1,
+      "packed": false
+    },
+    {
+      "id": "a2cf",
+      "tripId": "e29b",
+      "itemName": "Gfvh",
+      "quantity": 1,
+      "packed": false
+    },
+    {
+      "id": "052d",
+      "tripId": "e29b",
+      "itemName": "Hgv bby",
       "quantity": 1,
       "packed": false
     }
