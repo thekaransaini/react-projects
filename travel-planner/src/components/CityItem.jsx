@@ -11,11 +11,11 @@ export default function CityItem({ city, onDeleteCity }) {
             <strong>{cityName}</strong>, {country}
           </p>
         </span>
-        <img
-          src={`https://flagcdn.com/16x12/${countryCode?.toLowerCase()}.png`}
-          alt={`Image of ${country} flag`}
-        />
       </div>
+      <img
+        src={`https://flagcdn.com/16x12/${countryCode?.toLowerCase()}.png`}
+        alt={`Image of ${country} flag`}
+      />
       <button
         className={styles.deleteBtn}
         onClick={(e) => {

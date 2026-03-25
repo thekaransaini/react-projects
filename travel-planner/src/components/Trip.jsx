@@ -39,12 +39,16 @@ export default function Trip() {
           </Link>
           <h1>{tripName}</h1>
         </span>
-        <p className={styles.tripDates}>
-          <span>📅</span> {formatDate(startDate)} – {formatDate(endDate)}
-        </p>
-        <p className={styles.tripCurrency}>
-          <span>💸</span> Expense: {formattedTotalTripExpense}
-        </p>
+        <div className={styles.tripDates}>
+          <span>📅</span>
+          <p>
+            {formatDate(startDate)} – {formatDate(endDate)}
+          </p>
+        </div>
+        <div className={styles.tripCurrency}>
+          <span>💸</span>
+          <p>Expense: {formattedTotalTripExpense}</p>
+        </div>
       </header>
       <CityList />
       <footer className={styles.tripFooter}>

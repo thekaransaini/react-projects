@@ -33,3 +33,19 @@
 .cityList::-webkit-scrollbar {
   width: 0;
 }
+
+@media (max-width: 768px) {
+  .tripSection {
+    margin-top: 0;
+    margin-bottom: -0.4rem;
+  }
+
+  .tripSection h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .cityList {
+    font-size: 1.5rem;
+  }
+}

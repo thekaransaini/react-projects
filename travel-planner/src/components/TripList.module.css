@@ -13,3 +13,10 @@
 .tripList::-webkit-scrollbar {
   width: 0;
 }
+
+@media (max-width: 768px) {
+  .tripList {
+    margin: 3rem auto;
+    gap: 0.7rem;
+  }
+}

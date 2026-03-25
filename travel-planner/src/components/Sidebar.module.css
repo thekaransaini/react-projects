@@ -19,6 +19,14 @@
 
 @media (max-width: 768px) {
   .sidebar {
-    display: none;
+    /* display: none; */
+    width: 90%;
+    height: 80%;
+    padding: 1.3rem 1.3rem 1rem 1.3rem;
+    z-index: 1000;
+    position: absolute;
+    bottom: 2rem;
+    right: 1.66rem;
+    border-radius: 1rem;
   }
 }

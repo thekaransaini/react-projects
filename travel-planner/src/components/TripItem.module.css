@@ -47,3 +47,24 @@
   background-color: var(--color-brand--1);
   color: var(--color-dark--1);
 }
+
+@media (max-width: 768px) {
+  .tripItem,
+  .tripItem:link,
+  .tripItem:visited {
+    gap: 1rem;
+  }
+
+  .name {
+    font-size: 1.5rem;
+  }
+
+  .date {
+    display: none;
+  }
+
+  .deleteBtn {
+    height: 2.6rem;
+    width: 2.6rem;
+  }
+}

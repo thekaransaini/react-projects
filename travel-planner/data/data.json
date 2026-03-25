@@ -31,14 +31,6 @@
       "endDate": "2026-04-04T03:33:37.000Z"
     },
     {
-      "id": "36f8",
-      "userId": "4d92",
-      "tripName": "My first trip of the year",
-      "baseCurrency": "INR",
-      "startDate": "2026-03-17T03:34:57.404Z",
-      "endDate": "2026-04-01T03:34:57.000Z"
-    },
-    {
       "id": "6b98",
       "userId": "11d9",
       "tripName": "My first trip",
@@ -53,6 +45,14 @@
       "baseCurrency": "INR",
       "startDate": "2026-03-23T10:00:20.837Z",
       "endDate": "2026-04-02T10:00:20.000Z"
+    },
+    {
+      "id": "2c7c",
+      "userId": "4d92",
+      "tripName": "My north india trip",
+      "baseCurrency": "JPY",
+      "startDate": "2026-03-24T23:37:35.432Z",
+      "endDate": "2026-04-02T23:37:35.000Z"
     }
   ],
   "cities": [
@@ -134,46 +134,6 @@
       "countryCode": "PH",
       "lat": 7.7075434786457535,
       "lng": 125.40225856009859,
-      "order": 4
-    },
-    {
-      "id": "d376",
-      "tripId": "36f8",
-      "cityName": "Foggaret Ezzaou",
-      "country": "Algeria",
-      "countryCode": "DZ",
-      "lat": 27.17819365838952,
-      "lng": 2.818742338085199,
-      "order": 1
-    },
-    {
-      "id": "b044",
-      "tripId": "36f8",
-      "cityName": "Banamba",
-      "country": "Mali",
-      "countryCode": "ML",
-      "lat": 14.059450356689746,
-      "lng": -7.655209461187265,
-      "order": 2
-    },
-    {
-      "id": "f706",
-      "tripId": "36f8",
-      "cityName": "N’Zecrezessou",
-      "country": "Cote d'Ivoire",
-      "countryCode": "CI",
-      "lat": 7.047570722343526,
-      "lng": -4.302455421056513,
-      "order": 3
-    },
-    {
-      "id": "469f",
-      "tripId": "36f8",
-      "cityName": "Maru",
-      "country": "Nigeria",
-      "countryCode": "NG",
-      "lat": 12.375775066084005,
-      "lng": 6.275879879726381,
       "order": 4
     },
     {
@@ -275,6 +235,116 @@
       "lat": 9.9679032,
       "lng": 76.2444378,
       "order": 3
+    },
+    {
+      "id": "73e1",
+      "tripId": "2c7c",
+      "cityName": "Fatehabad",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 29.605772502894208,
+      "lng": 75.45410156250001,
+      "order": 1
+    },
+    {
+      "id": "d34c",
+      "tripId": "2c7c",
+      "cityName": "Sanni",
+      "country": "Pakistan",
+      "countryCode": "PK",
+      "lat": 28.782591302095096,
+      "lng": 67.52197265625001,
+      "order": 2
+    },
+    {
+      "id": "5547",
+      "tripId": "2c7c",
+      "cityName": "Halvad",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 22.767502767852363,
+      "lng": 71.10958404033349,
+      "order": 3
+    },
+    {
+      "id": "6f89",
+      "tripId": "2c7c",
+      "cityName": "Yelbarga",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 15.596623854230987,
+      "lng": 75.95947265625,
+      "order": 4
+    },
+    {
+      "id": "c868",
+      "tripId": "2c7c",
+      "cityName": "Birmaharajpur",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 20.85561887471615,
+      "lng": 84.00146484375001,
+      "order": 5
+    },
+    {
+      "id": "bd7e",
+      "tripId": "2c7c",
+      "cityName": "Bhaluka",
+      "country": "Bangladesh",
+      "countryCode": "BD",
+      "lat": 24.38511368897683,
+      "lng": 90.28564453125001,
+      "order": 6
+    },
+    {
+      "id": "a3da",
+      "tripId": "2c7c",
+      "cityName": "Lakhipur",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 24.82288540554415,
+      "lng": 92.94433593750001,
+      "order": 7
+    },
+    {
+      "id": "6401",
+      "tripId": "2c7c",
+      "cityName": "Sirijangha",
+      "country": "Nepal",
+      "countryCode": "NP",
+      "lat": 27.42785911463987,
+      "lng": 88.02246093750001,
+      "order": 8
+    },
+    {
+      "id": "932e",
+      "tripId": "2c7c",
+      "cityName": "Ngari Diqu",
+      "country": "China",
+      "countryCode": "CN",
+      "lat": 31.988259207012007,
+      "lng": 83.89160156250001,
+      "order": 9
+    },
+    {
+      "id": "b4a9",
+      "tripId": "2c7c",
+      "cityName": "Hetian",
+      "country": "China",
+      "countryCode": "CN",
+      "lat": 35.548521158407276,
+      "lng": 84.24316406250001,
+      "order": 10
+    },
+    {
+      "id": "7530",
+      "tripId": "2c7c",
+      "cityName": "Bhopalpatnam",
+      "country": "India",
+      "countryCode": "IN",
+      "lat": 19.078313772444297,
+      "lng": 80.35400390625001,
+      "order": 11
     }
   ],
   "expenses": [

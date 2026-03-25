@@ -4,10 +4,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.8rem;
 }
 
 .city {
-  padding: 0.8rem 1.2rem;
+  padding: 0.8rem 1.4rem;
   background-color: #d9dadb;
   color: #34393d;
   border-radius: 0.6rem;
@@ -42,11 +43,6 @@
   z-index: 1;
 }
 
-/* .city--active {
-  border: 2px solid var(--color-brand--2);
-  border-left: 5px solid var(--color-brand--2);
-} */
-
 .deleteBtn {
   height: 2rem;
   aspect-ratio: 1;
@@ -70,4 +66,12 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .city {
+    padding: 0.6rem 1rem;
+    margin-bottom: 0.7rem;
+    font-size: 1.6rem;
+  }
 }

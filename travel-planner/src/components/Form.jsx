@@ -187,7 +187,7 @@ export default function Form() {
           </select>
         </div>
       </div>
-      <div className={styles.row}>
+      <div className={`${styles.row} ${styles.addCityForm}`}>
         <label htmlFor="cityName">City name</label>
         <span>
           <input
@@ -197,7 +197,7 @@ export default function Form() {
             value={cityName}
           />
           <button
-            className={styles.btn}
+            className={`${styles.btn} ${styles.addCityBtn}`}
             onClick={(e) => {
               e.preventDefault();
               handleAddCity(cityInfo);

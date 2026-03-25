@@ -1,7 +1,8 @@
 .trip {
   width: 90%;
+  height: 100%;
   color: var(--color-light--2);
-  margin: 2rem auto;
+  margin: 1.4rem auto;
   padding: 2.5rem;
   background: var(--color-dark--2);
   border-radius: 10px;
@@ -26,14 +27,11 @@
   gap: 1rem;
 }
 
-.tripDates {
-  color: var(--color-light--1);
-  font-size: 1.8rem;
-}
-
+.tripDates,
 .tripCurrency {
-  font-size: 1.8rem;
   color: var(--color-light--1);
+  font-size: 1.8rem;
+  display: flex;
 }
 
 .tripDates span,
@@ -85,4 +83,68 @@
   height: 5rem;
   width: 5rem;
   font-size: 3rem;
+}
+
+@media (max-width: 768px) {
+  .trip {
+    width: 96%;
+    height: 89.5%;
+    padding: 1.4rem;
+  }
+
+  .tripHeader {
+    margin-bottom: 0.6rem;
+  }
+
+  .tripHeader h1 {
+    margin-bottom: 0;
+    font-size: 2rem;
+  }
+
+  .flex {
+    gap: 0.6rem;
+  }
+
+  .tripDates {
+    margin-top: 0.4rem;
+  }
+
+  .tripDates,
+  .tripCurrency {
+    font-size: 1.6rem;
+    display: flex;
+  }
+
+  .tripDates span,
+  .tripCurrency span {
+    display: inline-block;
+    width: 2rem;
+  }
+
+  .tripDates p,
+  .tripCurrency p {
+    display: inline;
+  }
+
+  .tripFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.1rem;
+  }
+
+  .link:link,
+  .link:visited {
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 1rem 1.6rem;
+  }
+
+  .btn {
+    height: 4.4rem;
+    width: 4.4rem;
+    font-size: 2.8rem;
+    top: -0.85rem;
+    right: -0.85rem;
+  }
 }

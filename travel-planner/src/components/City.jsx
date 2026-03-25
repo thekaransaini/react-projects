@@ -14,11 +14,11 @@ export default function City({ city }) {
           <span>
             <strong>{cityName}</strong>, {country}
           </span>
-          <img
-            src={`https://flagcdn.com/16x12/${countryCode?.toLowerCase()}.png`}
-            alt={`Image of ${country} flag`}
-          />
         </div>
+        <img
+          src={`https://flagcdn.com/16x12/${countryCode?.toLowerCase()}.png`}
+          alt={`Image of ${country} flag`}
+        />
       </NavLink>
     </li>
   );
