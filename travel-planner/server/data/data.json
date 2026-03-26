@@ -1,0 +1,7 @@
+{
+  "users": [],
+  "trips": [],
+  "expenses": [],
+  "packingItems": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}

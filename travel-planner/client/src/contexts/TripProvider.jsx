@@ -1,8 +1,7 @@
 import { createContext, useEffect, useReducer, useState } from "react";
 
 const TripContext = createContext();
-// const BASE_URL = "http://localhost:8000";
-const BASE_URL = "http://10.147.190.54:8000";
+const BASE_URL = import.meta.env.VITE_API_URL;
 const initialState = {
   isLoading: false,
   error: "",
