@@ -88,7 +88,7 @@
 @media (max-width: 768px) {
   .trip {
     width: 96%;
-    height: 89.5%;
+    max-height: 89.5%;
     padding: 1.4rem;
   }
 
