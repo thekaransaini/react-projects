@@ -87,7 +87,7 @@ export default function Form() {
 
         if (!countryCode)
           throw new Error(
-            "That doesn't seem to be a city. Click somewhere else 😉",
+            "Use the search bar to find a city and add your trip.",
           );
 
         setCityName(city ? city : locality);
