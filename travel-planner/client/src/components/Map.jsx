@@ -15,11 +15,10 @@ import { useNavigate } from "react-router-dom";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-delete L.Icon.Default.prototype._getIconUrl;
-
-L.Icon.Default.mergeOptions({
+const customIcon = new L.Icon({
   iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-  shadowUrl: null,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
 });
 
 const defaultPosition = [28.7041, 77.1025];
@@ -48,7 +47,11 @@ export default function Map({ children }) {
         <Polyline />
         <ClickEvent />
         {cities.map((city, i) => (
-          <Marker position={[city.lat, city.lng]} key={city.id}>
+          <Marker
+            position={[city.lat, city.lng]}
+            icon={customIcon}
+            key={city.id}
+          >
             <Tooltip>
               <div className={styles["leaflet-tooltip-content"]}>
                 <span>{i + 1}</span>
