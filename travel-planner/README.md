@@ -73,16 +73,15 @@ travel-planner/
 │   ├── package.json
 │   ├── package-lock.json
 │   ├── .gitignore
-│   ├── README.md
 │   ├── dist/
 │   └──demo/
-└── server/                     # Backend (JSON Server)
-    ├── data/
-    │   └── data.json           # Mock database
-    ├── server.js               # Custom server setup (if any)
-    ├── package.json
-    └── package-lock.json
-
+├── server/                     # Backend (JSON Server)│
+│    ├── data/
+│    │   └── data.json           # Mock database
+│    ├── server.js               # Custom server setup (if any)
+│    ├── package.json
+│    └── package-lock.json
+└── README.md
 
 
 
@@ -190,7 +189,7 @@ Your script:
 
 ## 🎥 Demo Video
 
-[![Travel Planner Demo](demo/app-demo.png)](https://youtu.be/FeymYJhe3Rw)
+[![Travel Planner Demo](client/demo/app-demo.png)](https://youtu.be/FeymYJhe3Rw)
 
 ---
 
