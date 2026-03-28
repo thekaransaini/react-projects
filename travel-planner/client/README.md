@@ -1,109 +1,212 @@
 # 🌍 Travel Planner App
 
-A modern **Travel Planner web application** built with React that helps users plan trips, manage destinations, and visualize their journey on an interactive map.
+A modern and responsive **Travel Planner Web App** that helps users plan trips, manage expenses, track packing lists, and visualize travel routes on an interactive map.
 
-> 🚧 **Status: Ongoing Project** – New features like Journal, Expense Tracker, and Packing List are currently in development.
+🔗 **Live App:** [Travel Planner App](https://travel-planner-theta-blush.vercel.app/)
 
----
-
-## ✨ Features
-
-- 🧳 Create and manage trips
-- 📍 Add multiple cities to a trip
-- 🗺️ Interactive map visualization using Leaflet
-- ➡️ Route display with polylines between cities
-- 📅 Trip date management
-- 🗑️ Delete trips along with associated cities
-- ⚡ Centralized state management using Context API + useReducer
-- 🔄 Real-time UI updates (without refresh)
+🔗 **Backend API:** [Render Server](https://travel-planner-api-1lge.onrender.com)
 
 ---
 
-## 📸 Preview
+## 🚀 Features
 
-![App Screenshot](./demo/app-demo.png)
+- 🔐 User Authentication (Login / Signup)
+- 🗺️ Interactive Map with city search & markers
+- 📍 Add & manage trips with multiple cities
+- 🧭 Dynamic routes with polylines on map
+- 💰 Expense tracking with category & currency
+- 🎒 Packing list with progress tracking
+- 📅 Date selection with validation
+- 📱 Fully responsive UI (mobile + desktop)
+- ⚡ Smooth animations & improved UX
+- 🧠 Error handling & loading states
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** React, JavaScript, HTML, CSS
-- **State Management:** Context API + useReducer
-- **Routing:** React Router
-- **Maps:** Leaflet + React-Leaflet
-- **Backend (Mock API):** JSON Server
+**Frontend**
 
----
+- React.js
+- HTML5
+- CSS3
+- JavaScript (ES6+)
+- React Router
+- Context API + useReducer
 
-## 🧠 Key Learnings
+**Backend**
 
-- Managing complex state with **useReducer**
-- Structuring scalable apps using **Context API**
-- Handling async operations & API integration
-- Working with map libraries and geolocation data
-- Implementing clean component architecture
+- JSON Server (Mock REST API)
+- Hosted on Render
 
----
+**Map & APIs**
 
-## 🚀 Upcoming Features
-
-- 📝 Trip Journal
-- 💸 Expense Tracker (per trip)
-- 🎒 Packing List
-- 📱 Responsive Design
-- ✏️ Edit Trip & Cities (planned)
+- Leaflet.js
+- Geoapify API (for city search & geocoding)
 
 ---
 
 ## 📂 Project Structure
 
 ```
-src/
- ├── components/
- ├── pages/
- ├── context/
- ├── hooks/
+## 📁 Project Structure
+
+travel-planner/
+│
+├── client/                     # Frontend (React + Vite)
+│   ├── public/                 # Static assets
+│   ├── src/
+│   │   ├── assets/             # Images, icons, etc.
+│   │   ├── components/         # Reusable UI components
+│   │   ├── contexts/           # Global state (Context API)
+│   │   ├── hooks/              # Custom React hooks
+│   │   ├── pages/              # App pages (Home, Login, Trips, etc.)
+│   │   ├── routes/             # Routing configuration
+│   │   ├── App.jsx             # Root component
+│   │   ├── main.jsx            # Entry point
+│   │   └── index.css           # Global styles
+│   │
+│   ├── .env                    # Environment variables
+│   ├── index.html              # HTML template
+│   ├── vite.config.js          # Vite configuration
+│   ├── eslint.config.js        # Linting config
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── .gitignore
+│   ├── README.md
+│   ├── dist/
+│   └──demo/
+└── server/                     # Backend (JSON Server)
+    ├── data/
+    │   └── data.json           # Mock database
+    ├── server.js               # Custom server setup (if any)
+    ├── package.json
+    └── package-lock.json
+
+
+
+
 ```
 
 ---
 
 ## ⚙️ Installation & Setup
 
+### 1. Clone Repository
+
 ```bash
-# Clone the repo
 git clone https://github.com/your-username/travel-planner.git
-
-# Go to project folder
 cd travel-planner
+```
 
-# Install dependencies
+### 2. Install Dependencies
+
+```bash
 npm install
+```
 
-# Start development server
-npm run dev
+### 3. Setup Environment Variables
 
-# Run JSON server (mock backend)
-npm run server
+Create a `.env` file:
+
+```
+VITE_API_URL=https://travel-planner-api-1lge.onrender.com
+VITE_GEOAPIFY_API_KEY=your_api_key
 ```
 
 ---
 
-## 📌 Future Improvements
+### 4. Run Frontend
 
-- Better error handling
-- Optimized performance
-- Improved UX/UI
-- Backend integration (Node.js / Firebase)
+```bash
+npm run dev
+```
+
+---
+
+### 5. Run JSON Server (Local)
+
+```bash
+npm run server
+```
+
+Your script:
+
+```json
+"server": "json-server --watch data/data.json --port 8000"
+```
+
+---
+
+## 📡 API Endpoints (JSON Server)
+
+- `/users`
+- `/trips`
+- `/cities`
+- `/expenses`
+- `/packingItems`
+
+---
+
+## 📊 Key Functionalities
+
+### ✈️ Trip Management
+
+- Create, delete, and view trips
+- Add multiple cities per trip
+
+### 🗺️ Map Integration
+
+- Search cities using API
+- Get latitude & longitude dynamically
+- Display markers and routes
+
+### 💸 Expense Tracking
+
+- Add expenses with category & currency
+- Calculate totals
+
+### 🎒 Packing List
+
+- Add items
+- Mark as packed/unpacked
+- Track progress
+
+---
+
+## 🧪 Deployment
+
+### Frontend (Vercel)
+
+- Connected GitHub repo
+- Auto deploy on push
+
+### Backend (Render)
+
+- JSON Server hosted
+- Environment variables configured
+
+---
+
+## 🎥 Demo Video
+
+[![Travel Planner Demo](demo/app-demo.png)](https://youtu.be/FeymYJhe3Rw)
+
+---
+
+## ⚠️ Notes
+
+- JSON Server is used as a mock backend (not for production)
+- For production apps, replace with real backend (Node.js / Firebase / Supabase)
 
 ---
 
 ## 🙌 Author
 
-**Karan Saini**  
-Frontend Developer (React)
+**Karan Saini**
 
 ---
 
-## ⭐ Note
+## ⭐ Support
 
-This project is actively being improved as part of my learning journey in frontend development.
+If you like this project, give it a ⭐ on GitHub!
