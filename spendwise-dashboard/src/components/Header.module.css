@@ -1,15 +1,17 @@
 .header {
   padding: 1.8rem 3rem;
-  padding-bottom: 1rem;
+  padding-bottom: 1.2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid var(--border);
+  margin-bottom: 1.8rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 760px) {
   .header {
     padding: 1rem;
     border-bottom: 0.3px solid black;
+    margin-bottom: 1.4rem;
   }
 }

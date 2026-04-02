@@ -1,0 +1,23 @@
+.summaryCards {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin: 0 auto;
+}
+
+@media (max-width: 760px) {
+  .summaryCards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+  }
+}
+
+@media (min-width: 760px) and (max-width: 1300px) {
+  .summaryCards {
+    display: flex;
+    flex-direction: row;
+    gap: 0.8rem;
+  }
+}

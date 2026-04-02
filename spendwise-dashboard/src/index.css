@@ -3,9 +3,10 @@
   --bg-card: #ffffff; /* Cards */
   --text-primary: #1f2937; /* Main text */
   --text-secondary: #6b7280; /* Light text */
-  --success: #22c55e; /* Income */
-  --danger: #ef4444; /* Expense */
-  --warning: #f59e0b;
+  --blue: #3b82f6;
+  --green: #22c55e; /* Income */
+  --red: #ef4444; /* Expense */
+  --orange: #f59e0b;
   --border: #e5e7eb;
 }
 

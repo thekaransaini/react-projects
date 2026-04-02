@@ -5,7 +5,7 @@
   border: 1px solid var(--border);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 760px) {
   .roleSwitcher {
     font-size: 0.9rem;
     padding: 0.2rem 0.4rem;

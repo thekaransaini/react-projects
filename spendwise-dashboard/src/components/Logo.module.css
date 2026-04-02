@@ -2,16 +2,11 @@
   display: flex;
   align-items: center;
   gap: 0.4rem;
-}
-
-.logoIcon,
-.logoText {
   font-size: 1.5rem;
 }
 
-@media (max-width: 768px) {
-  .logoIcon,
-  .logoText {
+@media (max-width: 760px) {
+  .logo {
     font-size: 1.1rem;
   }
 }
