@@ -1,0 +1,17 @@
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.logoIcon,
+.logoText {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .logoIcon,
+  .logoText {
+    font-size: 1.1rem;
+  }
+}

@@ -1,0 +1,13 @@
+.roleSwitcher {
+  font-size: 1rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.4rem;
+  border: 1px solid var(--border);
+}
+
+@media (max-width: 768px) {
+  .roleSwitcher {
+    font-size: 0.9rem;
+    padding: 0.2rem 0.4rem;
+  }
+}
