@@ -1,0 +1,47 @@
+.goalCard {
+  background-color: #fff;
+  width: 70%;
+  margin: 0 auto;
+  border: 2px solid var(--border);
+  border-radius: 0.4rem;
+}
+
+.goalCardHeading {
+  border-bottom: 2px solid var(--border);
+  padding: 1rem 1.2rem;
+  font-size: 0.8rem;
+}
+
+.goalCardContent {
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+@media (max-width: 760px) {
+  .goalCardContent {
+    flex-direction: column;
+  }
+
+  .goalCardHeading {
+    font-size: 0.7rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .goalCard {
+    width: 90%;
+  }
+}
+
+@media (min-width: 760px) and (max-width: 1300px) {
+  .goalCard {
+    width: 90%;
+  }
+}
+
+@media (min-width: 760px) and (max-width: 1130px) {
+  .goalCardContent {
+    flex-direction: column;
+    grid-template-columns: 1fr;
+  }
+}

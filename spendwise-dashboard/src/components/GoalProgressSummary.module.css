@@ -1,0 +1,90 @@
+.goalSummary {
+  border: 2px solid var(--border);
+  padding-bottom: 0.5rem;
+  border-radius: 0.4rem;
+  font-size: 1.1rem;
+  flex: 1;
+}
+
+.goalSummaryHeading {
+  background-color: #fef3e7;
+  padding: 0.5rem 0.8rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.goalSummaryHeading h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.2rem;
+}
+
+.goalSummaryContent {
+  padding: 1rem 1.2rem;
+}
+
+.goalDetails {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.goalSummaryFooter {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.goalProgressContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 70%;
+}
+
+.goalProgressBar {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  width: 100%;
+  height: 0.8rem;
+  overflow: hidden;
+  border-radius: 0.8rem;
+}
+
+.goalProgressBar::-webkit-progress-bar {
+  background-color: #22653e;
+}
+
+.goalProgressBar::-webkit-progress-value {
+  background-color: #31a27a;
+}
+
+.checkCircleIcon {
+  color: #31a27a;
+}
+
+@media (max-width: 760px) {
+  .goalSummary {
+    font-size: 1rem;
+    padding-bottom: 0;
+  }
+
+  .goalSummaryContent {
+    padding: 0.6rem 1rem;
+  }
+
+  .goalProgressContainer {
+    width: 60%;
+  }
+
+  .goalDetails {
+    font-size: 0.9rem;
+    gap: 1rem;
+  }
+
+  .goalSummaryHeading h2 {
+    font-size: 1rem;
+  }
+}

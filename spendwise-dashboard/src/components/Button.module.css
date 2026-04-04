@@ -1,0 +1,26 @@
+.primaryBtn {
+  background-color: #2678df;
+  border-radius: 0.4rem;
+  color: #fff;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+}
+
+@media (max-width: 760px) {
+  .primaryBtn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
+}
+
+@media (min-width: 760px) and (max-width: 1130px) {
+  .primaryBtn {
+    flex: 1;
+  }
+}
