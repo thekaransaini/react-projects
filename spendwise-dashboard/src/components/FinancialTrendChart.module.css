@@ -1,0 +1,52 @@
+.financialTrendChartContainer {
+  width: 70%;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 2px solid var(--border);
+  border-radius: 0.4rem;
+  padding: 1rem 1.2rem;
+}
+
+.financialTrendChartHeading {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.financialTrendChartIcon {
+  font-size: 1rem;
+}
+
+.financialTrendChart {
+  padding: 1rem 1.2rem;
+}
+
+svg:focus,
+svg:active {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+@media (max-width: 760px) {
+  .financialTrendChartContainer {
+    width: 90%;
+    padding: 1rem;
+  }
+
+  .financialTrendChart {
+    padding: 0;
+  }
+
+  .financialTrendChartHeading {
+    font-size: 0.7rem;
+  }
+}
+
+@media (min-width: 760px) and (max-width: 1300px) {
+  .financialTrendChartContainer {
+    width: 90%;
+  }
+}

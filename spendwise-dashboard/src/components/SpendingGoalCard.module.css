@@ -1,7 +1,7 @@
 .goalCard {
   background-color: #fff;
   width: 70%;
-  margin: 0 auto;
+  margin: 0 auto 1.4rem;
   border: 2px solid var(--border);
   border-radius: 0.4rem;
 }
