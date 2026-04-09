@@ -1,12 +1,12 @@
 import styles from "./Header.module.css";
 import Logo from "./Logo";
-import RoleSwitcher from "./RoleSwitcher";
+import Dropdown from "./Dropdown";
 
 export default function Header() {
   return (
     <header className={styles.header}>
       <Logo />
-      <RoleSwitcher />
+      <Dropdown options={["Viewer", "Admin"]} />
     </header>
   );
 }

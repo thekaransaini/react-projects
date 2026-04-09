@@ -1,0 +1,87 @@
+.spendingBreakdownChartContainer {
+  background-color: #fff;
+  border: 2px solid var(--border);
+  border-radius: 0.4rem;
+  padding: 1rem 1.2rem;
+}
+
+.spendingBreakdownChartHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.spendingBreakdownChartHeading {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+}
+
+.spendingBreakdownChartIcon {
+  font-size: 1rem;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+}
+
+/* 🔹 CHART */
+.chart {
+  position: relative;
+}
+
+/* 🔥 CENTER TEXT */
+.centerText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.centerText h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.centerText p {
+  font-size: 12px;
+  color: gray;
+}
+
+/* 🔹 LEGEND */
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+:global(.recharts-tooltip-wrapper) {
+  outline: none;
+  z-index: 1;
+  font-weight: bold;
+}
+
+:global(.recharts-default-tooltip) {
+  background-color: #ffffff !important;
+  border: 2px solid var(--border);
+  border-radius: 0.4rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}

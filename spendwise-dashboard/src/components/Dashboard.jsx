@@ -1,6 +1,10 @@
+import styles from "./Dashboard.module.css";
 import SpendingGoalCard from "./SpendingGoalCard";
 import SummaryCards from "./SummaryCards";
 import FinancialTrendChart from "./FinancialTrendChart";
+import SpendingBreakdownChart from "./SpendingBreakdownChart";
+import InsightsPanel from "./InsightsPanel";
+import { useState } from "react";
 
 const transactions = [
   {
@@ -256,7 +260,12 @@ const transactions = [
   },
 ];
 
+const months = [...new Set(transactions.map((t) => t.date.slice(0, 7)))]
+  .sort()
+  .reverse();
+
 export default function Dashboard() {
+  const [selectedMonth, setSelectedMonth] = useState(months[0]);
   function getMonthlyData(transactions) {
     const result = {};
 
@@ -289,13 +298,60 @@ export default function Dashboard() {
       }));
   }
 
+  function getCategoryData(transactions, selectedMonth) {
+    const result = {};
+
+    transactions.forEach((t) => {
+      const month = t.date.slice(0, 7);
+
+      if (t.type === "expense" && month === selectedMonth) {
+        if (!result[t.category]) {
+          result[t.category] = 0;
+        }
+        result[t.category] += t.amount;
+      }
+    });
+
+    let data = Object.keys(result).map((key) => ({
+      name: key,
+      value: result[key],
+    }));
+
+    data.sort((a, b) => b.value - a.value);
+
+    const topCategories = data.slice(0, 5);
+
+    const othersValue = data
+      .slice(5)
+      .reduce((sum, item) => sum + item.value, 0);
+
+    if (othersValue > 0) {
+      topCategories.push({
+        name: "Others",
+        value: othersValue,
+      });
+    }
+
+    return topCategories;
+  }
+
+  function getTotalExpense(data) {
+    return data.reduce((sum, item) => sum + item.value, 0);
+  }
+
   const lineData = getMonthlyData(transactions);
+  const pieData = getCategoryData(transactions, selectedMonth);
+  const total = getTotalExpense(pieData);
 
   return (
     <main>
       <SummaryCards />
       <SpendingGoalCard />
       <FinancialTrendChart data={lineData} />
+      <div className={styles.analyticsSection}>
+        <SpendingBreakdownChart data={pieData} total={total} months={months} />
+        <InsightsPanel />
+      </div>
     </main>
   );
 }

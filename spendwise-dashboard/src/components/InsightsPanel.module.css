@@ -1,0 +1,33 @@
+.insightsPanel {
+  background-color: #fff;
+  border: 2px solid var(--border);
+  border-radius: 0.4rem;
+  padding: 1rem 1.2rem;
+}
+
+.insightsPanelHeading {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.insightsPanelIcon {
+  font-size: 1rem;
+}
+
+.insightsList {
+  list-style: none;
+}
+
+.insight {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  border: 2px solid var(--border);
+  border-radius: 0.4rem;
+  margin-bottom: 0.6rem;
+  padding: 1rem 1.2rem;
+  background-color: #eff6ff;
+}
