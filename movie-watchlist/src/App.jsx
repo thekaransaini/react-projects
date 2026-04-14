@@ -5,6 +5,7 @@ import { useMovieDetails } from "./useMovieDetails";
 import { useLocalStorage } from "./useLocalStorage";
 import { useKeyDown } from "./useKeyDown";
 import Loader from "./components/Loader";
+import ErrorMessage from "./components/ErrorMessage";
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -65,15 +66,6 @@ export default function App() {
         </Box>
       </Main>
     </>
-  );
-}
-
-function ErrorMessage({ message }) {
-  return (
-    <p className="error">
-      <span>⚠️</span>
-      {message}
-    </p>
   );
 }
 
