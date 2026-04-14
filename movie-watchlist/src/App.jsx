@@ -6,6 +6,7 @@ import { useLocalStorage } from "./useLocalStorage";
 import { useKeyDown } from "./useKeyDown";
 import Loader from "./components/Loader";
 import ErrorMessage from "./components/ErrorMessage";
+import NavBar from "./components/NavBar";
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -66,15 +67,6 @@ export default function App() {
         </Box>
       </Main>
     </>
-  );
-}
-
-function NavBar({ children }) {
-  return (
-    <nav className="nav-bar">
-      <Logo />
-      {children}
-    </nav>
   );
 }
 
