@@ -4,6 +4,7 @@ import { useMovies } from "./useMovies";
 import { useMovieDetails } from "./useMovieDetails";
 import { useLocalStorage } from "./useLocalStorage";
 import { useKeyDown } from "./useKeyDown";
+import Loader from "./components/Loader";
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -64,14 +65,6 @@ export default function App() {
         </Box>
       </Main>
     </>
-  );
-}
-
-function Loader() {
-  return (
-    <div className="loader-wrapper">
-      <div className="loader"></div>
-    </div>
   );
 }
 
@@ -189,7 +182,7 @@ function MovieDetails({
 
   const isWatchedMovie = watched.some((movie) => movie.imdbID === selectedId);
   const watchedMovieUserRating = watched.find(
-    (movie) => movie.imdbID === selectedId
+    (movie) => movie.imdbID === selectedId,
   )?.userRating;
 
   const {
@@ -226,7 +219,7 @@ function MovieDetails({
         document.title = "movie-watchlist";
       };
     },
-    [title]
+    [title],
   );
 
   useKeyDown("Escape", onCloseMovie);
