@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import StarRating from "./StarRating";
 import { useMovies } from "./useMovies";
 import { useMovieDetails } from "./useMovieDetails";
@@ -7,6 +7,7 @@ import { useKeyDown } from "./useKeyDown";
 import Loader from "./components/Loader";
 import ErrorMessage from "./components/ErrorMessage";
 import NavBar from "./components/NavBar";
+import SearchBar from "./components/SearchBar";
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -36,7 +37,7 @@ export default function App() {
   return (
     <>
       <NavBar>
-        <Search query={query} setQuery={setQuery} />
+        <SearchBar query={query} setQuery={setQuery} />
         <NumResult movies={movies} query={query} />
       </NavBar>
       <Main>
@@ -67,27 +68,6 @@ export default function App() {
         </Box>
       </Main>
     </>
-  );
-}
-
-function Search({ query, setQuery }) {
-  const inputEl = useRef(null);
-
-  useKeyDown("Enter", function () {
-    if (document.activeElement === inputEl.current) return;
-    inputEl.current.focus();
-    setQuery("");
-  });
-
-  return (
-    <input
-      className="search"
-      type="text"
-      placeholder="Search movies..."
-      value={query}
-      onChange={(e) => setQuery(e.target.value)}
-      ref={inputEl}
-    />
   );
 }
 
