@@ -51,11 +51,6 @@ body {
 
 /* ******* */
 
-.num-results {
-  justify-self: end;
-  font-size: 1.8rem;
-}
-
 .btn-toggle {
   position: absolute;
   top: 0.8rem;

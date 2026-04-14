@@ -8,6 +8,7 @@ import Loader from "./components/Loader";
 import ErrorMessage from "./components/ErrorMessage";
 import NavBar from "./components/NavBar";
 import SearchBar from "./components/SearchBar";
+import ResultsCount from "./components/ResultsCount";
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -38,7 +39,7 @@ export default function App() {
     <>
       <NavBar>
         <SearchBar query={query} setQuery={setQuery} />
-        <NumResult movies={movies} query={query} />
+        <ResultsCount movies={movies} query={query} />
       </NavBar>
       <Main>
         <Box>
@@ -68,16 +69,6 @@ export default function App() {
         </Box>
       </Main>
     </>
-  );
-}
-
-function NumResult({ movies, query }) {
-  return (
-    query && (
-      <p className="num-results">
-        Found <strong>{movies.length}</strong> results
-      </p>
-    )
   );
 }
 
