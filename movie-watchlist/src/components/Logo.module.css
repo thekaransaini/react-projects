@@ -13,3 +13,13 @@
   font-weight: 600;
   color: #fff;
 }
+
+@media (max-width: 800px) {
+  .logo span {
+    font-size: 2rem;
+  }
+
+  .logo h1 {
+    font-size: 2rem;
+  }
+}
