@@ -11,6 +11,7 @@ import SearchBar from "./components/SearchBar";
 import ResultsCount from "./components/ResultsCount";
 import Main from "./components/Main";
 import Container from "./components/Container";
+import MovieList from "./components/MovieList";
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -71,16 +72,6 @@ export default function App() {
         </Container>
       </Main>
     </>
-  );
-}
-
-function MovieList({ movies, onSelectId }) {
-  return (
-    <ul className="list">
-      {movies?.map((movie) => (
-        <Movie movie={movie} onSelectId={onSelectId} />
-      ))}
-    </ul>
   );
 }
 
