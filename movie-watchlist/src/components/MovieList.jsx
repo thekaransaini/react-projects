@@ -1,3 +1,5 @@
+import Movie from "../Movie";
+
 export default function MovieList({ movies, onSelectId }) {
   return (
     <ul className="list">
