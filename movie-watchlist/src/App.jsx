@@ -9,6 +9,7 @@ import ErrorMessage from "./components/ErrorMessage";
 import NavBar from "./components/NavBar";
 import SearchBar from "./components/SearchBar";
 import ResultsCount from "./components/ResultsCount";
+import Main from "./components/Main";
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -70,10 +71,6 @@ export default function App() {
       </Main>
     </>
   );
-}
-
-function Main({ children }) {
-  return <main className="main">{children}</main>;
 }
 
 function Box({ children }) {
