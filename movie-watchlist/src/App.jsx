@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useMovies } from "./useMovies";
+import { useFetchMovies } from "./useFetchMovies";
 import { useLocalStorage } from "./useLocalStorage";
 import Loader from "./components/Loader";
 import ErrorMessage from "./components/ErrorMessage";
@@ -16,7 +16,7 @@ import WatchList from "./components/WatchList";
 export default function App() {
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState("");
-  const { isLoading, error, movies } = useMovies(query);
+  const { isLoading, error, movies } = useFetchMovies(query);
   const [watched, setWatched] = useLocalStorage([], "watched");
 
   function handleSelectedId(id) {
