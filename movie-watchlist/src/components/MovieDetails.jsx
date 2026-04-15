@@ -1,7 +1,7 @@
 import styles from "./MovieDetails.module.css";
 import { useEffect, useState } from "react";
-import { useMovieDetails } from "../useMovieDetails";
-import { useKeyDown } from "../useKeyDown";
+import { useMovieDetails } from "../hooks/useMovieDetails";
+import { useKeyDown } from "../hooks/useKeyDown";
 import StarRating from "./StarRating";
 import Loader from "./Loader";
 import ErrorMessage from "./ErrorMessage";

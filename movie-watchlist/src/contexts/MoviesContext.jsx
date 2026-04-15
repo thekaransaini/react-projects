@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 import { useSearch } from "../useSearch";
-import { useFetchMovies } from "../useFetchMovies";
-import { useLocalStorage } from "../useLocalStorage";
+import { useFetchMovies } from "../hooks/useFetchMovies";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const MoviesContext = createContext();
 

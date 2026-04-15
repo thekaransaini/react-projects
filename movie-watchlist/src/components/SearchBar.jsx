@@ -1,5 +1,5 @@
 import styles from "./SearchBar.module.css";
-import { useKeyDown } from "../useKeyDown";
+import { useKeyDown } from "../hooks/useKeyDown";
 import { useRef } from "react";
 import { useSearch } from "../useSearch";
 
