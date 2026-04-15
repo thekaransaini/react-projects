@@ -11,6 +11,7 @@ import Container from "./components/Container";
 import MovieList from "./components/MovieList";
 import MovieDetails from "./components/MovieDetails";
 import WatchedMovieSummary from "./components/WatchedMovieSummary";
+import WatchList from "./components/WatchList";
 
 export default function App() {
   const [query, setQuery] = useState("");
@@ -59,7 +60,7 @@ export default function App() {
           ) : (
             <>
               <WatchedMovieSummary watched={watched} />
-              <WatchedMovieList
+              <WatchList
                 watched={watched}
                 onDeleteWatchedMovie={handleDeleteWatchedMovie}
               />
@@ -68,19 +69,6 @@ export default function App() {
         </Container>
       </Main>
     </>
-  );
-}
-
-function WatchedMovieList({ watched, onDeleteWatchedMovie }) {
-  return (
-    <ul className="list">
-      {watched.map((movie) => (
-        <WatchedMovie
-          movie={movie}
-          onDeleteWatchedMovie={onDeleteWatchedMovie}
-        />
-      ))}
-    </ul>
   );
 }
 
