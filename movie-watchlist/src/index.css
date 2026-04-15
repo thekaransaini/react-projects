@@ -82,26 +82,6 @@ body {
   gap: 0.8rem;
 }
 
-.btn-delete {
-  position: absolute;
-  right: 2.4rem;
-
-  height: 1.8rem;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  border: none;
-  background-color: var(--color-red);
-  color: var(--color-background-900);
-  font-size: 0.9rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.btn-delete:hover {
-  background-color: var(--color-red-dark);
-}
-
 .seconds {
   background-color: var(--color-background-100);
   width: 8rem;
