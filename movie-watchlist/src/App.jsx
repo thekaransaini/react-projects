@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
-import StarRating from "./StarRating";
+import { useState } from "react";
 import { useMovies } from "./useMovies";
-import { useMovieDetails } from "./useMovieDetails";
 import { useLocalStorage } from "./useLocalStorage";
-import { useKeyDown } from "./useKeyDown";
 import Loader from "./components/Loader";
 import ErrorMessage from "./components/ErrorMessage";
 import NavBar from "./components/NavBar";
@@ -12,6 +9,7 @@ import ResultsCount from "./components/ResultsCount";
 import Main from "./components/Main";
 import Container from "./components/Container";
 import MovieList from "./components/MovieList";
+import MovieDetails from "./components/MovieDetails";
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -72,111 +70,6 @@ export default function App() {
         </Container>
       </Main>
     </>
-  );
-}
-
-function MovieDetails({
-  watched,
-  selectedId,
-  onCloseMovie,
-  onAddWatchedMovie,
-}) {
-  const [userRating, setUserRating] = useState("");
-  const [ratingChangeCount, setRatingChangeCount] = useState(0);
-  const { isLoading, error, movie } = useMovieDetails(selectedId);
-
-  const isWatchedMovie = watched.some((movie) => movie.imdbID === selectedId);
-  const watchedMovieUserRating = watched.find(
-    (movie) => movie.imdbID === selectedId,
-  )?.userRating;
-
-  const {
-    Title: title,
-    Runtime: runtime,
-    Released: released,
-    Genre: genre,
-    imdbRating,
-    Actors: actors,
-    Director: director,
-    Poster: poster,
-    Plot: plot,
-  } = movie;
-
-  function handleAdd() {
-    const newWatchedMovie = {
-      title,
-      poster,
-      imdbID: selectedId,
-      imdbRating: Number(imdbRating),
-      runtime: runtime === "N/A" ? 0 : Number(runtime.split(" ").at(0)),
-      userRating,
-      ratingChangeCount,
-    };
-    onAddWatchedMovie(newWatchedMovie);
-    onCloseMovie();
-  }
-
-  useEffect(
-    function () {
-      document.title = `Movie | ${title}`;
-
-      return () => {
-        document.title = "movie-watchlist";
-      };
-    },
-    [title],
-  );
-
-  useKeyDown("Escape", onCloseMovie);
-
-  if (isLoading) return <Loader />;
-  if (error) return <ErrorMessage message={error} />;
-
-  return (
-    <div className="details">
-      <header>
-        <button className="btn-back" onClick={onCloseMovie}>
-          &larr;
-        </button>
-        <img src={poster} alt={`Poster of ${title} movie`} />
-        <div className="details-overview">
-          <h2>{title}</h2>
-          <p>
-            {released} &bull; {runtime}
-          </p>
-          <p>{genre}</p>
-          <p>
-            <span>⭐</span>
-            {imdbRating} IMDb rating
-          </p>
-        </div>
-      </header>
-      <section>
-        <div className="rating">
-          {isWatchedMovie ? (
-            `You rated this movie with ${watchedMovieUserRating} ⭐`
-          ) : (
-            <>
-              <StarRating
-                maxRating={10}
-                size={24}
-                defaultRating={3}
-                onSetRating={setUserRating}
-                onRatingChangeCount={setRatingChangeCount}
-              />
-              <button className="btn-add" onClick={handleAdd}>
-                + Add to list
-              </button>
-            </>
-          )}
-        </div>
-        <p>
-          <em>{plot}</em>
-        </p>
-        <p>Starring {actors}</p>
-        <p>Directed by {director}</p>
-      </section>
-    </div>
   );
 }
 
