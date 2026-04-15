@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export function useKeyDown(key, action) {
+function useKeyDown(key, action) {
   useEffect(
     function () {
       function callBackFunc(event) {
@@ -14,6 +14,8 @@ export function useKeyDown(key, action) {
         document.removeEventListener("keydown", callBackFunc);
       };
     },
-    [key, action]
+    [key, action],
   );
 }
+
+export { useKeyDown };

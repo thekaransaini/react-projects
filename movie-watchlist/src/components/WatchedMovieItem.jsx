@@ -1,5 +1,5 @@
 import styles from "./WatchedMovieItem.module.css";
-import { useMovies } from "../useMovies";
+import {useMovies} from "../hooks/useMovies";
 
 export default function WatchedMovieItem({ movie }) {
   const { onDeleteWatchedMovie } = useMovies();

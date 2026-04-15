@@ -1,4 +1,4 @@
-import { useMovies } from "../useMovies";
+import { useMovies } from "../hooks/useMovies";
 import WatchedMovieItem from "./WatchedMovieItem";
 
 export default function WatchList() {

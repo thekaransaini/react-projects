@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { useSearch } from "../useSearch";
+import { useSearch } from "../hooks/useSearch";
 import { useFetchMovies } from "../hooks/useFetchMovies";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 

@@ -1,4 +1,4 @@
-import { useMovies } from "../useMovies";
+import { useMovies } from "../hooks/useMovies";
 
 export default function MovieItem({ movie }) {
   const { onSelectId } = useMovies();

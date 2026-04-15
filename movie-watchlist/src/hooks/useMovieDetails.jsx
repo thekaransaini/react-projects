@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export function useMovieDetails(selectedId) {
+function useMovieDetails(selectedId) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [movie, setMovie] = useState({});
@@ -43,3 +43,5 @@ export function useMovieDetails(selectedId) {
   );
   return { isLoading, error, movie };
 }
+
+export { useMovieDetails };

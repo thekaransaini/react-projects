@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 const KEY = import.meta.env.VITE_OMDB_API_KEY;
 
-export function useFetchMovies(query) {
+function useFetchMovies(query) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [movies, setMovies] = useState([]);
@@ -50,3 +50,5 @@ export function useFetchMovies(query) {
   );
   return { isLoading, error, movies };
 }
+
+export { useFetchMovies };

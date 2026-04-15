@@ -1,4 +1,4 @@
-import { useMovies } from "../useMovies";
+import { useMovies } from "../hooks/useMovies";
 import MovieItem from "./MovieItem";
 
 export default function MovieList() {

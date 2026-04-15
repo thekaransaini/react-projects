@@ -7,7 +7,7 @@ import MovieList from "./components/MovieList";
 import MovieDetails from "./components/MovieDetails";
 import WatchedMovieSummary from "./components/WatchedMovieSummary";
 import WatchList from "./components/WatchList";
-import { useMovies } from "./useMovies";
+import { useMovies } from "./hooks/useMovies";
 
 export default function App() {
   const { isLoading, error, selectedId } = useMovies();

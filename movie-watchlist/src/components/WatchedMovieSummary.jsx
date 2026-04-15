@@ -1,5 +1,5 @@
 import styles from "./WatchedMovieSummary.module.css";
-import { useMovies } from "../useMovies";
+import { useMovies } from "../hooks/useMovies";
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);

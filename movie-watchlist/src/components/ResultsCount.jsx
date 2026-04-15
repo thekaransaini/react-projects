@@ -1,5 +1,5 @@
-import { useMovies } from "../useMovies";
-import { useSearch } from "../useSearch";
+import { useMovies } from "../hooks/useMovies";
+import { useSearch } from "../hooks/useSearch";
 import styles from "./ResultsCount.module.css";
 
 export default function ResultsCount() {

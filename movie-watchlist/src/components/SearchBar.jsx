@@ -1,7 +1,7 @@
 import styles from "./SearchBar.module.css";
 import { useKeyDown } from "../hooks/useKeyDown";
 import { useRef } from "react";
-import { useSearch } from "../useSearch";
+import { useSearch } from "../hooks/useSearch";
 
 export default function SearchBar() {
   const { query, setQuery } = useSearch();

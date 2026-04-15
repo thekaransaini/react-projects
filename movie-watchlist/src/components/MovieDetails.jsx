@@ -5,7 +5,7 @@ import { useKeyDown } from "../hooks/useKeyDown";
 import StarRating from "./StarRating";
 import Loader from "./Loader";
 import ErrorMessage from "./ErrorMessage";
-import { useMovies } from "../useMovies";
+import { useMovies } from "../hooks/useMovies";
 
 export default function MovieDetails() {
   const { watched, selectedId, onAddWatchedMovie, onCloseMovie } = useMovies();
