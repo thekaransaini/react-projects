@@ -1,4 +1,4 @@
-export default function Movie({ movie, onSelectId }) {
+export default function MovieItem({ movie, onSelectId }) {
   const { imdbID, Poster: poster, Title: title, Year: year } = movie;
 
   return (
