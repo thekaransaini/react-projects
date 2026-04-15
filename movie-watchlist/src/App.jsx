@@ -10,6 +10,7 @@ import NavBar from "./components/NavBar";
 import SearchBar from "./components/SearchBar";
 import ResultsCount from "./components/ResultsCount";
 import Main from "./components/Main";
+import Container from "./components/Container";
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -43,14 +44,14 @@ export default function App() {
         <ResultsCount movies={movies} query={query} />
       </NavBar>
       <Main>
-        <Box>
+        <Container>
           {isLoading && <Loader />}
           {error && <ErrorMessage message={error} />}
           {!isLoading && !error && (
             <MovieList movies={movies} onSelectId={handleSelectedId} />
           )}
-        </Box>
-        <Box>
+        </Container>
+        <Container>
           {selectedId ? (
             <MovieDetails
               watched={watched}
@@ -67,22 +68,9 @@ export default function App() {
               />
             </>
           )}
-        </Box>
+        </Container>
       </Main>
     </>
-  );
-}
-
-function Box({ children }) {
-  const [isOpen, setIsOpen] = useState(true);
-
-  return (
-    <div className="box">
-      <button className="btn-toggle" onClick={() => setIsOpen((open) => !open)}>
-        {isOpen ? "–" : "+"}
-      </button>
-      {isOpen && children}
-    </div>
   );
 }
 
