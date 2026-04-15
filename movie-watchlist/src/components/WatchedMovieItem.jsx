@@ -1,4 +1,7 @@
-export default function WatchedMovieItem({ movie, onDeleteWatchedMovie }) {
+import { useMovies } from "../useMovies";
+
+export default function WatchedMovieItem({ movie }) {
+  const { onDeleteWatchedMovie } = useMovies();
   const { imdbID, poster, title, imdbRating, userRating, runtime } = movie;
 
   return (

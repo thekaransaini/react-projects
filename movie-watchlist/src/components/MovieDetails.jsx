@@ -5,13 +5,10 @@ import { useKeyDown } from "../useKeyDown";
 import StarRating from "./StarRating";
 import Loader from "./Loader";
 import ErrorMessage from "./ErrorMessage";
+import { useMovies } from "../useMovies";
 
-export default function MovieDetails({
-  watched,
-  selectedId,
-  onCloseMovie,
-  onAddWatchedMovie,
-}) {
+export default function MovieDetails() {
+  const { watched, selectedId, onAddWatchedMovie, onCloseMovie } = useMovies();
   const [userRating, setUserRating] = useState("");
   const [ratingChangeCount, setRatingChangeCount] = useState(0);
   const { isLoading, error, movie } = useMovieDetails(selectedId);

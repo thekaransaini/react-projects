@@ -1,8 +1,10 @@
 import styles from "./SearchBar.module.css";
 import { useKeyDown } from "../useKeyDown";
 import { useRef } from "react";
+import { useSearch } from "../useSearch";
 
-export default function SearchBar({ query, setQuery }) {
+export default function SearchBar() {
+  const { query, setQuery } = useSearch();
   const inputEl = useRef(null);
 
   useKeyDown("Enter", function () {

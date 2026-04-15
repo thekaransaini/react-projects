@@ -1,13 +1,12 @@
+import { useMovies } from "../useMovies";
 import WatchedMovieItem from "./WatchedMovieItem";
 
-export default function WatchList({ watched, onDeleteWatchedMovie }) {
+export default function WatchList() {
+  const { watched } = useMovies();
   return (
     <ul className="list">
       {watched.map((movie) => (
-        <WatchedMovieItem
-          movie={movie}
-          onDeleteWatchedMovie={onDeleteWatchedMovie}
-        />
+        <WatchedMovieItem movie={movie} />
       ))}
     </ul>
   );

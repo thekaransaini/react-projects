@@ -3,11 +3,14 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { MoviesProvider } from "./contexts/MoviesContext";
+import { SearchProvider } from "./contexts/SearchContext";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <MoviesProvider>
-      <App />
-    </MoviesProvider>
+    <SearchProvider>
+      <MoviesProvider>
+        <App />
+      </MoviesProvider>
+    </SearchProvider>
   </StrictMode>,
 );

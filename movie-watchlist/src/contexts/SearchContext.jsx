@@ -1,9 +1,15 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 const SearchContext = createContext();
 
 function SearchProvider({ children }) {
-  return <SearchContext.Provider>{children}</SearchContext.Provider>;
+  const [query, setQuery] = useState("");
+
+  return (
+    <SearchContext.Provider value={{ query, setQuery }}>
+      {children}
+    </SearchContext.Provider>
+  );
 }
 
 export { SearchContext, SearchProvider };

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { SearchContext } from "./contexts/SearchContext";
 
-export function useMovies() {
+export function useSearch() {
   const context = useContext(SearchContext);
 
   if (context === undefined)

@@ -1,10 +1,13 @@
+import { useMovies } from "../useMovies";
 import MovieItem from "./MovieItem";
 
-export default function MovieList({ movies, onSelectId }) {
+export default function MovieList() {
+  const { movies } = useMovies();
+
   return (
     <ul className="list">
       {movies?.map((movie) => (
-        <MovieItem movie={movie} onSelectId={onSelectId} />
+        <MovieItem movie={movie} />
       ))}
     </ul>
   );

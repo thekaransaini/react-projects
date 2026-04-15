@@ -1,4 +1,7 @@
-export default function MovieItem({ movie, onSelectId }) {
+import { useMovies } from "../useMovies";
+
+export default function MovieItem({ movie }) {
+  const { onSelectId } = useMovies();
   const { imdbID, Poster: poster, Title: title, Year: year } = movie;
 
   return (
