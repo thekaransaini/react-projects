@@ -11,6 +11,7 @@ import { useMovies } from "./hooks/useMovies";
 
 export default function App() {
   const { isLoading, error, selectedId, isWatchListOpen } = useMovies();
+  const isMobile = window.innerWidth < 800;
 
   return (
     <>
@@ -23,7 +24,7 @@ export default function App() {
           {!isWatchListOpen && !isLoading && !error && !selectedId && (
             <MovieList className="hideOnDesktop" />
           )}
-          {!isWatchListOpen && selectedId && (
+          {!isWatchListOpen && selectedId && isMobile && (
             <MovieDetails className="hideOnDesktop" />
           )}
           {isWatchListOpen && (
