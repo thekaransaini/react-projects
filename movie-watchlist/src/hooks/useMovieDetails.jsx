@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+const KEY = import.meta.env.VITE_OMDB_API_KEY;
+
 function useMovieDetails(selectedId) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -12,7 +14,7 @@ function useMovieDetails(selectedId) {
         try {
           setIsLoading(true);
           const res = await fetch(
-            `https://www.omdbapi.com/?apikey=83540352&i=${selectedId}`,
+            `https://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`,
             { signal: controller.signal },
           );
 
