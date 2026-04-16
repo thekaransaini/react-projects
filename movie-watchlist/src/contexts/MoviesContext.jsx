@@ -10,6 +10,7 @@ function MoviesProvider({ children }) {
   const [selectedId, setSelectedId] = useState("");
   const { isLoading, error, movies } = useFetchMovies(query);
   const [watched, setWatched] = useLocalStorage([], "watched");
+  const [isWatchListOpen, setIsWatchListopen] = useState(false);
 
   function handleSelectedId(id) {
     setSelectedId((currId) => (currId === id ? null : id));
@@ -27,6 +28,14 @@ function MoviesProvider({ children }) {
     setWatched((movies) => movies.filter((movie) => movie.imdbID !== id));
   }
 
+  function toggleWatchList() {
+    setIsWatchListopen((curr) => !curr);
+  }
+
+  function closedWatchList() {
+    setIsWatchListopen(false);
+  }
+
   return (
     <MoviesContext.Provider
       value={{
@@ -35,6 +44,9 @@ function MoviesProvider({ children }) {
         movies,
         watched,
         selectedId,
+        isWatchListOpen,
+        toggleWatchList,
+        closedWatchList,
         onSelectId: handleSelectedId,
         onAddWatchedMovie: handleAddWatchedMovie,
         onCloseMovie: handleCloseMovie,

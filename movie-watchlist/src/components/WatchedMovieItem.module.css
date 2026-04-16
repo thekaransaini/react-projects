@@ -16,3 +16,15 @@
 .btnDelete:hover {
   background-color: var(--color-red-dark);
 }
+
+@media (max-width: 800px) {
+  .WatchedMovieItem h3 {
+    font-size: 1.6rem;
+  }
+
+  .btnDelete {
+    top: 1.2rem;
+    right: 1.2rem;
+    height: 2.2rem;
+  }
+}

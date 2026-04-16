@@ -2,3 +2,9 @@
   font-size: 1.8rem;
   color: #fff;
 }
+
+.navBtns {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+}

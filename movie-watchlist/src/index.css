@@ -42,7 +42,7 @@ body {
 .list li {
   position: relative;
   display: grid;
-  grid-template-columns: 4rem 1fr;
+  grid-template-columns: 4.2rem 1fr;
   grid-template-rows: auto auto;
   column-gap: 2.4rem;
   font-size: 1.6rem;
@@ -108,6 +108,15 @@ body {
   display: none;
 }
 
+.hideOnDesktop {
+  display: none;
+}
+
+.icon {
+  font-size: 1.8rem;
+  color: #fff;
+}
+
 @media (max-width: 800px) {
   .navBarMobile {
     display: flex;
@@ -123,4 +132,30 @@ body {
   .navBarDesktop {
     display: none;
   }
+
+  .hideOnMobile {
+    display: none;
+  }
+
+  .hideOnDesktop {
+    display: inline-block;
+  }
+
+  .list {
+    width: 100%;
+  }
+
+  .list li {
+    padding: 1.4rem 0 1.4rem 2rem;
+    column-gap: 1.6rem;
+    width: 100%;
+  }
+
+  .list div {
+    gap: 2rem;
+  }
+}
+
+.starRating {
+  justify-self: center;
 }

@@ -6,8 +6,11 @@ import StarRating from "./StarRating";
 import Loader from "./Loader";
 import ErrorMessage from "./ErrorMessage";
 import { useMovies } from "../hooks/useMovies";
+import { IoArrowBackCircleSharp } from "react-icons/io5";
+import Button from "./Button";
+import { FaArrowLeft } from "react-icons/fa";
 
-export default function MovieDetails() {
+export default function MovieDetails({ className }) {
   const { watched, selectedId, onAddWatchedMovie, onCloseMovie } = useMovies();
   const [userRating, setUserRating] = useState("");
   const [ratingChangeCount, setRatingChangeCount] = useState(0);
@@ -61,11 +64,11 @@ export default function MovieDetails() {
   if (error) return <ErrorMessage message={error} />;
 
   return (
-    <div className={styles.movieDetails}>
+    <div className={`${styles.movieDetails} ${className}`}>
       <header>
-        <button className={styles.btnBack} onClick={onCloseMovie}>
-          &larr;
-        </button>
+        <Button className="btnBack" onClick={onCloseMovie}>
+          <FaArrowLeft />
+        </Button>
         <img src={poster} alt={`Poster of ${title} movie`} />
         <div className={styles.movieDetailsOverview}>
           <h2>{title}</h2>
@@ -86,7 +89,7 @@ export default function MovieDetails() {
           ) : (
             <>
               <StarRating
-                maxRating={10}
+                className="starRating"
                 size={24}
                 defaultRating={3}
                 onSetRating={setUserRating}
