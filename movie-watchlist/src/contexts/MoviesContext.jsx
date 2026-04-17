@@ -10,7 +10,7 @@ function MoviesProvider({ children }) {
   const [selectedId, setSelectedId] = useState("");
   const { isLoading, error, movies } = useFetchMovies(query);
   const [watched, setWatched] = useLocalStorage([], "watched");
-  const [isWatchListOpen, setIsWatchListopen] = useState(false);
+  const [isWatchListOpen, setIsWatchListopen] = useState(true);
 
   function handleSelectedId(id) {
     setSelectedId((currId) => (currId === id ? null : id));

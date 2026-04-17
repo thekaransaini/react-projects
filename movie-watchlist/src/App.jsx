@@ -7,44 +7,23 @@ import MovieList from "./components/MovieList";
 import MovieDetails from "./components/MovieDetails";
 import WatchedMovieSummary from "./components/WatchedMovieSummary";
 import WatchList from "./components/WatchList";
-import { useMovies } from "./hooks/useMovies";
+import MobileLayout from "./components/MobileLayout";
+import DesktopLayout from "./components/DesktopLayout";
+import { useEffect, useState } from "react";
 
 export default function App() {
-  const { isLoading, error, selectedId, isWatchListOpen } = useMovies();
-  const isMobile = window.innerWidth < 800;
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 800);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 800);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <>
       <NavBar />
-      <Main>
-        <Container>
-          {isLoading && <Loader />}
-          {error && <ErrorMessage message={error} />}
-          {!isLoading && !error && <MovieList className="hideOnMobile" />}
-          {!isWatchListOpen && !isLoading && !error && !selectedId && (
-            <MovieList className="hideOnDesktop" />
-          )}
-          {!isWatchListOpen && selectedId && isMobile && (
-            <MovieDetails className="hideOnDesktop" />
-          )}
-          {isWatchListOpen && (
-            <>
-              <WatchedMovieSummary />
-              <WatchList />
-            </>
-          )}
-        </Container>
-        <Container className="hideOnMobile">
-          {selectedId ? (
-            <MovieDetails />
-          ) : (
-            <>
-              <WatchedMovieSummary />
-              <WatchList />
-            </>
-          )}
-        </Container>
-      </Main>
+      <Main>{isMobile ? <MobileLayout /> : <DesktopLayout />}</Main>
     </>
   );
 }
