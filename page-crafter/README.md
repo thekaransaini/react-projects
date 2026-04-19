@@ -1,59 +1,240 @@
-# PageCrafter — Dynamic Content Builder
+# 🚀 PageCrafter – Dynamic Content Builder
 
-A drag-and-drop page builder built with React + dnd-kit. Compose pages from modular blocks (Text, Header, Image, Markdown), reorder them, edit inline, and persist your work to localStorage automatically.
+## 📌 Overview
 
-## ✨ Features
+**PageCrafter** is a dynamic web application that allows users to build and customize a personal content page using draggable and configurable content blocks.
 
-- Palette + Canvas two-column layout
-- Drag-and-drop from palette to canvas (`@dnd-kit`)
-- Reorder blocks with a drag handle
-- Inline editing with Edit/Done toggle
-- Block types: Text, Header (H1/H2/H3), Image (URL + alt), Markdown (live preview via `marked`)
-- Persistence via `localStorage` (auto save + restore)
-- Save Page toast + Clear Page confirm
-- Graceful fallbacks for empty data, broken images, unknown types
-- Responsive, animated, modern card UI
+* UI/UX design
+* Drag-and-drop interactions
+* State management
+* Component architecture
+* Data persistence
 
-## 🧱 Tech Stack
+---
 
-React 18, Vite, Tailwind CSS, `@dnd-kit/core` + `@dnd-kit/sortable`, `uuid`, `marked`, `sonner`.
+## 🔗 Live Demo
 
-## 📁 Structure
+👉 [View Live Application](https://page-crafter-ruby.vercel.app/)
 
-```
-src/
-├── components/{NavBar,Palette,Canvas,BlockWrapper,Loader,ErrorMessage}.jsx
-├── components/blocks/{TextBlock,ImageBlock,HeaderBlock,MarkdownBlock}.jsx
-├── contexts/BuilderContext.jsx
-├── hooks/useLocalStorage.js
-├── utils/constants.js
-├── pages/Index.tsx
-└── main.tsx
-```
+---
 
-## 🚀 Setup
+## 🎥 Demo Video
+
+👉 [Watch Demo Video](https://youtu.be/-ahRcVdVhNI)
+
+---
+
+## 🎯 Features
+
+### 🧱 Content Blocks
+
+* Text Block (editable paragraph)
+* Header Block (H1 / H2 / H3)
+* Image Block (URL + preview)
+* Markdown Block (live preview)
+
+---
+
+### 🖱️ Drag & Drop
+
+* Drag blocks from palette to canvas
+* Reorder blocks within canvas
+* Smooth interactions using **dnd-kit**
+
+---
+
+### ⚙️ Block Controls
+
+* Edit content in real-time
+* Delete blocks
+* Toggle edit mode
+* Clean card-based UI
+
+---
+
+### 💾 Persistence
+
+* Saves data in **localStorage**
+* Automatically restores state on reload
+
+---
+
+### 🎨 UI/UX
+
+* Two-column layout (Palette + Canvas)
+* Modern, minimal design
+* Responsive layout
+* Smooth animations
+
+---
+
+## 🛠️ Tech Stack
+
+* **React.js** (Functional Components + Hooks)
+* **TypeScript**
+* **Tailwind CSS**
+* **dnd-kit** (Drag & Drop)
+* **uuid** (Unique IDs)
+* **marked** (Markdown parsing)
+
+---
+
+## 📁 Project Structure
 
 ```bash
-npm install
-npm run dev
+src/
+├── assets/
+├── components/
+│   ├── blocks/
+│   │   ├── HeaderBlock.jsx
+│   │   ├── ImageBlock.jsx
+│   │   ├── MarkdownBlock.jsx
+│   │   ├── TextBlock.jsx
+│   ├── ui/
+│   │   ├── BlockWrapper.jsx
+│   │   ├── Canvas.jsx
+│   │   ├── ErrorMessage.jsx
+│   │   ├── Loader.jsx
+│   │   ├── NavBar.jsx
+│   │   ├── NavLinks.jsx
+│   │   ├── Palette.jsx
+├── contexts/
+│   ├── BuilderContext.jsx
+├── hooks/
+│   ├── use-mobile.tsx
+│   ├── use-toast.ts
+│   ├── useLocalStorage.js
+├── lib/
+│   ├── utils.ts
+├── pages/
+│   ├── Index.tsx
+│   ├── NotFound.tsx
+├── test/
+│   ├── example.test.ts
+│   ├── setup.ts
+├── utils/
+├── App.css
+├── App.tsx
 ```
 
-Open the printed local URL (typically http://localhost:5173).
+---
 
 ## 🧠 State Management
 
-Centralized in `BuilderContext` (React Context API). API: `blocks`, `addBlock(type, index?)`, `updateBlock(id, partial)`, `removeBlock(id)`, `moveBlock(from, to)`, `clearAll()`.
+The app uses **React Context API** for centralized state handling.
 
-Block shape:
+### Block Data Structure
 
-```js
-{ id: "uuid-v4", type: "text"|"image"|"header"|"markdown", content: { ... } }
+```ts
+type Block = {
+  id: string;
+  type: "text" | "image" | "header" | "markdown";
+  content: any;
+};
 ```
 
-## 💾 Persistence
+### Key Operations
 
-The `useLocalStorage` hook syncs `blocks` under the `pagecrafter:blocks:v1` key on every change and rehydrates on load (with safe JSON parsing and a `[]` fallback on errors).
+* Add block
+* Update block content
+* Delete block
+* Reorder blocks
 
-## 🧪 Edge Cases
+---
 
-Empty canvas → empty state · invalid image URL → inline error · unknown type → soft error · storage failure → silent · duplicate IDs → prevented by `uuid` v4.
+## 💾 Persistence Strategy
+
+Custom hook: **useLocalStorage**
+
+### How it works:
+
+1. State updates in Context
+2. Data is stored in `localStorage`
+3. On reload → data is restored automatically
+
+---
+
+## ⚠️ Edge Case Handling
+
+* Prevent duplicate IDs using `uuid`
+* Handle empty canvas gracefully
+* Fallback for invalid image URLs
+* Safe markdown rendering
+* No crashes on invalid state
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/your-username/pagecrafter.git
+cd pagecrafter
+```
+
+---
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+---
+
+### 3. Run the App
+
+```bash
+npm run dev
+```
+
+---
+
+### 4. Open in Browser
+
+```
+http://localhost:5173
+```
+
+---
+
+## 🎥 Demo Requirements Covered
+
+✔ Drag blocks from palette
+✔ Reorder blocks
+✔ Edit content
+✔ Delete blocks
+✔ Persistence after refresh
+
+---
+
+## 🚀 Future Improvements
+
+* Rich text editor support
+* Export page as HTML/PDF
+* Undo/Redo functionality
+* Backend integration
+* More block types (video, embed, etc.)
+
+---
+
+## 📜 License
+
+This project is for educational and evaluation purposes only.
+
+---
+
+## ⭐ Final Thoughts
+
+This project demonstrates:
+
+* Advanced frontend architecture
+* Interactive UI design
+* Scalable state management
+* Real-world problem solving
+
+---
+
+✨ *Build. Drag. Create. — with PageCrafter*
+
